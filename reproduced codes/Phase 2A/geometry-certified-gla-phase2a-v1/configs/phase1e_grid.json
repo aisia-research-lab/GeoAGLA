@@ -1,0 +1,28 @@
+{
+  "seeds": [0, 1, 2],
+  "perturbations": [0.001, 0.0001],
+  "n_iter": 180,
+  "warmup": 12,
+  "memory": 3,
+  "block_sizes": [2, 4, 8],
+  "margins": [0.0, 0.001, 0.003],
+  "phase_tol": 1e-8,
+  "near_zero_tol": 1e-10,
+  "svd_rtol": 1e-9,
+  "cond_max": 10000000000.0,
+  "lambda_ceiling": 0.99999999,
+  "alpha_safe": 0.0,
+  "beta_safe": 0.0,
+  "gamma_safe": 1.0,
+  "K_safe": 0.25,
+  "descent_a": 0.0001,
+  "late_block_count": 10,
+  "hostile_biases": [-0.05, -0.02, 0.05],
+  "online_win_fraction": 0.35,
+  "configs": [
+    {"id": "g16_w8_h4_f8", "signal_length": 16, "window": "gaussian", "window_length": 8, "hop": 4, "n_fft": 8},
+    {"id": "h16_w8_h4_f8", "signal_length": 16, "window": "hann", "window_length": 8, "hop": 4, "n_fft": 8},
+    {"id": "g24_w8_h4_f8", "signal_length": 24, "window": "gaussian", "window_length": 8, "hop": 4, "n_fft": 8},
+    {"id": "h24_w8_h4_f8", "signal_length": 24, "window": "hann", "window_length": 8, "hop": 4, "n_fft": 8}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "d0_max_abs_error": 1.1668443988810395e-13,
+  "n_stft_estimator_rows": 108,
+  "selected_memory": 3,
+  "selected_median_rel_error": 0.002326048560348447,
+  "selected_p90_rel_error": 0.00487016726873662,
+  "selected_median_under_fraction": 1.0,
+  "identifiability_trajectory_max_difference": 0.0,
+  "d0_pass": true,
+  "d1_median_gate_pass": true,
+  "d1_p90_gate_pass": true,
+  "raw_estimate_upper_bound_safe": false,
+  "phase1d_gate": "YELLOW-GREEN: active edge identifiable; safeguard/margin required"
+}
