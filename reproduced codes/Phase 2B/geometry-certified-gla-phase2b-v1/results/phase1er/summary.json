@@ -1,0 +1,33 @@
+{
+  "n_runs": 192,
+  "selected_repair": {
+    "policy": "dynamic_envelope",
+    "n": 24,
+    "beat_fraction": 0.75,
+    "median_q_ratio_fgla": 0.9976836695425164,
+    "p90_q_ratio_fgla": 1.0028351000531344,
+    "median_q_ratio_oracle": 1.003990141896434,
+    "mean_late_reject_fraction": 0.0,
+    "mean_reject_fraction": 0.0,
+    "fallback_e1_failures": 0,
+    "median_edge_updates": 20.0,
+    "median_final_edge_rel_error": 3.927957238952576e-06
+  },
+  "oracle_control": {
+    "policy": "oracle_frozen",
+    "n": 24,
+    "beat_fraction": 0.7916666666666666,
+    "median_q_ratio_fgla": 0.9934223776451088,
+    "p90_q_ratio_fgla": 1.0035455612274224,
+    "median_q_ratio_oracle": 1.0005071624416582,
+    "mean_late_reject_fraction": 0.0,
+    "mean_reject_fraction": 0.015804597701149423,
+    "fallback_e1_failures": 0,
+    "median_edge_updates": 0.0,
+    "median_final_edge_rel_error": 0.0
+  },
+  "H4_performance_pass": true,
+  "H5_eventual_inactivity_pass": true,
+  "E1_safe_fallback_pass": true,
+  "phase1er_gate": "GREEN"
+}

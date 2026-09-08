@@ -1,0 +1,17 @@
+{
+  "seeds": [0, 1, 2, 3, 4],
+  "perturbations": [0.001, 0.0001, 0.00001],
+  "n_iter": 180,
+  "phase_tol": 1e-8,
+  "near_zero_tol": 1e-10,
+  "h1_relative_error_tol": 1e-10,
+  "h2_relative_rate_tol": 0.10,
+  "configs": [
+    {"id": "g16_w8_h4_f8",  "signal_length": 16, "window": "gaussian", "window_length": 8,  "hop": 4, "n_fft": 8},
+    {"id": "h16_w8_h4_f8",  "signal_length": 16, "window": "hann",     "window_length": 8,  "hop": 4, "n_fft": 8},
+    {"id": "g24_w8_h4_f8",  "signal_length": 24, "window": "gaussian", "window_length": 8,  "hop": 4, "n_fft": 8},
+    {"id": "h24_w8_h4_f8",  "signal_length": 24, "window": "hann",     "window_length": 8,  "hop": 4, "n_fft": 8},
+    {"id": "g32_w16_h4_f16","signal_length": 32, "window": "gaussian", "window_length": 16, "hop": 4, "n_fft": 16},
+    {"id": "h32_w16_h4_f16","signal_length": 32, "window": "hann",     "window_length": 16, "hop": 4, "n_fft": 16}
+  ]
+}

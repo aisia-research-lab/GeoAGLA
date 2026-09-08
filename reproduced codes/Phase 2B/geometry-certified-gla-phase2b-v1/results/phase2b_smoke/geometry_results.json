@@ -1,0 +1,38 @@
+[
+  {
+    "file": "smoke_chirp.wav",
+    "profile": "smoke_hann",
+    "window": "hann",
+    "W": 128,
+    "hop": 32,
+    "n_fft": 128,
+    "min_abs_coeff": 4.1469202648192205e-08,
+    "median_abs_coeff": 1.9404250351360752e-05,
+    "min_rel_coeff": 0.0021371195432594546,
+    "fraction_rel_below_1e-08": 0.0,
+    "fraction_rel_below_1e-06": 0.0,
+    "fraction_rel_below_0.0001": 0.0,
+    "status": "OK",
+    "neutral_count_topk": 1,
+    "lambda_plus": 0.9993922507644722,
+    "spectral_gap_to_phase": 0.0006077492355277547,
+    "geometry_lambda_power": 0.9951742696299324,
+    "geometry_rel_error": 0.004220546168247123
+  },
+  {
+    "file": "smoke_harmonic.wav",
+    "profile": "smoke_hann",
+    "window": "hann",
+    "W": 128,
+    "hop": 32,
+    "n_fft": 128,
+    "min_abs_coeff": 4.683753385137379e-17,
+    "median_abs_coeff": 1.8669898764799987e-05,
+    "min_rel_coeff": 2.5087192191786674e-12,
+    "fraction_rel_below_1e-08": 0.000244140625,
+    "fraction_rel_below_1e-06": 0.000244140625,
+    "fraction_rel_below_0.0001": 0.000244140625,
+    "status": "GEOMETRY_FAIL",
+    "reason": "ValueError('regular tangent projection requires nonzero coefficients')"
+  }
+]

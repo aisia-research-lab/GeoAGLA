@@ -1,0 +1,20 @@
+{
+  "n_main_runs": 216,
+  "selected_setting": {
+    "block_size": 8,
+    "margin": 0.001,
+    "n": 24,
+    "beat_fraction": 0.5416666666666666,
+    "mean_late_reject_fraction": 0.041666666666666664,
+    "mean_reject_fraction": 0.01984126984126984,
+    "median_q_ratio_vs_fgla": 0.9986689057733489,
+    "p90_q_ratio_vs_fgla": 1.0332041856989738,
+    "fallback_e1_failures": 0
+  },
+  "H4_performance_pass": false,
+  "H5_eventual_inactivity_pass": true,
+  "E1_safe_fallback_pass": true,
+  "hostile_estimator_convergence_pass": true,
+  "selected_max_observed_e2_ratio": 0.15651855138634824,
+  "phase1e_gate": "YELLOW: inspect safeguard/performance diagnostics"
+}

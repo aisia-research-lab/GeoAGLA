@@ -1,0 +1,24 @@
+[
+  {
+    "file": "smoke_chirp.wav",
+    "source_sample_rate": 16000,
+    "target_sample_rate": 16000,
+    "source_num_samples": 8192,
+    "resampled_num_samples": 8192,
+    "excerpt_start_resampled": 1536,
+    "excerpt_length": 1024,
+    "excerpt_rms_before_norm": 0.6960917615626732,
+    "excerpt_peak_before_norm": 1.000577885657549
+  },
+  {
+    "file": "smoke_harmonic.wav",
+    "source_sample_rate": 16000,
+    "target_sample_rate": 16000,
+    "source_num_samples": 8192,
+    "resampled_num_samples": 8192,
+    "excerpt_start_resampled": 4352,
+    "excerpt_length": 1024,
+    "excerpt_rms_before_norm": 0.43433617045242556,
+    "excerpt_peak_before_norm": 0.640477392822504
+  }
+]

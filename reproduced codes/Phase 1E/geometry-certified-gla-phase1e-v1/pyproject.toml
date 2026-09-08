@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geometry-certified-gla"
+version = "0.3.0"
+description = "Phase-1D online dominant spectral-edge identification engine for geometry-certified Griffin-Lim acceleration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.7", "pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
