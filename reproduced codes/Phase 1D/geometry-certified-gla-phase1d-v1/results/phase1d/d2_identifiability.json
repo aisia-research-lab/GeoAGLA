@@ -1,9 +1,0 @@
-{
-  "trajectory_max_difference": 0.0,
-  "estimate_A": 0.8000000000000002,
-  "estimate_B": 0.8000000000000002,
-  "active_edge": 0.8,
-  "full_lambda_plus_A": 0.9,
-  "full_lambda_plus_B": 0.99,
-  "conclusion": "passive data identify the active edge, not an unexcited full-spectrum edge"
-}
