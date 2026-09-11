@@ -1,0 +1,10 @@
+tăng subset (khoảng vài trăm audio) random 
+rồi coi tính ổn định của kết quả 
+10% -> 20% -> 30% -> ... -> full
+
+xem file .md mới nhất thầy gửi để kết quả chặt chẽ hơn 
+có chia student A/B như trước 
+code là file zip thầy gửi cho thí nghiệm 6/7 (nếu E6/7 ổn là tương đối xong)
+nhớ lock mấy thông số (đầy đủ dữ liệu)
+quan trọng nhất là phải reproduce được, nhất lock mấy param lại 
+mai thảo luận ecir
