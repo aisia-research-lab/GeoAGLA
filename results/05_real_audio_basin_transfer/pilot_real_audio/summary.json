@@ -1,0 +1,14 @@
+{
+  "audio_dir": "YOUR_DATA_PATH",
+  "n_files": 6,
+  "n_regular_geometry": 6,
+  "n_regular_rate": 6,
+  "max_geometry_relative_error": 0.002581921301336616,
+  "median_geometry_relative_error": 0.0017075790469939863,
+  "median_gla_rate_error": 0.0014527290129903244,
+  "median_fgla_rate_error": 0.001233340508818129,
+  "median_oracle_rate_error": 0.0007111228575490973,
+  "hierarchy_pass_fraction": 1.0,
+  "near_phase_degenerate_fraction": 1.0,
+  "gate_status": "GREEN"
+}

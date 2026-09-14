@@ -1,0 +1,17 @@
+file_id,category,lambda_plus,q_oracle_obs,q_fgla_obs,q_gla_obs,diagnostic_category,description
+music-fma-0089.wav,music,0.9999654291032349,0.9998920708366268,0.9997583063924471,0.9998461756938428,POOR_RATE_FIT,Fit quality R^2 = 0.027517864387083923 or rate undefined due to late divergence
+noise-free-sound-0011.wav,noise,0.9999886165740804,0.9984697637355542,0.9974725096686887,0.9997436820350509,POOR_RATE_FIT,Fit quality R^2 = 0.5126039572766989 or rate undefined due to late divergence
+noise-free-sound-0061.wav,noise,0.9998473193077709,0.9989495869569202,0.9996871527394475,0.9995498120972065,NUMERICAL_FLOOR,Trajectory entered numerical precision floor in late window
+noise-free-sound-0329.wav,noise,0.9999708682736776,0.9991322348606485,0.9989805038194899,0.9997699127316068,POOR_RATE_FIT,Fit quality R^2 = 0.36633000634554647 or rate undefined due to late divergence
+noise-free-sound-0349.wav,noise,0.9999997159942094,1.000007964902001,0.9995580645082957,0.9997972985293938,POOR_RATE_FIT,Fit quality R^2 = 3.0726189337970666e-05 or rate undefined due to late divergence
+noise-free-sound-0353.wav,noise,0.9999985535571946,0.9983448902730239,0.9980269754652233,0.9998165121348337,ORACLE_FGLA_SWAP,"Both beat GLA, but Oracle (q=0.9983) >= FGLA (q=0.9980)"
+noise-free-sound-0409.wav,noise,0.9999993164505964,0.9990383756454011,0.9989573963966984,0.999927291327407,POOR_RATE_FIT,Fit quality R^2 = 0.9127605899254069 or rate undefined due to late divergence
+noise-free-sound-0463.wav,noise,0.9999998491976276,0.9995024577391772,0.999254868699888,0.9998086213820899,POOR_RATE_FIT,Fit quality R^2 = 0.5901463641408717 or rate undefined due to late divergence
+noise-free-sound-0477.wav,noise,0.9999559477344816,0.999605093827596,0.9995870649221369,0.9996307029729045,NUMERICAL_FLOOR,Trajectory entered numerical precision floor in late window
+noise-free-sound-0531.wav,noise,0.9998489874075354,0.9997233374201617,1.0000000083418141,0.9997038332262317,POOR_RATE_FIT,Fit quality R^2 = 0.041819384735495624 or rate undefined due to late divergence
+noise-free-sound-0569.wav,noise,0.9999935965856241,0.9981893106265786,0.9976735892247729,0.9993734117860739,POOR_RATE_FIT,Fit quality R^2 = 0.5802899909834007 or rate undefined due to late divergence
+noise-sound-bible-0001.wav,noise,0.9999998478190271,0.9994425714464851,0.9976280323335084,0.9999040843874689,POOR_RATE_FIT,Fit quality R^2 = 0.8395024893834879 or rate undefined due to late divergence
+noise-sound-bible-0023.wav,noise,0.9999650542470652,0.9999090207196331,0.9990396931965717,0.999759093589493,POOR_RATE_FIT,Fit quality R^2 = 0.007985572543179553 or rate undefined due to late divergence
+speech-librivox-0033.wav,speech,0.999986283517091,0.998372667934013,0.9969376227697633,0.9998027366077245,POOR_RATE_FIT,Fit quality R^2 = 0.5652832345889687 or rate undefined due to late divergence
+speech-librivox-0055.wav,speech,0.9999892415965708,0.9988750445466261,0.9972192848159183,0.9996847506450978,POOR_RATE_FIT,Fit quality R^2 = 0.41304885433698646 or rate undefined due to late divergence
+speech-us-gov-0103.wav,speech,0.9999894339223303,0.9984045312345444,0.9973313263763798,0.9996787102997681,POOR_RATE_FIT,Fit quality R^2 = 0.5728213010567118 or rate undefined due to late divergence

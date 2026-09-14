@@ -1,0 +1,53 @@
+{
+  "total_cases": 24,
+  "signal_kinds": [
+    "harmonic",
+    "chirp",
+    "speech_like",
+    "transient"
+  ],
+  "tolerances": [
+    0.01,
+    0.001,
+    0.0001,
+    1e-06
+  ],
+  "stratified_by_kind": {
+    "harmonic": {
+      "n_cases": 6,
+      "median_final_err_gla": 12.81464934448234,
+      "median_final_err_fgla": 9.53809968435971,
+      "median_final_err_online": 9.935078537121278,
+      "median_saving_tau_1e2": null,
+      "median_saving_tau_1e3": null,
+      "mean_safeguard_fallback_rate": 0.047619047619047616
+    },
+    "chirp": {
+      "n_cases": 6,
+      "median_final_err_gla": 10.798748600197186,
+      "median_final_err_fgla": 0.6798445052146177,
+      "median_final_err_online": 0.3129104623188492,
+      "median_saving_tau_1e2": null,
+      "median_saving_tau_1e3": null,
+      "mean_safeguard_fallback_rate": 0.10317460317460315
+    },
+    "speech_like": {
+      "n_cases": 6,
+      "median_final_err_gla": 12.501898960178364,
+      "median_final_err_fgla": 6.860320821972898,
+      "median_final_err_online": 11.538151441327123,
+      "median_saving_tau_1e2": null,
+      "median_saving_tau_1e3": null,
+      "mean_safeguard_fallback_rate": 0.05555555555555555
+    },
+    "transient": {
+      "n_cases": 6,
+      "median_final_err_gla": 11.905182552792791,
+      "median_final_err_fgla": 9.203640746930299,
+      "median_final_err_online": 10.036654767352603,
+      "median_saving_tau_1e2": null,
+      "median_saving_tau_1e3": null,
+      "mean_safeguard_fallback_rate": 0.05555555555555555
+    }
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "file_id": "noise-free-sound-0043.wav",
+    "phase_tol": 1e-05,
+    "neutral_count": 4,
+    "lambda_plus_after_neutral_removal": 0.9999154158635183
+  },
+  {
+    "file_id": "noise-free-sound-0043.wav",
+    "phase_tol": 1e-06,
+    "neutral_count": 3,
+    "lambda_plus_after_neutral_removal": 0.9999986037598987
+  },
+  {
+    "file_id": "noise-free-sound-0043.wav",
+    "phase_tol": 1e-07,
+    "neutral_count": 2,
+    "lambda_plus_after_neutral_removal": 0.9999990749437055
+  },
+  {
+    "file_id": "noise-free-sound-0043.wav",
+    "phase_tol": 1e-08,
+    "neutral_count": 1,
+    "lambda_plus_after_neutral_removal": 0.9999999495515138
+  },
+  {
+    "file_id": "noise-free-sound-0043.wav",
+    "phase_tol": 1e-09,
+    "neutral_count": 1,
+    "lambda_plus_after_neutral_removal": 0.9999999495515138
+  },
+  {
+    "file_id": "noise-free-sound-0043.wav",
+    "phase_tol": 1e-10,
+    "neutral_count": 1,
+    "lambda_plus_after_neutral_removal": 0.9999999495515138
+  },
+  {
+    "file_id": "noise-free-sound-0389.wav",
+    "phase_tol": 1e-05,
+    "neutral_count": 2,
+    "lambda_plus_after_neutral_removal": 0.9999810713631235
+  },
+  {
+    "file_id": "noise-free-sound-0389.wav",
+    "phase_tol": 1e-06,
+    "neutral_count": 2,
+    "lambda_plus_after_neutral_removal": 0.9999810713631235
+  },
+  {
+    "file_id": "noise-free-sound-0389.wav",
+    "phase_tol": 1e-07,
+    "neutral_count": 2,
+    "lambda_plus_after_neutral_removal": 0.9999810713631235
+  },
+  {
+    "file_id": "noise-free-sound-0389.wav",
+    "phase_tol": 1e-08,
+    "neutral_count": 1,
+    "lambda_plus_after_neutral_removal": 0.999999902833544
+  },
+  {
+    "file_id": "noise-free-sound-0389.wav",
+    "phase_tol": 1e-09,
+    "neutral_count": 1,
+    "lambda_plus_after_neutral_removal": 0.999999902833544
+  },
+  {
+    "file_id": "noise-free-sound-0389.wav",
+    "phase_tol": 1e-10,
+    "neutral_count": 1,
+    "lambda_plus_after_neutral_removal": 0.999999902833544
+  }
+]

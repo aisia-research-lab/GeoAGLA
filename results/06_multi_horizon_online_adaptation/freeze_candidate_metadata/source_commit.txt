@@ -1,0 +1,6 @@
+Commit Hash: 7b84f29a0e6c43df
+Branch: student-b-final-audit-freeze
+Tag: ICLR2027-STUDENT-B-FINAL-AUDIT-V1
+Frozen Date: 2026-09-14
+Parameters Status: STRICTLY FROZEN
+Verification Status: GREEN — PASSED ALL FINAL CORRECTION AUDITS
