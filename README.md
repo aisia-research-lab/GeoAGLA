@@ -282,32 +282,27 @@ All notebooks in `notebooks/` can be executed locally or in cloud environments:
 | :--- | :--- |
 | **`01_Linear_Modal_and_Spectrum_Reproduction.ipynb`** | S0 linear dynamics, H1/H2 spectral correspondence, leading mode identification. |
 | **`02_Online_Estimator_Maturation_Reproduction.ipynb`** | Online Ritz estimator tracking, memory depth $m$, and maturation curves. |
-| **`03_Gate_A_Heldout_Geometry_Opportunity.ipynb`** | Gate A heldout grid validation, E6 case ledger, and $\Delta_{
-m oracle}$ correlation. |
+| **`03_Gate_A_Heldout_Geometry_Opportunity.ipynb`** | Gate A heldout grid validation, E6 case ledger, and $\Delta_{\rm oracle}$ correlation. |
 | **`04_Safeguard_and_RealAudio_Basin_Exploration.ipynb`** | Merit safeguard logic, fallback triggers, and initial basin exploration. |
 | **`05_RealAudio_Basin_Transfer_and_Horizon_Audit.ipynb`** | Real audio basin transfer across speech, music, noise, and horizon audits. |
 | **`06_Online_MultiHorizon_and_Claim_Correction_Audit.ipynb`** | Multi-horizon runs ($H \in \{30, 60, 120, 200, 360\}$), Tasks C1–C4 claim audits. |
 | **`07_Final_Scientific_Freeze_Reconciliation_Standalone.ipynb`** | Complete standalone reconciliation, canonical 60-eval C1 audit, and freeze sign-off. |
 | **`kaggle_execution/25-subset-musan.ipynb`** | Kaggle audio subset extraction and manifest generation. |
-| **`kaggle_execution/musan_even_pipeline.ipynb`** | the pipeline full pipeline on even-10% MUSAN subset. |
-| **`kaggle_execution/musan_odd_pipeline.ipynb`** | the pipeline full pipeline on odd-10% MUSAN subset. |
+| **`kaggle_execution/musan_even_pipeline.ipynb`** | Full pipeline execution on even-10% MUSAN subset. |
+| **`kaggle_execution/musan_odd_pipeline.ipynb`** | Full pipeline execution on odd-10% MUSAN subset. |
 
 ---
 
 ## 6. Core Scientific Findings & Claim Discipline
 
 1. **Geometry Determines Acceleration**: The local asymptotic contraction rate of momentum acceleration in phase retrieval is governed by the active spectral radius $\lambda_+$ of the gauge-invariant projection operator.
-2. **Online Geometry Adaptation**: The passive $3 	imes 3$ Ritz estimator extracts trajectory-active geometry on the fly without extra operator evaluations. The true algorithmic overhead of the $3 	imes 3$ eigensolver is **$0.0381	ext{ ms/update}$** ($0.0048	ext{ ms/iteration}$, $< 0.3\%$ relative to the baseline $1.691	ext{ ms}$ step).
+2. **Online Geometry Adaptation**: The passive $3 \times 3$ Ritz estimator extracts trajectory-active geometry on the fly without extra operator evaluations. The true algorithmic overhead of the $3 \times 3$ eigensolver is **$0.0381\text{ ms/update}$** ($0.0048\text{ ms/iteration}$, $< 0.3\%$ relative to the baseline $1.691\text{ ms}$ step).
 3. **Basin Robustness vs Paired Local Rate Distinction**:
-   $$oxed{	extbf{Basin Robustness} 
-eq 	extbf{Paired Local-Rate Superiority}}$$
+   $$\boxed{\textbf{Basin Robustness} \neq \textbf{Paired Local-Rate Superiority}}$$
    - **Basin Robustness**: Online adaptation increases empirical convergence success across 4,680 random initializations on real speech by **$20.07$ percentage points** ($74.94\%$ vs $54.87\%$) with **0 safeguard failures**.
    - **Local Rate**: In short horizons ($H=60$), Online achieves an $86.7\%$ win rate; over extended horizons ($H \ge 120$), fixed-momentum FGLA remains highly competitive.
-4. **Finite-Horizon $R_{
-m capture}$ Interpretation**:
-   Values of $R_{
-m capture} > 1$ in finite-horizon fitted-rate comparisons reflect transient regression fits and negligible Oracle headroom ($\Delta_{
-m oracle} < 10^{-4}$), not Online exceeding the theoretical infinite-horizon Oracle optimum.
+4. **Finite-Horizon $R_{\rm capture}$ Interpretation**:
+   Values of $R_{\rm capture} > 1$ in finite-horizon fitted-rate comparisons reflect transient regression fits and negligible Oracle headroom ($\Delta_{\rm oracle} < 10^{-4}$), not Online exceeding the theoretical infinite-horizon Oracle optimum.
 
 ---
 

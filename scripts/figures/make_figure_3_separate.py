@@ -22,8 +22,8 @@ from PIL import Image
 # Directory paths
 # -----------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent
-OUT_DIR = BASE_DIR / "figure_3"
-OUT_DIR.mkdir(parents=True, exist_ok=True)
+ROOT_DIR = Path(__file__).resolve().parents[2]
+OUT_DIR = ROOT_DIR / "results" / "figures" / "publication_m4"
 
 # -----------------------------------------------------------------------------
 # Case configurations for the 3 subplots
@@ -62,7 +62,6 @@ CASES = [
 ]
 
 # Candidate search directories for the trace CSV files
-ROOT_DIR = Path(__file__).resolve().parents[2]
 TRACE_SEARCH_DIRS = [
     OUT_DIR / "traces",
     BASE_DIR / "traces",
