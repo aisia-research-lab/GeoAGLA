@@ -1,0 +1,20 @@
+[
+  {
+    "init_kind": "phase_jitter",
+    "level": 0.05,
+    "n": 1,
+    "online_success_fraction": 1.0,
+    "fgla_success_fraction": 0.0,
+    "paired_beat_fraction": null,
+    "paired_median_q_ratio": null
+  },
+  {
+    "init_kind": "transverse",
+    "level": 0.001,
+    "n": 1,
+    "online_success_fraction": 1.0,
+    "fgla_success_fraction": 1.0,
+    "paired_beat_fraction": 1.0,
+    "paired_median_q_ratio": 0.9990389583037477
+  }
+]

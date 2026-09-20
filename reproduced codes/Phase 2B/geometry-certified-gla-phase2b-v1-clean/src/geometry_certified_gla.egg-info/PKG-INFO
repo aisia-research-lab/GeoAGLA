@@ -1,0 +1,40 @@
+Metadata-Version: 2.4
+Name: geometry-certified-gla
+Version: 0.6.0
+Summary: Phase-2B real-audio basin and geometry validation engine for geometry-certified Griffin-Lim acceleration
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.24
+Requires-Dist: scipy>=1.10
+Requires-Dist: matplotlib>=3.7
+Requires-Dist: pytest>=7.4
+Dynamic: license-file
+
+# Geometry-Certified GLA — through Phase-2B v1
+
+Phase-2B adds the real-audio basin and geometry transfer gate. See `PHASE2B_README.md` and `Phase-2B_Reproduction_Guide_v1.md`.
+
+# Geometry-Certified Acceleration of Griffin–Lim Phase Retrieval
+
+This repository snapshot contains the reproducible research engines through:
+
+**Phase-2A — Realistic STFT/Audio Geometry Transfer Gate v1**
+
+Current controlled chain:
+
+`Phase-1B GREEN -> Phase-1C GREEN -> Phase-1D YELLOW-GREEN -> Phase-1E YELLOW -> Phase-1E-R GREEN -> Phase-2A controlled GREEN`
+
+Phase-2A adds a matrix-free signal-scale STFT operator, dominant transverse spectral-edge computation, factorized tangent-geometry verification, inherited passive Ritz tracking (`p=3`), inherited safeguarded dynamic-envelope online acceleration (`K=8`, `Delta=0`), and an optional user-supplied WAV extension.
+
+Start with:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+pytest -q
+python reproduce/run_phase2a.py
+```
+
+See `Phase-2A_Reproduction_Guide_v1.md` and `PHASE2A_VERIFICATION_REPORT.md`.

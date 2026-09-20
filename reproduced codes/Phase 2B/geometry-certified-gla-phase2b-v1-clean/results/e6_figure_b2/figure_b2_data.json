@@ -1,0 +1,28 @@
+{
+  "threshold_used": "T_edge_0p5pct",
+  "horizon": 360,
+  "n_matched": 1,
+  "n_unmatched": 1,
+  "matched": [
+    {
+      "config": "h16_w8_h4_f8",
+      "t_edge": 82,
+      "n_trace": 219,
+      "horizon": 360,
+      "maturation_ratio": 0.22777777777777777,
+      "q_online_median": 0.9771550410666472,
+      "q_fgla_median": 0.9737880791122624,
+      "online_gain": -0.003366961954384795,
+      "n_seeds_epsilons_averaged": 48,
+      "extrapolated_beyond_trace": true,
+      "extrapolation_note": "T_edge quan sat trong trace dai 219 < horizon dong bang 360 -- KHONG chac chan da on dinh tu 219 den 360."
+    }
+  ],
+  "unmatched": [
+    {
+      "config": "g32_w16_h4_f16",
+      "reason": "khong tim thay config 'g32_w16_h4_f16' trong failure_decomposition.json (Phase-1E-R co the chua chay config nay)."
+    }
+  ],
+  "hypothesis_note": "Hypothesis (handoff muc 7): Online acceleration bi gioi han khi estimator maturation chiem phan lon ngan sach vong lap. Day la GIA THUYET, khong phai ket luan chac chan -- dac biet voi co mau n=1 nhu hien tai."
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "init_kind": "phase_jitter",
+    "level": 0.05,
+    "n": 24,
+    "online_success_fraction": 0.875,
+    "fgla_success_fraction": 0.4583333333333333,
+    "paired_beat_fraction": 0.6363636363636364,
+    "paired_median_q_ratio": 0.9989794481250498
+  },
+  {
+    "init_kind": "phase_jitter",
+    "level": 0.15,
+    "n": 24,
+    "online_success_fraction": 0.75,
+    "fgla_success_fraction": 0.25,
+    "paired_beat_fraction": 0.5,
+    "paired_median_q_ratio": 0.999929016695573
+  },
+  {
+    "init_kind": "phase_jitter",
+    "level": 0.3,
+    "n": 24,
+    "online_success_fraction": 0.5833333333333334,
+    "fgla_success_fraction": 0.25,
+    "paired_beat_fraction": 1.0,
+    "paired_median_q_ratio": 0.9974509347341838
+  },
+  {
+    "init_kind": "transverse",
+    "level": 0.001,
+    "n": 24,
+    "online_success_fraction": 1.0,
+    "fgla_success_fraction": 1.0,
+    "paired_beat_fraction": 0.3333333333333333,
+    "paired_median_q_ratio": 1.001184787702491
+  },
+  {
+    "init_kind": "transverse",
+    "level": 0.01,
+    "n": 24,
+    "online_success_fraction": 1.0,
+    "fgla_success_fraction": 1.0,
+    "paired_beat_fraction": 0.4166666666666667,
+    "paired_median_q_ratio": 1.0008058850412795
+  },
+  {
+    "init_kind": "transverse",
+    "level": 0.05,
+    "n": 24,
+    "online_success_fraction": 0.8333333333333334,
+    "fgla_success_fraction": 0.7083333333333334,
+    "paired_beat_fraction": 0.17647058823529413,
+    "paired_median_q_ratio": 1.0009698677279202
+  }
+]

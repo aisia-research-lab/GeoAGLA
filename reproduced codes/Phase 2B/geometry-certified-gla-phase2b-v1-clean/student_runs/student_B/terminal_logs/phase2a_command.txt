@@ -1,0 +1,25 @@
+(.venv) PS D:\.ICLR\GeoAGLA\reproduced codes\Phase 2B\geometry-certified-gla-phase2b-v1>    python -m reproduce.run_phase2a
+Phase-2A harmonic_n256 lambda+ 0.999358225069577 geom err 0.0001290287198207585 time 0.87 s
+Phase-2A chirp_n512 lambda+ 0.9993605257987939 geom err 0.00018343343047558198 time 1.92 s
+Phase-2A speechlike_n512 lambda+ 0.9975869378254553 geom err 0.0008779577104403516 time 1.42 s
+Phase-2A transient_n1024 lambda+ 0.9999629916391913 geom err 0.0003589520741416492 time 3.35 s
+{
+  "profile": "controlled-signal-scale",
+  "n_cases_total": 4,
+  "n_regular_runs": 4,
+  "n_irregular_skipped": 0,
+  "max_geometry_relative_error": 0.0008779577104403516,
+  "median_final_edge_relative_error": 5.453728024128272e-06,
+  "online_beat_fraction_vs_fgla": 0.75,
+  "median_q_ratio_online_vs_fgla": 0.9946267740029768,
+  "p90_q_ratio_online_vs_fgla": 1.00131859238483,
+  "mean_late_reject_fraction": 0.0,
+  "fallback_e1_failures": 0,
+  "G2A_geometry_transfer_pass": true,
+  "G2B_active_edge_tracking_pass": true,
+  "G2C_online_rate_transfer_pass": true,
+  "G2D_safeguard_transfer_pass": true,
+  "phase2a_controlled_gate": "GREEN",
+  "real_audio_gate": "PENDING \u2014 default package uses deterministic license-free audio-like signals; run optional WAV extension before publication claims.",
+  "runtime_sec": 7.568472862243652
+}

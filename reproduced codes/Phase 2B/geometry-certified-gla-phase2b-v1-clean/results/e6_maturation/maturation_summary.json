@@ -1,0 +1,79 @@
+{
+  "thresholds_locked": {
+    "T_edge_1pct": 0.01,
+    "T_edge_0p5pct": 0.005,
+    "T_edge_0p1pct": 0.001
+  },
+  "frozen_memory": 3,
+  "n_primary_cases": 2,
+  "n_ablation_rows": 4,
+  "primary": [
+    {
+      "config": "h16_w8_h4_f8",
+      "memory": 3,
+      "lambda_plus": 0.9968595786833291,
+      "n_iterations_in_trace": 219,
+      "final_edge_rel_error": 0.000210381746993439,
+      "T_edge_1pct": 35,
+      "T_edge_0p5pct": 82,
+      "T_edge_0p1pct": 168
+    },
+    {
+      "config": "g32_w16_h4_f16",
+      "memory": 3,
+      "lambda_plus": 0.983458734947827,
+      "n_iterations_in_trace": 219,
+      "final_edge_rel_error": 0.0001286092059471045,
+      "T_edge_1pct": 68,
+      "T_edge_0p5pct": 216,
+      "T_edge_0p1pct": 216
+    }
+  ],
+  "ablation_other_memory": [
+    {
+      "config": "h16_w8_h4_f8",
+      "memory": 1,
+      "lambda_plus": 0.9968595786833291,
+      "n_iterations_in_trace": 219,
+      "final_edge_rel_error": 0.004352043487816741,
+      "T_edge_1pct": 62,
+      "T_edge_0p5pct": 188,
+      "T_edge_0p1pct": null,
+      "ablation_note": "memory=1 != frozen p=3 (R1 ablation)"
+    },
+    {
+      "config": "h16_w8_h4_f8",
+      "memory": 5,
+      "lambda_plus": 0.9968595786833291,
+      "n_iterations_in_trace": 219,
+      "final_edge_rel_error": 0.009260958894878282,
+      "T_edge_1pct": 219,
+      "T_edge_0p5pct": null,
+      "T_edge_0p1pct": null,
+      "ablation_note": "memory=5 != frozen p=3 (R1 ablation)"
+    },
+    {
+      "config": "g32_w16_h4_f16",
+      "memory": 1,
+      "lambda_plus": 0.983458734947827,
+      "n_iterations_in_trace": 219,
+      "final_edge_rel_error": 0.007099967284271097,
+      "T_edge_1pct": 138,
+      "T_edge_0p5pct": null,
+      "T_edge_0p1pct": null,
+      "ablation_note": "memory=1 != frozen p=3 (R1 ablation)"
+    },
+    {
+      "config": "g32_w16_h4_f16",
+      "memory": 5,
+      "lambda_plus": 0.983458734947827,
+      "n_iterations_in_trace": 219,
+      "final_edge_rel_error": 0.0014755872632202453,
+      "T_edge_1pct": 218,
+      "T_edge_0p5pct": 219,
+      "T_edge_0p1pct": null,
+      "ablation_note": "memory=5 != frozen p=3 (R1 ablation)"
+    }
+  ],
+  "data_limitation_note": "Chi co 2 case o memory=3 trong tracking_traces.json hien tai -- khong du de phu 3 nhom co hoi thap/vua/cao nhu Figure B1 yeu cau. Trace nay cung la Ritz thu dong thuan tuy (chi co 'estimate'), KHONG co lambda_hat_envelope/alpha/beta/gamma/safeguard_accept nhu dinh dang ly tuong trong handoff muc 7 -- do la du lieu cua Phase-1D (passive), khong phai trace cua online policy that (Phase-1E-R). Can bo sung trace online that neu muon ve day du Figure B1/B2."
+}

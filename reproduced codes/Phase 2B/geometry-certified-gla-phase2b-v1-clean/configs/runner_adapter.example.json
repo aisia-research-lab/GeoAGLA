@@ -1,0 +1,5 @@
+{
+  "repo_root": "/ABSOLUTE/PATH/TO/geometry-certified-gla-phase2b-v1",
+  "command_template": "python reproduce/run_custom_case.py --case-json {case_json} --out {out_dir}",
+  "note": "Replace command_template only with the repository's existing case runner. Do not modify algorithmic settings in this package."
+}

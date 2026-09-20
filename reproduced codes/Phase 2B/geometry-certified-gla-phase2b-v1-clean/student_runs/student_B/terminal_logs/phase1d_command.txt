@@ -1,0 +1,58 @@
+(.venv) PS D:\.ICLR\GeoAGLA\reproduced codes\Phase 2B\geometry-certified-gla-phase2b-v1> python reproduce/run_phase1d.py
+=== Phase-1D: unit tests ===
+.................                                                                                                                    [100%]
+17 passed in 1.70s
+
+=== Phase-1D: online dominant-edge diagnostics ===
+Phase-1D case 1: g16_w8_h4_f8 seed=0 eps=0.001
+Phase-1D case 2: g16_w8_h4_f8 seed=0 eps=0.0001
+Phase-1D case 3: g16_w8_h4_f8 seed=1 eps=0.001
+Phase-1D case 4: g16_w8_h4_f8 seed=1 eps=0.0001
+Phase-1D case 5: g16_w8_h4_f8 seed=2 eps=0.001
+Phase-1D case 6: g16_w8_h4_f8 seed=2 eps=0.0001
+Phase-1D case 7: h16_w8_h4_f8 seed=0 eps=0.001
+Phase-1D case 8: h16_w8_h4_f8 seed=0 eps=0.0001
+Phase-1D case 9: h16_w8_h4_f8 seed=1 eps=0.001
+Phase-1D case 10: h16_w8_h4_f8 seed=1 eps=0.0001
+Phase-1D case 11: h16_w8_h4_f8 seed=2 eps=0.001
+Phase-1D case 12: h16_w8_h4_f8 seed=2 eps=0.0001
+Phase-1D case 13: g24_w8_h4_f8 seed=0 eps=0.001
+Phase-1D case 14: g24_w8_h4_f8 seed=0 eps=0.0001
+Phase-1D case 15: g24_w8_h4_f8 seed=1 eps=0.001
+Phase-1D case 16: g24_w8_h4_f8 seed=1 eps=0.0001
+Phase-1D case 17: g24_w8_h4_f8 seed=2 eps=0.001
+Phase-1D case 18: g24_w8_h4_f8 seed=2 eps=0.0001
+Phase-1D case 19: h24_w8_h4_f8 seed=0 eps=0.001
+Phase-1D case 20: h24_w8_h4_f8 seed=0 eps=0.0001
+Phase-1D case 21: h24_w8_h4_f8 seed=1 eps=0.001
+Phase-1D case 22: h24_w8_h4_f8 seed=1 eps=0.0001
+Phase-1D case 23: h24_w8_h4_f8 seed=2 eps=0.001
+Phase-1D case 24: h24_w8_h4_f8 seed=2 eps=0.0001
+Phase-1D case 25: g32_w16_h4_f16 seed=0 eps=0.001
+Phase-1D case 26: g32_w16_h4_f16 seed=0 eps=0.0001
+Phase-1D case 27: g32_w16_h4_f16 seed=1 eps=0.001
+Phase-1D case 28: g32_w16_h4_f16 seed=1 eps=0.0001
+Phase-1D case 29: g32_w16_h4_f16 seed=2 eps=0.001
+Phase-1D case 30: g32_w16_h4_f16 seed=2 eps=0.0001
+Phase-1D case 31: h32_w16_h4_f16 seed=0 eps=0.001
+Phase-1D case 32: h32_w16_h4_f16 seed=0 eps=0.0001
+Phase-1D case 33: h32_w16_h4_f16 seed=1 eps=0.001
+Phase-1D case 34: h32_w16_h4_f16 seed=1 eps=0.0001
+Phase-1D case 35: h32_w16_h4_f16 seed=2 eps=0.001
+Phase-1D case 36: h32_w16_h4_f16 seed=2 eps=0.0001
+{
+  "d0_max_abs_error": 1.1612932837579137e-13,
+  "n_stft_estimator_rows": 108,
+  "selected_memory": 3,
+  "selected_median_rel_error": 0.002278576909434459,
+  "selected_p90_rel_error": 0.005065769592597904,
+  "selected_median_under_fraction": 1.0,
+  "identifiability_trajectory_max_difference": 0.0,
+  "d0_pass": true,
+  "d1_median_gate_pass": true,
+  "d1_p90_gate_pass": true,
+  "raw_estimate_upper_bound_safe": false,
+  "phase1d_gate": "YELLOW-GREEN: active edge identifiable; safeguard/margin required"
+}
+
+Phase-1D complete. See results/phase1d/summary.json

@@ -1,0 +1,3 @@
+W,file,fraction_rel_below_0.0001,fraction_rel_below_1e-06,fraction_rel_below_1e-08,geometry_lambda_power,geometry_rel_error,hop,lambda_plus,median_abs_coeff,min_abs_coeff,min_rel_coeff,n_fft,neutral_count_topk,profile,reason,spectral_gap_to_phase,status,window
+128,smoke_chirp.wav,0.0,0.0,0.0,0.9951742696299528,0.004220546168240067,32,0.9993922507644857,1.94042503513885e-05,4.146920263431442e-08,0.0021371195425412054,128,1,smoke_hann,,0.000607749235514321,OK,hann
+128,smoke_harmonic.wav,0.000244140625,0.000244140625,0.000244140625,,,32,,1.8669898764816226e-05,3.209238430557093e-17,1.7189372427690732e-12,128,,smoke_hann,ValueError('regular tangent projection requires nonzero coefficients'),,GEOMETRY_FAIL,hann
