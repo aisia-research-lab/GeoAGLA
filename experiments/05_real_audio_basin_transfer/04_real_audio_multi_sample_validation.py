@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genuine Real-Audio Validation (Student B - Task B4 / E7-B).
+"""Genuine Real-Audio Validation (Real-Audio Validator - Task B4 / E7-B).
 Sections 11 & 12 of ICLR 2027 Next Experiment Handoff for Students A & B.
 """
 from __future__ import annotations

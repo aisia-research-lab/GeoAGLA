@@ -7,10 +7,10 @@ if str(_repo_root / 'src') not in sys.path:
 
 """
 Task C5 - Final Deliverable Packaging & Integrity Verification.
-Audit Handoff: Student B - Final Correction & Audit Handoff.md (Section Final Required Package)
+Audit Handoff: Online Evaluator - Final Correction & Audit Handoff.md (Section Final Required Package)
 
 Produces the official audit deliverable archive:
-StudentB_Final_Correction_Audit_v1.zip
+Online Evaluator_Final_Correction_Audit_v1.zip
 with:
   - README.md
   - corrected_final_report.md
@@ -41,7 +41,7 @@ def get_env_details():
 
     lines = [
         "================================================================================",
-        "STUDENT B FINAL CORRECTION & AUDIT — EXECUTION ENVIRONMENT",
+        "ONLINE EVALUATOR FINAL CORRECTION & AUDIT — EXECUTION ENVIRONMENT",
         "================================================================================",
         f"Date: 2026-09-14",
         f"OS: {platform.system()} {platform.release()} ({platform.version()})",
@@ -61,28 +61,28 @@ def get_env_details():
 
 def get_commands_txt():
     return """================================================================================
-REPRODUCTION COMMANDS — STUDENT B FINAL CORRECTION & AUDIT (TASKS C1 - C4)
+REPRODUCTION COMMANDS — ONLINE EVALUATOR FINAL CORRECTION & AUDIT (TASKS C1 - C4)
 ================================================================================
 
 All scripts are completely deterministic, parameter-frozen, and self-contained.
 
 1. Task C1: Audit R_capture > 1, export case-level metrics, summary, and report:
-   python experiments/student_b_final_correction_audit/01_c1_capture_ratio_audit.py
+   python experiments/online_evaluator_final_correction_audit/01_c1_capture_ratio_audit.py
 
 2. Task C2: Clarify signal-scale iterations-to-tolerance (T=100 censoring audit):
-   python experiments/student_b_final_correction_audit/02_c2_signal_scale_censoring.py
+   python experiments/online_evaluator_final_correction_audit/02_c2_signal_scale_censoring.py
 
 3. Task C3: Reconcile computational cost & trace 1.12x vs 0.908x runtime origins:
-   python experiments/student_b_final_correction_audit/03_c3_runtime_provenance.py
+   python experiments/online_evaluator_final_correction_audit/03_c3_runtime_provenance.py
 
 4. Task C4: Audit 4 manuscript claims and synthesize corrected final report:
-   python experiments/student_b_final_correction_audit/04_c4_claim_discipline.py
+   python experiments/online_evaluator_final_correction_audit/04_c4_claim_discipline.py
 
 5. Final Packaging & Integrity Verification:
-   python experiments/student_b_final_correction_audit/05_package_and_report.py
+   python experiments/online_evaluator_final_correction_audit/05_package_and_report.py
 
 ONE-LINE FULL PIPELINE REPRODUCER:
-   python reproduce/run_student_b_final_correction_audit.py
+   python reproduce/run_online_evaluator_final_correction_audit.py
 ================================================================================
 """
 
@@ -91,7 +91,7 @@ def get_source_commit_txt():
 SOURCE CODE PROVENANCE & FREEZE COMMIT
 ================================================================================
 Repository: ICLR 2027 - Geometry Determines Acceleration in Phase Retrieval
-Audit Track: Student B — Final Correction & Audit (Tasks C1 to C4)
+Audit Track: Online Evaluator — Final Correction & Audit (Tasks C1 to C4)
 Branch: student-b-final-audit-freeze
 Tag: ICLR2027-STUDENT-B-FINAL-AUDIT-V1
 Audit Release Hash: 7b84f29a0e6c43df
@@ -102,17 +102,17 @@ Verification Status: GREEN — PASSED ALL FINAL CORRECTION AUDITS
 """
 
 def get_readme_md():
-    return """# Student B — Final Correction & Audit Package (v1.0)
+    return """# Online Evaluator — Final Correction & Audit Package (v1.0)
 ## ICLR 2027 — *Geometry Determines Acceleration in Phase Retrieval*
 
-This archive (`StudentB_Final_Correction_Audit_v1.zip`) contains the definitive, audited deliverables from Student B following the completion of Tasks C1–C4 as mandated by `Student B - Final Correction & Audit Handoff.md`.
+This archive (`Online Evaluator_Final_Correction_Audit_v1.zip`) contains the definitive, audited deliverables from Online Evaluator following the completion of Tasks C1–C4 as mandated by `Online Evaluator - Final Correction & Audit Handoff.md`.
 
 ---
 
 ## Archive Structure
 
 ```text
-StudentB_Final_Correction_Audit_v1.zip
+Online Evaluator_Final_Correction_Audit_v1.zip
 │
 ├── README.md                          # This document
 ├── corrected_final_report.md          # Comprehensive final scientific report with corrected claims
@@ -197,8 +197,8 @@ def generate_integrity_report():
             "task_c4_claims_moderated": "COMPLETED_DISCIPLINE_ENFORCED"
         },
         "audit_timestamp": "2026-09-14T12:00:00Z",
-        "deliverable_archive": "StudentB_Final_Correction_Audit_v1.zip",
-        "notes": "All tasks C1-C4 completed strictly following Student B - Final Correction & Audit Handoff.md."
+        "deliverable_archive": "Online Evaluator_Final_Correction_Audit_v1.zip",
+        "notes": "All tasks C1-C4 completed strictly following Online Evaluator - Final Correction & Audit Handoff.md."
     }
 
 def main():
@@ -229,10 +229,10 @@ def main():
         json.dump(integrity_data, f, indent=2)
     print(f"[OK] Generated integrity report: {integrity_path.resolve()}")
 
-    # 2. Extract figures from studentB_handoff_bundle.zip if available
+    # 2. Extract figures from online_evaluator_handoff_bundle.zip if available
     zip_candidates = [
-        Path(r"YOUR_DATA_PATH/studentB_handoff_bundle.zip"),
-        Path(r"YOUR_DATA_PATH/studentB_handoff_bundle.zip")
+        Path(r"YOUR_DATA_PATH/online_evaluator_handoff_bundle.zip"),
+        Path(r"YOUR_DATA_PATH/online_evaluator_handoff_bundle.zip")
     ]
     extracted_figures = 0
     for zpath in zip_candidates:
@@ -317,10 +317,10 @@ def main():
         else:
             print(f"  [i] Figure {fn} not found in {figures_dir}")
 
-    # 4. Create StudentB_Final_Correction_Audit_v1.zip
+    # 4. Create Online Evaluator_Final_Correction_Audit_v1.zip
     zip_destinations = [
-        results_dir / "StudentB_Final_Correction_Audit_v1.zip",
-        Path(r"YOUR_DATA_PATH/StudentB_Final_Correction_Audit_v1.zip")
+        results_dir / "Online Evaluator_Final_Correction_Audit_v1.zip",
+        Path(r"YOUR_DATA_PATH/Online Evaluator_Final_Correction_Audit_v1.zip")
     ]
 
     for target_zip in zip_destinations:

@@ -26,29 +26,29 @@ This document is the frozen handoff for the two student experimenters. The manus
 
 ## 2. Student responsibilities
 
-### Student A — Geometry and Oracle-Rate Validation
+### Lead Researcher — Geometry and Oracle-Rate Validation
 Primary responsibility: **E1–E2**, plus reproduction checks supporting the theory core.
 
-Student A owns:
+Lead Researcher owns:
 - S0 linear/modal smoke test;
 - geometry–spectrum identity across controlled STFT settings;
 - local rate prediction for GLA, optimally tuned FGLA, and oracle geometry-optimal acceleration;
 - finite-window rate audit;
 - preparation of the controlled-theory figures and result tables.
 
-Student A must not modify the online estimator or safeguard implementation.
+Lead Researcher must not modify the online estimator or safeguard implementation.
 
-### Student B — Online Geometry and Real-Audio Transfer
+### Lead Researcher — Online Geometry and Real-Audio Transfer
 Primary responsibility: **E3–E5**, using the frozen online design.
 
-Student B owns:
+Lead Researcher owns:
 - low-memory Ritz estimator reproduction and memory comparison;
 - passive non-identifiability diagnostic;
 - Online-\(\lambda_+\) rate realization and horizon audit;
 - real-audio basin/geometry validation;
 - online/real-audio figures and result tables.
 
-Student B must not retune `p`, `K`, margin, or the dynamic-envelope rule based on observed performance.
+Lead Researcher must not retune `p`, `K`, margin, or the dynamic-envelope rule based on observed performance.
 
 ### Cross-check rule
 Each student should independently rerun **one small experiment owned by the other student** after the main runs are complete. This is a reproducibility cross-check, not a second tuning pass.
@@ -120,7 +120,7 @@ The experimental section of the paper will be filled only after the outputs belo
 
 ---
 
-# Part A — Student A Protocol
+# Part A — Lead Researcher Protocol
 
 ## A0. S0 smoke test
 
@@ -230,7 +230,7 @@ After E1–E2 finish, send the complete `results/phase1c/` directory or at least
 
 ---
 
-# Part B — Student B Protocol
+# Part B — Lead Researcher Protocol
 
 ## B0. E3 — Passive Ritz Estimation
 
@@ -437,8 +437,8 @@ Send all five required Phase-2B JSON files plus the audio manifest and exact ter
 
 After the primary handoffs are audited:
 
-- Student A independently runs `python reproduce/run_phase1d.py` and sends only the new `summary.json` plus terminal log.
-- Student B independently runs `python reproduce/run_phase1c.py` and sends only the new `summary.json` plus terminal log.
+- Lead Researcher independently runs `python reproduce/run_phase1d.py` and sends only the new `summary.json` plus terminal log.
+- Lead Researcher independently runs `python reproduce/run_phase1c.py` and sends only the new `summary.json` plus terminal log.
 
 The purpose is to verify that two independent machines produce scientifically equivalent summaries. Exact floating-point equality is not required, but qualitative gates and numerical magnitudes should agree.
 
@@ -450,12 +450,12 @@ Do not overwrite the canonical run. Recommended structure:
 
 ```text
 student_runs/
-  student_A/
+  pipeline/
     environment.txt
     terminal_logs/
     phase1b/
     phase1c/
-  student_B/
+  pipeline/
     environment.txt
     terminal_logs/
     phase1d/
@@ -468,7 +468,7 @@ student_runs/
 For every scientific run, save the command in a text file, for example:
 
 ```text
-student_runs/student_B/terminal_logs/phase2b_command.txt
+student_runs/pipeline/terminal_logs/phase2b_command.txt
 ```
 
 If code must be changed because of a real bug, create a new versioned branch/package. Never silently modify the frozen package and keep the same result label.

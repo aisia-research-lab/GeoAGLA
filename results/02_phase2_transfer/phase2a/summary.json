@@ -3,11 +3,11 @@
   "n_cases_total": 4,
   "n_regular_runs": 4,
   "n_irregular_skipped": 0,
-  "max_geometry_relative_error": 0.000877957710442464,
-  "median_final_edge_relative_error": 1.8020190067351967e-05,
+  "max_geometry_relative_error": 0.0008779577104414635,
+  "median_final_edge_relative_error": 3.391984238599654e-06,
   "online_beat_fraction_vs_fgla": 0.75,
-  "median_q_ratio_online_vs_fgla": 0.9946257560992213,
-  "p90_q_ratio_online_vs_fgla": 1.0013033454652134,
+  "median_q_ratio_online_vs_fgla": 0.9946482141465116,
+  "p90_q_ratio_online_vs_fgla": 1.0013215660320551,
   "mean_late_reject_fraction": 0.0,
   "fallback_e1_failures": 0,
   "G2A_geometry_transfer_pass": true,
@@ -16,5 +16,5 @@
   "G2D_safeguard_transfer_pass": true,
   "phase2a_controlled_gate": "GREEN",
   "real_audio_gate": "PENDING \u2014 default package uses deterministic license-free audio-like signals; run optional WAV extension before publication claims.",
-  "runtime_sec": 2.8401389122009277
+  "runtime_sec": 15.696154117584229
 }

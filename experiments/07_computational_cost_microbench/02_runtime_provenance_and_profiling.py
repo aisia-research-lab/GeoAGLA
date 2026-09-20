@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Task C3 — Reconcile Computational-Cost Measurements (Student B Final Correction & Audit).
+"""Task C3 — Reconcile Computational-Cost Measurements (Online Solver Final Correction & Audit).
 Traces the origin of reported runtime numbers (1.12x vs 0.908x), conducts controlled multi-repeat
 profiling, isolates algorithmic Ritz overhead from wall-clock timing noise, and exports deliverables.
 """
@@ -28,7 +28,7 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 # Search paths for geometry_gla
-for cand in [ROOT / "src", ROOT.parent / "Student_A_New" / "src", Path("Student_A_New/src")]:
+for cand in [ROOT / "src", ROOT.parent / "Analytical Baseline_New" / "src", Path("Analytical Baseline_New/src")]:
     if cand.exists() and str(cand) not in sys.path:
         sys.path.insert(0, str(cand))
 
@@ -158,7 +158,7 @@ def run_c3_runtime_audit(
             "median_ms_per_iteration": 4.522,
             "std_ms_per_iteration": 0.0,
             "relative_to_FGLA": 4.522 / 4.256,
-            "source_file": "Student_B_ICLR2027_Kaggle.ipynb (Cell 7 run)",
+            "source_file": "Online Solver_ICLR2027_Kaggle.ipynb (Cell 7 run)",
         },
         {
             "environment": "Windows-11-x86_64",
@@ -173,7 +173,7 @@ def run_c3_runtime_audit(
             "median_ms_per_iteration": 4.256,
             "std_ms_per_iteration": 0.0,
             "relative_to_FGLA": 1.000,
-            "source_file": "Student_B_ICLR2027_Kaggle.ipynb (Cell 7 run)",
+            "source_file": "Online Solver_ICLR2027_Kaggle.ipynb (Cell 7 run)",
         },
         {
             "environment": "Windows-11-x86_64",
@@ -188,7 +188,7 @@ def run_c3_runtime_audit(
             "median_ms_per_iteration": 3.866,
             "std_ms_per_iteration": 0.0,
             "relative_to_FGLA": 3.866 / 4.256,  # Exactly 0.908x
-            "source_file": "Student_B_ICLR2027_Kaggle.ipynb (Origin of 0.908x)",
+            "source_file": "Online Solver_ICLR2027_Kaggle.ipynb (Origin of 0.908x)",
         },
         {
             "environment": "Windows-11-x86_64 (Controlled)",
@@ -239,14 +239,14 @@ def run_c3_runtime_audit(
 
     summary_info = {
         "origin_of_1.12x": {
-            "source": "Student_A_New/scripts/13_b5_cost_and_crosscheck.py",
+            "source": "Analytical Baseline_New/scripts/13_b5_cost_and_crosscheck.py",
             "t_fgla_ms": 6.247,
             "t_online_ms": 7.010,
             "ratio": 1.1221,
             "explanation": "Cold-start standalone script execution with background system activity",
         },
         "origin_of_0.908x": {
-            "source": "Student_B_ICLR2027_Kaggle.ipynb Cell 7 test execution",
+            "source": "Online Solver_ICLR2027_Kaggle.ipynb Cell 7 test execution",
             "t_fgla_ms": 4.256,
             "t_online_ms": 3.866,
             "ratio": 0.9084,
@@ -282,20 +282,20 @@ def run_c3_runtime_audit(
     md_text = f"""# Task C3 — Audit Report: Computational Cost Reconcilement & Provenance
 
 ## Executive Summary
-This audit resolves the apparent conflict between the reported $1.12\\times$ overhead and the point-estimate ratio $3.866 / 4.256 \\approx 0.908\\times$ in Section C3 of `Student B — Final Correction & Audit Handoff.md`.
+This audit resolves the apparent conflict between the reported $1.12\\times$ overhead and the point-estimate ratio $3.866 / 4.256 \\approx 0.908\\times$ in Section C3 of `Online Solver — Final Correction & Audit Handoff.md`.
 
 ---
 
 ## 1. Provenance of the Discrepant Numbers
 
 1. **Origin of $1.12\\times$**:
-   - **Source**: [`Student_A_New/scripts/13_b5_cost_and_crosscheck.py`](file:///YOUR_PROJECT_PATH/Student_A_New/scripts/13_b5_cost_and_crosscheck.py).
+   - **Source**: [`Analytical Baseline_New/scripts/13_b5_cost_and_crosscheck.py`](results/07_computational_cost_microbench Baseline_New/scripts/13_b5_cost_and_crosscheck.py).
    - **Measurements**: $t_{{\\rm GLA}} = 6.174$ ms, $t_{{\\rm FGLA}} = 6.247$ ms, $t_{{\\rm Online}} = 7.010$ ms.
    - **Ratio**: $7.010 / 6.247 = \\mathbf{{1.1221\\times}}$.
    - **Context**: Cold-start standalone execution in a separate terminal process.
 
 2. **Origin of $0.908\\times$**:
-   - **Source**: [`Student_B_ICLR2027_Kaggle.ipynb`](file:///YOUR_PROJECT_PATH/Student_B_ICLR2027_Kaggle.ipynb) Cell 7 execution.
+   - **Source**: [`Online Solver_ICLR2027_Kaggle.ipynb`](results/07_computational_cost_microbench Solver_ICLR2027_Kaggle.ipynb) Cell 7 execution.
    - **Measurements**: $t_{{\\rm GLA}} = 4.522$ ms, $t_{{\\rm FGLA}} = 4.256$ ms, $t_{{\\rm Online}} = 3.866$ ms.
    - **Ratio**: $3.866 / 4.256 = \\mathbf{{0.9084\\times}}$.
    - **Context**: Single-pass execution in notebook environment subject to OS thread scheduling and warm L3 CPU cache.

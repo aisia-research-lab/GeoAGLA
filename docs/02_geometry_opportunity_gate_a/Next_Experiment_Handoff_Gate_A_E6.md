@@ -88,9 +88,9 @@ seeing these results.
 
 # 3. Work Split
 
-## Student A --- Geometry-Opportunity & Controlled Generalization
+## Lead Researcher --- Geometry-Opportunity & Controlled Generalization
 
-Student A owns:
+Lead Researcher owns:
 
 -   **A1 / E6-A:** geometry-opportunity audit on all existing frozen
     cases;
@@ -98,11 +98,11 @@ Student A owns:
 -   **A3 / E6-C:** controlled held-out geometry generalization;
 -   **A4:** statistical summaries and controlled-case figures.
 
-Student A should not change the online algorithm.
+Lead Researcher should not change the online algorithm.
 
-## Student B --- Online Dynamics & Real-Audio Generalization
+## Lead Researcher --- Online Dynamics & Real-Audio Generalization
 
-Student B owns:
+Lead Researcher owns:
 
 -   **B1 / E6-D:** estimator maturation and horizon analysis;
 -   **B2 / E6-E:** online failure decomposition;
@@ -110,18 +110,18 @@ Student B owns:
 -   **B4 / E7-B:** genuine real-audio evaluation;
 -   **B5:** computational-cost and iterations-to-tolerance analysis.
 
-Student B must use the frozen online implementation.
+Lead Researcher must use the frozen online implementation.
 
 ## Independent cross-check
 
-After both primary packages are complete: - Student A reruns a small
-held-out online case from Student B. - Student B independently
-recomputes the E6 opportunity statistics from Student A's exported
+After both primary packages are complete: - Lead Researcher reruns a small
+held-out online case from Lead Researcher. - Lead Researcher independently
+recomputes the E6 opportunity statistics from Lead Researcher's exported
 per-case CSV.
 
 ------------------------------------------------------------------------
 
-# 4. Student A --- E6 Geometry-Opportunity Audit
+# 4. Lead Researcher --- E6 Geometry-Opportunity Audit
 
 ## A1. Build one canonical per-case ledger
 
@@ -199,7 +199,7 @@ Never replace the raw ratio with the clipped ratio in tables.
 
 ------------------------------------------------------------------------
 
-# 5. Student A --- Required E6 Analyses
+# 5. Lead Researcher --- Required E6 Analyses
 
 ## A2. Opportunity distribution
 
@@ -264,7 +264,7 @@ This analysis is more informative than the simple FGLA beat fraction.
 
 ------------------------------------------------------------------------
 
-# 6. Student A --- Held-Out Controlled Geometry Set
+# 6. Lead Researcher --- Held-Out Controlled Geometry Set
 
 The current controlled experiments are mainly validation cases. We need
 a modest **held-out geometry set** to ensure the story is not specific
@@ -300,7 +300,7 @@ design where relevant; - frozen Online-geometry method.
 
 ### Handoff Gate A
 
-Student A sends:
+Lead Researcher sends:
 
 ``` text
 e6_case_ledger.csv
@@ -317,7 +317,7 @@ Then **STOP**.
 
 ------------------------------------------------------------------------
 
-# 7. Student B --- Estimator Maturation Audit
+# 7. Lead Researcher --- Estimator Maturation Audit
 
 The theorem is asymptotic, while the empirical gains are finite-horizon.
 We therefore need to understand how quickly the estimator and adaptive
@@ -382,7 +382,7 @@ This is a hypothesis, not a guaranteed conclusion.
 
 ------------------------------------------------------------------------
 
-# 8. Student B --- Multi-Horizon Rate Audit
+# 8. Lead Researcher --- Multi-Horizon Rate Audit
 
 Use a frozen set of horizons, for example those already present in the
 repository. Do not select only the horizon where Online performs best.
@@ -401,7 +401,7 @@ asymptotic rate realization; 3. genuinely unfavorable geometry.
 
 ------------------------------------------------------------------------
 
-# 9. Student B --- Failure Decomposition
+# 9. Lead Researcher --- Failure Decomposition
 
 Every Online loss should receive a machine-generated category based on
 predefined diagnostics.

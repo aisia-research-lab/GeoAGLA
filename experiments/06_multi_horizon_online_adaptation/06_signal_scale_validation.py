@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Held-Out Signal-Scale Validation (Student B - Task B3 / E7-A).
+"""Held-Out Signal-Scale Validation (Online Evaluator - Task B3 / E7-A).
 Section 10 of ICLR 2027 Next Experiment Handoff for Students A & B.
 """
 from __future__ import annotations

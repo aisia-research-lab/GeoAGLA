@@ -1,2 +1,2 @@
 # Reproduction command:
-jupyter nbconvert --to notebook --execute Student_A_ICLR2027_Kaggle.ipynb
+jupyter nbconvert --to notebook --execute pipeline_ICLR2027_Kaggle.ipynb

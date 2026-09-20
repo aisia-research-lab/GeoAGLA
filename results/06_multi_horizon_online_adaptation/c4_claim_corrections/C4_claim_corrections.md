@@ -1,6 +1,6 @@
 # Task C4 — Final Claim-Discipline Audit
 
-**Document Reference**: `Student B - Final Correction & Audit Handoff.md`  
+**Document Reference**: `Lead Researcher - Final Correction & Audit Handoff.md`  
 **Evaluation Scope**: ICLR 2027 — *Geometry Determines Acceleration in Phase Retrieval*  
 **Date**: September 2026  
 **Status**: COMPLETE (Editing and claim moderation without new computation)
@@ -9,7 +9,7 @@
 
 ## Executive Overview
 
-The final scientific audit identified four claims in prior drafts of the Student B experimental report that were stated more strongly than the experimental evidence strictly establishes. In accordance with the supervisor instructions in Task C4, all four claims have been audited and replaced with moderated, evidence-calibrated language.
+The final scientific audit identified four claims in prior drafts of the Lead Researcher experimental report that were stated more strongly than the experimental evidence strictly establishes. In accordance with the supervisor instructions in Task C4, all four claims have been audited and replaced with moderated, evidence-calibrated language.
 
 ---
 

@@ -7,7 +7,7 @@ if str(_repo_root / 'src') not in sys.path:
 
 """
 Task C4 - Final Claim-Discipline Audit & Corrected Final Report Generator.
-Audit Handoff: Student B - Final Correction & Audit Handoff.md (Section Task C4)
+Audit Handoff: Online Evaluator - Final Correction & Audit Handoff.md (Section Task C4)
 
 This script:
 1. Audits the 4 manuscript-level claims (Safeguard, Near-degeneracy, Transfer, Online vs FGLA).
@@ -22,7 +22,7 @@ from pathlib import Path
 def generate_c4_claim_corrections():
     content = r"""# Task C4 — Final Claim-Discipline Audit
 
-**Document Reference**: `Student B - Final Correction & Audit Handoff.md`  
+**Document Reference**: `Online Evaluator - Final Correction & Audit Handoff.md`  
 **Evaluation Scope**: ICLR 2027 — *Geometry Determines Acceleration in Phase Retrieval*  
 **Date**: September 2026  
 **Status**: COMPLETE (Editing and claim moderation without new computation)
@@ -31,7 +31,7 @@ def generate_c4_claim_corrections():
 
 ## Executive Overview
 
-The final scientific audit identified four claims in prior drafts of the Student B experimental report that were stated more strongly than the experimental evidence strictly establishes. In accordance with the supervisor instructions in Task C4, all four claims have been audited and replaced with moderated, evidence-calibrated language.
+The final scientific audit identified four claims in prior drafts of the Online Evaluator experimental report that were stated more strongly than the experimental evidence strictly establishes. In accordance with the supervisor instructions in Task C4, all four claims have been audited and replaced with moderated, evidence-calibrated language.
 
 ---
 
@@ -110,20 +110,20 @@ The final scientific audit identified four claims in prior drafts of the Student
 
 
 def generate_corrected_final_report():
-    content = r"""# Corrected Final Experimental Report — Student B
+    content = r"""# Corrected Final Experimental Report — Online Evaluator
 ## Adaptive Online Acceleration, Estimator Maturation & Real-Audio Transfer Audit
 **Project**: *Geometry Determines Acceleration in Phase Retrieval* (ICLR 2027)  
-**Author**: Student B (Online Dynamics, Multi-Horizon Auditing & Real-Audio Validation)  
-**Supervisor Audit Reference**: `Student B - Final Correction & Audit Handoff.md`  
+**Author**: Online Evaluator (Online Dynamics, Multi-Horizon Auditing & Real-Audio Validation)  
+**Supervisor Audit Reference**: `Online Evaluator - Final Correction & Audit Handoff.md`  
 **Status**: All Tasks (B1–B5 and Final Audits C1–C4) Complete and Verified  
 **Environment**: Python 3.12 / 3.13, NumPy 2.x, SciPy 1.16+, Matplotlib 3.10+  
-**Deliverable Archive**: `StudentB_Final_Correction_Audit_v1.zip`
+**Deliverable Archive**: `Online Evaluator_Final_Correction_Audit_v1.zip`
 
 ---
 
 ## Executive Summary
 
-This report documents the finalized and audited experimental findings of Student B following the completion of Tasks C1 through C4. All analyses preserve the frozen hyperparameter manifest (`dynamic_envelope`, memory $p=3$, block size $K=8$, safety margin $\mu=0.0$, rollback to GLA on potential increase). No hyperparameters were retuned, no cases were removed, and no synthetic replacement data were generated.
+This report documents the finalized and audited experimental findings of Online Evaluator following the completion of Tasks C1 through C4. All analyses preserve the frozen hyperparameter manifest (`dynamic_envelope`, memory $p=3$, block size $K=8$, safety margin $\mu=0.0$, rollback to GLA on potential increase). No hyperparameters were retuned, no cases were removed, and no synthetic replacement data were generated.
 
 ### Key Audited Findings:
 
@@ -291,9 +291,9 @@ The variation between $0.908\times$ and $1.12\times$ originates entirely from pl
 
 ---
 
-## 7. Independent Cross-Check of Student A's E6 Ledger
+## 7. Independent Cross-Check of Analytical Baseline's E6 Ledger
 
-Student B re-evaluated all 90 cases and 24 valid regression pairs from Student A's ledger (`results/e6_geometry_opportunity/e6_case_ledger.csv`):
+Online Evaluator re-evaluated all 90 cases and 24 valid regression pairs from Analytical Baseline's ledger (`results/e6_geometry_opportunity/e6_case_ledger.csv`):
 - **Pearson correlation $r$**: **$0.7859$** (100% exact match).
 - **Spearman rank correlation $\rho$**: **$0.7026$** (100% exact match).
 - **Median $R_{\rm capture}$**: **$0.3697$** (100% exact match).
@@ -303,7 +303,7 @@ Student B re-evaluated all 90 cases and 24 valid regression pairs from Student A
 
 ## 8. Final Synthesis & Scientific Conclusion
 
-Following the four audit tasks (C1–C4), the definitive conclusions of the Student B investigation are:
+Following the four audit tasks (C1–C4), the definitive conclusions of the Online Evaluator investigation are:
 
 $$\boxed{
 \begin{aligned}
@@ -318,7 +318,7 @@ $$\boxed{
 This rigorous distinction demonstrates that **basin robustness is distinct from paired local-rate superiority**, providing a solid, unassailable scientific foundation for the ICLR 2027 submission.
 
 ---
-*End of Corrected Final Report — Student B Branch is now ready for supervisor freezing.*
+*End of Corrected Final Report — Online Evaluator Branch is now ready for supervisor freezing.*
 """
     return content
 

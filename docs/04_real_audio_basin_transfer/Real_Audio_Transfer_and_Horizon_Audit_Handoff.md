@@ -1,4 +1,4 @@
-# Student A --- Final Real-Audio Patch & Horizon Audit Handoff v1
+# Lead Researcher --- Final Real-Audio Patch & Horizon Audit Handoff v1
 
 ## ICLR 2027 --- *Geometry Determines Acceleration in Phase Retrieval*
 
@@ -502,7 +502,7 @@ notes
 Return one ZIP:
 
 ``` text
-studentA_final_real_audio_patch_horizon_audit.zip
+Lead Researcher_final_real_audio_patch_horizon_audit.zip
 ├── README.md
 ├── summary_final.json
 ├── integrity_report.json
@@ -546,7 +546,7 @@ studentA_final_real_audio_patch_horizon_audit.zip
 Write:
 
 ``` text
-StudentA_Final_RealAudio_Audit_Report.md
+Lead Researcher_Final_RealAudio_Audit_Report.md
 ```
 
 The report should answer only evidence-supported questions:

@@ -1,4 +1,4 @@
-# Student B — Final Reconciliation Assignment Before Scientific Freeze
+# Lead Researcher — Final Reconciliation Assignment Before Scientific Freeze
 
 ## ICLR 2027 Project
 ### *Geometry Determines Acceleration in Phase Retrieval*
@@ -11,7 +11,7 @@
 
 # 1. Purpose of This Assignment
 
-The Student B experimental branch has completed the planned Online-adaptation, estimator-maturation, multi-horizon, real-audio basin, safeguard, and computational-cost evaluations.
+The Lead Researcher experimental branch has completed the planned Online-adaptation, estimator-maturation, multi-horizon, real-audio basin, safeguard, and computational-cost evaluations.
 
 The latest canonical C1 ledger has resolved the previous multi-horizon data-version inconsistency. The branch is therefore close to scientific freeze.
 
@@ -475,9 +475,9 @@ before supervisor sign-off.
 
 Replace it with:
 
-> **All reported numerical summaries in the final Student B package have been reconciled against the designated canonical ledgers and are ready for final supervisor verification.**
+> **All reported numerical summaries in the final Lead Researcher package have been reconciled against the designated canonical ledgers and are ready for final supervisor verification.**
 
-The final decision to declare the Student B branch scientifically frozen belongs to the supervisor after this handoff.
+The final decision to declare the Lead Researcher branch scientifically frozen belongs to the supervisor after this handoff.
 
 ---
 
@@ -486,7 +486,7 @@ The final decision to declare the Student B branch scientifically frozen belongs
 Create:
 
 ```text
-StudentB_Final_Freeze_Candidate_v1/
+Lead Researcher_Final_Freeze_Candidate_v1/
 │
 ├── README.md
 ├── corrected_final_report.md
@@ -584,13 +584,13 @@ Once Tasks F1–F6 and the required package are complete:
 
 Do not conduct another experiment.
 
-Send the complete `StudentB_Final_Freeze_Candidate_v1` package to the supervisor for final hostile audit.
+Send the complete `Lead Researcher_Final_Freeze_Candidate_v1` package to the supervisor for final hostile audit.
 
 ---
 
 # 14. Expected Final Scientific Story
 
-The final Student B branch should support the following evidence-calibrated narrative:
+The final Lead Researcher branch should support the following evidence-calibrated narrative:
 
 \[
 \boxed{
@@ -628,7 +628,7 @@ This is compatible with the conditional scope of the G4–G5 theory.
 
 ---
 
-# 15. Final Instruction to Student B
+# 15. Final Instruction to Lead Researcher
 
 The goal of this assignment is **not to improve the experimental result**.
 

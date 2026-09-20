@@ -1,4 +1,4 @@
-# Student B — Final Correction & Audit Handoff
+# Lead Researcher — Final Correction & Audit Handoff
 
 ## ICLR 2027 — *Geometry Determines Acceleration in Phase Retrieval*
 
@@ -434,7 +434,7 @@ Preserve the actual multi-horizon result:
 
 for \(H=60,120,180,360\).
 
-Do not summarize Student B's results as:
+Do not summarize Lead Researcher's results as:
 
 > Online is consistently faster than optimal FGLA.
 
@@ -463,7 +463,7 @@ This distinction is scientifically important:
 Return one archive:
 
 ```text
-StudentB_Final_Correction_Audit_v1.zip
+Lead Researcher_Final_Correction_Audit_v1.zip
 │
 ├── README.md
 ├── corrected_final_report.md
@@ -525,7 +525,7 @@ After completing C1–C4:
 
 Do not start another experiment.
 
-The supervisor will perform the final scientific audit and decide whether the Student B branch can be frozen.
+The supervisor will perform the final scientific audit and decide whether the Lead Researcher branch can be frozen.
 
 ---
 

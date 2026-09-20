@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Task C1 — Audit R_capture > 1 (Student B Final Correction & Audit).
+"""Task C1 — Audit R_capture > 1 (Online Evaluator Final Correction & Audit).
 Evaluates case-level capture ratios across multi-horizon runs, adds diagnostic flags,
 and provides empirical answers to Section C1 of the handoff protocol.
 """
@@ -26,7 +26,7 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 # Search paths for geometry_gla
-for cand in [ROOT / "src", ROOT.parent / "Student_A_New" / "src", Path("Student_A_New/src")]:
+for cand in [ROOT / "src", ROOT.parent / "Analytical Baseline_New" / "src", Path("Analytical Baseline_New/src")]:
     if cand.exists() and str(cand) not in sys.path:
         sys.path.insert(0, str(cand))
 
@@ -85,13 +85,13 @@ def run_c1_capture_audit(
     out = Path(out_dir or (ROOT / "results" / "final_audit"))
     out.mkdir(parents=True, exist_ok=True)
 
-    # Locate Student A's E6 ledger
+    # Locate Analytical Baseline's E6 ledger
     candidates = [
         ledger_path,
         ROOT / "results" / "e6_geometry_opportunity" / "e6_case_ledger.csv",
-        ROOT.parent / "Student_A_New" / "results" / "e6_geometry_opportunity" / "e6_case_ledger.csv",
+        ROOT.parent / "Analytical Baseline_New" / "results" / "e6_geometry_opportunity" / "e6_case_ledger.csv",
         ROOT.parent / "results" / "e6_geometry_opportunity" / "e6_case_ledger.csv",
-        Path("Student_A_New/results/e6_geometry_opportunity/e6_case_ledger.csv"),
+        Path("Analytical Baseline_New/results/e6_geometry_opportunity/e6_case_ledger.csv"),
     ]
     lp_file = None
     for cand in candidates:
@@ -247,7 +247,7 @@ def run_c1_capture_audit(
     md_text = f"""# Task C1 — Audit Report: R_capture > 1
 
 ## Executive Summary
-This audit addresses Section C1 of `Student B — Final Correction & Audit Handoff.md`.
+This audit addresses Section C1 of `Online Evaluator — Final Correction & Audit Handoff.md`.
 It formally investigates whether empirical values of $R_{{\\rm capture}} > 1$ represent Online exceeding theoretical Oracle performance or if they are finite-horizon measurement artifacts.
 
 ### Key Finding

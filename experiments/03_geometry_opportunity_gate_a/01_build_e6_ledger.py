@@ -25,14 +25,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 DEFAULT_H2_PATHS = [
     ROOT / "data" / "frozen" / "h2_multi.json",
-    ROOT.parent / "Student_A" / "results" / "phase1c" / "h2_multi.json",
-    ROOT.parent / "student_A_from_kaggle" / "phase1c" / "h2_multi.json",
+    ROOT.parent / "Phase 1 Runs" / "results" / "phase1c" / "h2_multi.json",
+    ROOT.parent / "phase1_runs_from_kaggle" / "phase1c" / "h2_multi.json",
     ROOT.parent / "[2026_09_11] - ICLR experiment" / "handoff_final" / "phase1c" / "h2_multi.json",
 ]
 
 DEFAULT_HZ_PATHS = [
     ROOT / "data" / "frozen" / "horizon_audit.json",
-    ROOT.parent / "Student_A" / "results" / "phase1er" / "horizon_audit.json",
+    ROOT.parent / "Phase 1 Runs" / "results" / "phase1er" / "horizon_audit.json",
     ROOT.parent / "[2026_09_11] - ICLR experiment" / "handoff_final" / "phase1er" / "horizon_audit.json",
 ]
 

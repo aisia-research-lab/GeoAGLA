@@ -151,7 +151,7 @@ def run_live_audit(located_files: dict[str, Path], out_dir: Path) -> dict:
             })
 
         # Test B: Neutral-Count Tolerance Sweep
-        print(f"  -> Test B: Quét ngưỡng phase_tol {SWEEP_TOLS}...")
+        print(f"  -> Test B: Sweeping phase_tol thresholds {SWEEP_TOLS}...")
         for tol in SWEEP_TOLS:
             neutral = (vals >= 1.0 - tol)
             nc = int(np.sum(neutral))
@@ -165,7 +165,7 @@ def run_live_audit(located_files: dict[str, Path], out_dir: Path) -> dict:
             })
 
         # Test C: Solver Stability Across Tolerances
-        print(f"  -> Test C: Thẩm định độ ổn định tại {STABILITY_TOLS}...")
+        print(f"  -> Test C: Auditing stability at {STABILITY_TOLS}...")
         runs = {}
         for tol in STABILITY_TOLS:
             t_v, _ = eigsh(A, k=K_EIGS, which="LA", tol=tol, maxiter=10000)
@@ -185,7 +185,7 @@ def run_live_audit(located_files: dict[str, Path], out_dir: Path) -> dict:
             })
 
         # Test D: Global-Phase Direction Verification
-        print(f"  -> Test D: Kiểm tra độ gióng hàng vector pha z_phase...")
+        print(f"  -> Test D: Checking phase vector alignment z_phase...")
         z_ph = 1j * x_sub * op.frame_sqrt
         norm_ph = np.linalg.norm(z_ph)
         z_ph /= max(norm_ph, 1e-15)

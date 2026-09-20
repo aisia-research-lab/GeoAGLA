@@ -2,9 +2,12 @@ import sys
 import unittest
 from pathlib import Path
 
-# Add src to sys.path
+# Add root and root/src to sys.path
 root = Path(__file__).resolve().parent
-sys.path.insert(0, str(root / "src"))
+if str(root) not in sys.path:
+    sys.path.insert(0, str(root))
+if str(root / "src") not in sys.path:
+    sys.path.insert(0, str(root / "src"))
 
 if __name__ == "__main__":
     loader = unittest.TestLoader()

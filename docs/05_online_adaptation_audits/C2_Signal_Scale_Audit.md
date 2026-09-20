@@ -1,7 +1,7 @@
 # Task C2 — Audit Report: Signal-Scale Iterations-to-Tolerance Censoring
 
 ## Executive Summary
-This audit resolves the ambiguity in Section C2 of `Student B — Final Correction & Audit Handoff.md`.
+This audit resolves the ambiguity in Section C2 of `Lead Researcher — Final Correction & Audit Handoff.md`.
 The previous report recorded $T_{\rm GLA} = T_{\rm FGLA} = T_{\rm Online} = 100$.
 
 ### Resolution: Case B (Right-Censored at max_iter = 100)

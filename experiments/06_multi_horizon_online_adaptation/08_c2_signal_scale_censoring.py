@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Task C2 — Clarify Signal-Scale Censoring (Student B Final Correction & Audit).
+"""Task C2 — Clarify Signal-Scale Censoring (Online Evaluator Final Correction & Audit).
 Inspects complete error trajectories of the 4 synthetic signal types, audits censoring status,
 replaces ambiguous T=100 values with formal >100 censoring notation, and applies Section C2 decision rules.
 """
@@ -27,7 +27,7 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 # Search paths for geometry_gla
-for cand in [ROOT / "src", ROOT.parent / "Student_A_New" / "src", Path("Student_A_New/src")]:
+for cand in [ROOT / "src", ROOT.parent / "Analytical Baseline_New" / "src", Path("Analytical Baseline_New/src")]:
     if cand.exists() and str(cand) not in sys.path:
         sys.path.insert(0, str(cand))
 
@@ -180,7 +180,7 @@ def run_c2_signal_scale_censoring_audit(
     md_text = f"""# Task C2 — Audit Report: Signal-Scale Iterations-to-Tolerance Censoring
 
 ## Executive Summary
-This audit resolves the ambiguity in Section C2 of `Student B — Final Correction & Audit Handoff.md`.
+This audit resolves the ambiguity in Section C2 of `Online Evaluator — Final Correction & Audit Handoff.md`.
 The previous report recorded $T_{{\\rm GLA}} = T_{{\\rm FGLA}} = T_{{\\rm Online}} = 100$.
 
 ### Resolution: Case B (Right-Censored at max_iter = 100)

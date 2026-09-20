@@ -1,7 +1,7 @@
 # Task C1 — Audit Report: Canonical Multi-Horizon Ledger and R_capture > 1
 
 ## Executive Summary
-This audit formally investigates the canonical multi-horizon evaluation ledger ($15\text{ cases} \times 4\text{ horizons} = 60\text{ evaluations}$) and addresses the empirical observation of $R_{\rm capture} > 1$ (such as $\operatorname{median} R_{\rm capture} = 1.9764$ at $H=60$) in accordance with Section 4 (Task F1) of `StudentB_Final_Reconciliation_Assignment_Before_Freeze.md`.
+This audit formally investigates the canonical multi-horizon evaluation ledger ($15\text{ cases} \times 4\text{ horizons} = 60\text{ evaluations}$) and addresses the empirical observation of $R_{\rm capture} > 1$ (such as $\operatorname{median} R_{\rm capture} = 1.9764$ at $H=60$) in accordance with Section 4 (Task F1) of `Lead Researcher_Final_Reconciliation_Assignment_Before_Freeze.md`.
 
 ### Key Findings & Mathematical Reconciliation
 1. **Zero Denominator Clipping & Zero Negligible Oracle Opportunity**:

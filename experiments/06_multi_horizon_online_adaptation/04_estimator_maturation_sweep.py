@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Estimator Maturation and Horizon Trace Audit (Student B - Task B1 / E6-D).
+"""Estimator Maturation and Horizon Trace Audit (Online Evaluator - Task B1 / E6-D).
 Section 7 of ICLR 2027 Next Experiment Handoff for Students A & B.
 """
 from __future__ import annotations

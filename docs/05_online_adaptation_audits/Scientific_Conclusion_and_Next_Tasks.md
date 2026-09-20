@@ -1,9 +1,9 @@
-# Student B --- Scientific Conclusion and Next-Task Handoff v1
+# Lead Researcher --- Scientific Conclusion and Next-Task Handoff v1
 
 ## ICLR 2027 --- *Geometry Determines Acceleration in Phase Retrieval*
 
 **Purpose of this document:**\
-This document records the scientific conclusion from Student B's
+This document records the scientific conclusion from Lead Researcher's
 completed full real-audio Phase 2B evaluation and defines the next tasks
 to be executed. The next stage is **not** intended to tune the current
 experiment until the paired-rate gate passes. Its purpose is to (i)
@@ -15,7 +15,7 @@ Oracle opportunity can actually be recovered by an online estimator.
 
 # 1. Current Scientific Verdict
 
-\[ `\boxed{\textbf{Student B experimental execution: GREEN}}`{=tex} \]
+\[ `\boxed{\textbf{Lead Researcher experimental execution: GREEN}}`{=tex} \]
 
 \[ `\boxed{\textbf{Phase 2B overall scientific result: YELLOW}}`{=tex}
 \]
@@ -23,7 +23,7 @@ Oracle opportunity can actually be recovered by an online estimator.
 \[ `\boxed{\textbf{G2B\_E paired-rate gate: genuine FAIL}}`{=tex} \]
 
 The failure of the paired-rate gate must be **preserved as a scientific
-result**. Student B should not retune the algorithm, thresholds, memory
+result**. Lead Researcher should not retune the algorithm, thresholds, memory
 length, initialization, or STFT configurations merely to convert this
 failure into a pass.
 
@@ -111,7 +111,7 @@ Therefore:
 Increasing the sample size slightly is not expected to change this
 conclusion materially.
 
-Student B must **not** optimize the experiment against this gate after
+Lead Researcher must **not** optimize the experiment against this gate after
 observing the result.
 
 ------------------------------------------------------------------------
@@ -212,7 +212,7 @@ the full experiment.
 The intended evaluation contained 202 files, while the submitted
 manifest contains 201.
 
-Student B must identify:
+Lead Researcher must identify:
 
 ``` text
 missing_file
@@ -254,7 +254,7 @@ noise-free-sound-0564.wav
 noise-free-sound-0624.wav
 ```
 
-Student B should provide a machine-readable table containing:
+Lead Researcher should provide a machine-readable table containing:
 
 ``` text
 file
@@ -680,7 +680,7 @@ Do not remove:
 Before calculating B1--B5, write:
 
 ``` text
-StudentB_B1_B5_Analysis_Protocol.md
+Lead Researcher_B1_B5_Analysis_Protocol.md
 ```
 
 containing:
@@ -704,9 +704,9 @@ The protocol must be frozen before inspecting headline B1--B5 outcomes.
 After B0--B5, return:
 
 ``` text
-StudentB_Final_Scientific_Handoff_v1.zip
+Lead Researcher_Final_Scientific_Handoff_v1.zip
 ├── README.md
-├── StudentB_B1_B5_Analysis_Protocol.md
+├── Lead Researcher_B1_B5_Analysis_Protocol.md
 ├── integrity_report.json
 │
 ├── phase2b_freeze/
@@ -774,9 +774,9 @@ an explicit decision after the B1--B5 audit.
 
 ------------------------------------------------------------------------
 
-# 17. What Would Constitute a Strong Final Student B Result?
+# 17. What Would Constitute a Strong Final Lead Researcher Result?
 
-Student B does **not** need to make Online beat FGLA in a majority of
+Lead Researcher does **not** need to make Online beat FGLA in a majority of
 paired-success cases.
 
 A strong and publishable outcome would be a rigorous empirical
@@ -799,7 +799,7 @@ pre-selected success threshold is crossed.
 
 ------------------------------------------------------------------------
 
-# 18. Final Message to Student B
+# 18. Final Message to Lead Researcher
 
 The current Phase 2B result is **not a failed experiment**.
 
@@ -822,5 +822,5 @@ The goal of B1--B5 is to determine **what Online actually gains, when it
 gains it, and why the remaining Oracle acceleration is not always
 recovered within the observed finite horizon**.
 
-That is the scientific question to close before the Student B branch is
+That is the scientific question to close before the Lead Researcher branch is
 finally frozen.

@@ -1,15 +1,15 @@
-# Student B — Final Scientific Freeze Reconciliation Sign-Off
+# Lead Researcher — Final Scientific Freeze Reconciliation Sign-Off
 
 **Project:** ICLR 2027 — *Geometry Determines Acceleration in Phase Retrieval*  
 **Date:** 2026-09-14  
 **Branch Status:** Scientifically Frozen — Ready for Final Supervisor Audit  
-**Author:** Student B Experimental Branch  
+**Author:** Lead Researcher Experimental Branch  
 
 ---
 
 ## 1. Final Freeze Reconciliation Checklist
 
-In accordance with Section 11 of `StudentB_Final_Reconciliation_Assignment_Before_Freeze.md`, the following 16 items have been rigorously audited, verified, and certified:
+In accordance with Section 11 of `Lead Researcher_Final_Reconciliation_Assignment_Before_Freeze.md`, the following 16 items have been rigorously audited, verified, and certified:
 
 - [x] **Canonical C1 ledger contains 60 evaluations.**  
 - [x] **C1 CSV and C1 JSON summaries agree.**  
@@ -33,4 +33,4 @@ In accordance with Section 11 of `StudentB_Final_Reconciliation_Assignment_Befor
 
 ## 2. Final Supervisor Verification Declaration
 
-> **All reported numerical summaries in the final Student B package have been reconciled against the designated canonical ledgers and are ready for final supervisor verification.**
+> **All reported numerical summaries in the final Lead Researcher package have been reconciled against the designated canonical ledgers and are ready for final supervisor verification.**

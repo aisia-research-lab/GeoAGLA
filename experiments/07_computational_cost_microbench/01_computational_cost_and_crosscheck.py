@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Computational Cost Analysis & Independent Cross-Check (Student B - Task B5 & Cross-Check).
+"""Computational Cost Analysis & Independent Cross-Check (Online Solver - Task B5 & Cross-Check).
 Sections 3, 13, 14, 19 of ICLR 2027 Next Experiment Handoff for Students A & B.
 """
 from __future__ import annotations
@@ -79,9 +79,9 @@ def profile_computational_cost(N: int = 512, W: int = 128, hop: int = 32, n_fft:
     }
 
 
-def independent_crosscheck_student_a(ledger_path: Path, denom_tol: float = 1e-8) -> dict[str, Any]:
-    """Student B independently recomputes Student A's E6 opportunity statistics."""
-    print(f"\n--- [CROSS-CHECK] Independently auditing Student A's ledger: {ledger_path.name} ---")
+def independent_crosscheck_analytical_baseline(ledger_path: Path, denom_tol: float = 1e-8) -> dict[str, Any]:
+    """Online Solver independently recomputes Analytical Baseline's E6 opportunity statistics."""
+    print(f"\n--- [CROSS-CHECK] Independently auditing Analytical Baseline's ledger: {ledger_path.name} ---")
     if not ledger_path.exists():
         return {"status": "SKIPPED", "reason": f"{ledger_path} does not exist"}
 
@@ -133,7 +133,7 @@ def independent_crosscheck_student_a(ledger_path: Path, denom_tol: float = 1e-8)
             "median_raw_capture": median(r_caps),
         },
         "crosscheck_discrepancies": 0,
-        "notes": "Student B verified that Student A's E6 ledger is internally consistent and reproducible."
+        "notes": "Online Solver verified that Analytical Baseline's E6 ledger is internally consistent and reproducible."
     }
 
     print(f"Verified Cases: {total_cases} | Valid Pairs: {len(d_oras)}")
@@ -159,7 +159,7 @@ def run_b5_and_crosscheck(ledger_path: str | Path | None = None, out_dir: str | 
     dump_json(cost_info, out_cost / "cost_summary.json")
 
     # 2. Independent cross-check
-    cross_info = independent_crosscheck_student_a(lp)
+    cross_info = independent_crosscheck_analytical_baseline(lp)
     dump_json(cross_info, out_cross / "crosscheck_audit.json")
 
     return cost_info, cross_info
@@ -167,7 +167,7 @@ def run_b5_and_crosscheck(ledger_path: str | Path | None = None, out_dir: str | 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Task B5 & Independent Cross-Check")
-    parser.add_argument("--ledger", type=str, default=None, help="Path to Student A's ledger")
+    parser.add_argument("--ledger", type=str, default=None, help="Path to Analytical Baseline's ledger")
     parser.add_argument("--out", type=str, default=None, help="Output directory")
     args = parser.parse_args()
 

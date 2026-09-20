@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Multi-Horizon Rate Audit and Failure Decomposition (Student B - Task B2 / E6-E).
+"""Multi-Horizon Rate Audit and Failure Decomposition (Online Evaluator - Task B2 / E6-E).
 Sections 8 & 9 of ICLR 2027 Next Experiment Handoff for Students A & B.
 """
 from __future__ import annotations

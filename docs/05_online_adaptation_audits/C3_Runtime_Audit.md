@@ -1,20 +1,20 @@
 # Task C3 — Audit Report: Computational Cost Reconcilement & Provenance
 
 ## Executive Summary
-This audit resolves the apparent conflict between the reported $1.12\times$ overhead and the point-estimate ratio $3.866 / 4.256 \approx 0.908\times$ in Section C3 of `Student B — Final Correction & Audit Handoff.md`.
+This audit resolves the apparent conflict between the reported $1.12\times$ overhead and the point-estimate ratio $3.866 / 4.256 \approx 0.908\times$ in Section C3 of `Lead Researcher — Final Correction & Audit Handoff.md`.
 
 ---
 
 ## 1. Provenance of the Discrepant Numbers
 
 1. **Origin of $1.12\times$**:
-   - **Source**: [`Student_A_New/scripts/13_b5_cost_and_crosscheck.py`](file:///YOUR_PROJECT_PATH/Student_A_New/scripts/13_b5_cost_and_crosscheck.py).
+   - **Source**: [`pipeline_New/scripts/13_b5_cost_and_crosscheck.py`](13_b5_cost_and_crosscheck.py).
    - **Measurements**: $t_{\rm GLA} = 6.174$ ms, $t_{\rm FGLA} = 6.247$ ms, $t_{\rm Online} = 7.010$ ms.
    - **Ratio**: $7.010 / 6.247 = \mathbf{1.1221\times}$.
    - **Context**: Cold-start standalone execution in a separate terminal process.
 
 2. **Origin of $0.908\times$**:
-   - **Source**: [`Student_B_ICLR2027_Kaggle.ipynb`](file:///YOUR_PROJECT_PATH/Student_B_ICLR2027_Kaggle.ipynb) Cell 7 execution.
+   - **Source**: [`pipeline_ICLR2027_Kaggle.ipynb`](pipeline_ICLR2027_Kaggle.ipynb) Cell 7 execution.
    - **Measurements**: $t_{\rm GLA} = 4.522$ ms, $t_{\rm FGLA} = 4.256$ ms, $t_{\rm Online} = 3.866$ ms.
    - **Ratio**: $3.866 / 4.256 = \mathbf{0.9084\times}$.
    - **Context**: Single-pass execution in notebook environment subject to OS thread scheduling and warm L3 CPU cache.
