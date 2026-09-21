@@ -14,7 +14,7 @@ All code and results from the initial baseline reproduction (Phases 1 & 2), thro
 GeoAGLA/
 │
 ├── src/geometry_gla/          # Core modular Python package
-│   ├── algorithms/            # GLA, FGLA, AGLA, Minimax Oracle, Safe Online Policy
+│   ├── algorithms/            # GLA, FGLA, AGLA, Minimax Oracle, Safe Online Policy, Online Ablation
 │   ├── estimators/            # Rayleigh-Ritz passive eigensolvers, power iteration
 │   ├── geometry/              # Subspace principal angles, Jacobian, realification
 │   ├── metrics/               # Spectral contraction rates, phase-gauge orbit distance
@@ -25,6 +25,7 @@ GeoAGLA/
 ├── configs/                   # Frozen experimental parameter configurations (YAML & JSON)
 │   ├── e6_heldout_geometry.json
 │   ├── e6_heldout_manifest_frozen.json
+│   ├── e10_ablation.json      # E10 6-variant ablation configuration
 │   ├── heldout_grid_spec.json
 │   └── phase1c_grid.json ... phase2a_grid.json
 │
@@ -32,7 +33,7 @@ GeoAGLA/
 │   ├── audio_samples/         # 6 representative MUSAN speech, music, and noise waveforms (.wav)
 │   └── frozen/                # Frozen reference evaluation caches (h2_multi.json, horizon_audit.json)
 │
-├── reproduce/                 # One-command phase reproduction scripts (Phase 1B to 2B)
+├── reproduce/                 # One-command phase reproduction scripts (Phase 1B to 2B & E10)
 │   ├── run_phase1b.py         # Phase 1B: S0 + H1 + H2
 │   ├── run_phase1c.py         # Phase 1C: Multi-STFT grid sweep
 │   ├── run_phase1d.py         # Phase 1D: Ritz online dominant-edge tracking
@@ -43,9 +44,10 @@ GeoAGLA/
 │   ├── run_phase2b.py         # Phase 2B: Real-audio basin sweep
 │   ├── run_phase2b_smoke.py   # Phase 2B: Fast smoke test (no external audio needed)
 │   ├── run_phase2b_checkpointed.py # Phase 2B: Checkpointed/resumable batch runner
+│   ├── run_e10_ablation.py    # E10: Online robustness mechanism ablation runner
 │   └── README.md              # Documentation for reproduce/ package
 │
-├── experiments/               # Modular standalone experiment runners (01 to 07)
+├── experiments/               # Modular standalone experiment runners (01 to 08)
 │   ├── 01_linear_modal_dynamics/            # Linear modal dynamics & spectral correspondence
 │   ├── 02_controlled_local_rates/           # Controlled multi-STFT grid sweeps & window audits
 │   ├── 03_geometry_opportunity_gate_a/      # Gate A heldout evaluation, E6 ledgers, LaTeX tables
@@ -58,6 +60,9 @@ GeoAGLA/
 │   │   └── 05_run_phase2b_checkpointed.py   # Checkpointed batch runner with deadline control
 │   ├── 06_multi_horizon_online_adaptation/  # Maturation sweeps, failure taxonomy, Tasks C1-C4
 │   ├── 07_computational_cost_microbench/    # Unisolated vs isolated Ritz microbenchmarking
+│   ├── 08_e10_robustness_mechanism_ablation/# E10 6-variant mechanism ablation & clustered bootstrap
+│   │   ├── 01_run_e10_ablation.py           # 6-way paired runner across real audio population
+│   │   └── 02_analyze_e10_ablation.py       # Clustered bootstrap (B=5000) & contrast analysis
 │   └── README.md                            # Comprehensive experiment catalog
 │
 ├── scripts/                   # Utility scripts & automated execution pipelines
@@ -79,8 +84,9 @@ GeoAGLA/
 │   ├── 07_Final_Scientific_Freeze_Reconciliation_Standalone.ipynb
 │   └── kaggle_execution/      # Dedicated Kaggle execution notebooks
 │       ├── 25-subset-musan.ipynb
-│       ├── musan_even_pipeline.ipynb      # Even-10% MUSAN pipeline
-│       └── musan_odd_pipeline.ipynb # Odd-10% MUSAN pipeline
+│       ├── musan_even_pipeline.ipynb        # Even-10% MUSAN pipeline
+│       ├── musan_odd_pipeline.ipynb         # Odd-10% MUSAN pipeline
+│       └── e10_robustness_ablation_pipeline.ipynb # Standalone E10 pipeline & bundle packager
 │
 ├── results/                   # Complete empirical result ledgers (202+ verified result files)
 │   ├── 01_phase1_reproduction/              # Phases 1B, 1C, 1D, 1E, 1E-R outputs & figures
@@ -90,9 +96,11 @@ GeoAGLA/
 │   ├── 05_real_audio_basin_transfer/        # 202-file outputs, 4,680-run basin logs, horizon ordering
 │   ├── 06_multi_horizon_online_adaptation/  # Maturation, scale, 12 iteration traces, C1 canonical, C2, C4
 │   ├── 07_computational_cost_microbench/    # C3 runtime provenance, cost summary, crosscheck audit
+│   ├── 08_e10_robustness_mechanism_ablation_smoke/ # Verified E10 smoke test outputs & contrast summaries
 │   └── figures/                             # Certified publication Figures B1 through B5
 │
-├── tests/                     # 9 unit test suites (17 tests, passing in ~1.1s)
+├── tests/                     # 10 unit test suites (19 tests, passing in ~0.8s)
+│   ├── test_e10_ablation.py   # E10 full switches equivalence and executability
 │   ├── test_geometry.py       # Jacobian principal angle spectrum
 │   ├── test_minimax.py        # Chebyshev equioscillation minimax polynomial
 │   ├── test_phase1c_grid.py   # STFT window definitions and grid parameter bounds
@@ -103,8 +111,8 @@ GeoAGLA/
 │   ├── test_phase2b_audio.py  # Audio loading, resampling, and RMS excerpting
 │   └── test_projector.py      # Range projector orthogonality (P^2 = P)
 │
-├── docs/                      # 38+ research markdown reports categorized across 7 phases
-│   ├── 00_project_overview_and_guides/      # Student guides & ICLR design
+├── docs/                      # 39+ research markdown reports categorized across 8 phases
+│   ├── 00_project_overview_and_guides/      # Project guides & ICLR design
 │   ├── 01_phase1_phase2_reproduction/       # Phase 1/2 reports & historical guides
 │   │   └── phase_reports_and_guides/        # Original Phase-1B to 2B reproduction guides & verification reports
 │   ├── 02_geometry_opportunity_gate_a/
@@ -112,6 +120,7 @@ GeoAGLA/
 │   ├── 04_real_audio_basin_transfer/
 │   ├── 05_online_adaptation_audits/
 │   ├── 06_final_scientific_freeze/
+│   ├── 08_e10_robustness_mechanism_ablation/# E10 execution guide & analysis documentation
 │   └── README.md                            # Documentation index
 │
 ├── run_tests.py               # One-line unit test runner (compatible with unittest & pytest)
@@ -192,6 +201,9 @@ python -m reproduce.run_phase2b_smoke
 
 # 7. Phase 2B Checkpointed (Real-audio basin transfer with resume & deadline control):
 python -m reproduce.run_phase2b_checkpointed --audio-dir data/audio_samples --batch-size 2
+
+# 8. Experiment 10 (Online Robustness Mechanism Ablation):
+python -m reproduce.run_e10_ablation --audio-dir data/audio_samples --max-files 2
 ```
 
 ### Path B: Automated Full Pipeline (E3 to E5b)
@@ -218,10 +230,14 @@ When running large sweeps on cloud environments subject to timeout (e.g. Kaggle 
 python experiments/05_real_audio_basin_transfer/05_run_phase2b_checkpointed.py \
     --audio-dir /path/to/musan_subset \
     --batch-size 2 \
-    --time-budget-sec 36000 \
+    --time-budget-sec 3600 \
     --out results/phase2b_checkpointed
 ```
 *If interrupted, simply re-run the exact same command. Completed batches are automatically detected and skipped.*
+
+### Path E: Standalone Cloud Execution for E10 (Kaggle)
+To execute the complete 28,080-row E10 Mechanism Ablation across the full 202-file population without local compute overhead:
+Upload and run `notebooks/kaggle_execution/e10_robustness_ablation_pipeline.ipynb` on Kaggle with the attached 202-WAV dataset. It automatically executes all 6 paired variants, runs clustered bootstrap analysis ($B=5,000$), and packages `e10_robustness_ablation_bundle.zip` for direct submission.
 
 ---
 
@@ -274,7 +290,9 @@ Every script in `experiments/` can be executed directly as a standalone program:
 
 ### Experiment 08: E10 Online Robustness Mechanism Ablation
 - `python experiments/08_e10_robustness_mechanism_ablation/01_run_e10_ablation.py`
+  Evaluates 6 paired algorithm variants (`fgla_oracle`, `fixed_1e_oracle`, `online_raw`, `online_env`, `online_fallback`, `online_full`) across 390 valid geometry cases (4,680 problem instances $\times$ 6 variants = 28,080 method rows).
 - `python experiments/08_e10_robustness_mechanism_ablation/02_analyze_e10_ablation.py`
+  Executes clustered bootstrap analysis ($B=5,000$ replicates clustered by source WAV file) to estimate paired contrasts, delta success, rescue/loss rates, and 95% confidence intervals.
 - Quick runner: `python reproduce/run_e10_ablation.py`
 
 ---
@@ -309,6 +327,12 @@ All notebooks in `notebooks/` can be executed locally or in cloud environments:
    - **Local Rate**: In short horizons ($H=60$), Online achieves an $86.7\%$ win rate; over extended horizons ($H \ge 120$), fixed-momentum FGLA remains highly competitive.
 4. **Finite-Horizon $R_{\rm capture}$ Interpretation**:
    Values of $R_{\rm capture} > 1$ in finite-horizon fitted-rate comparisons reflect transient regression fits and negligible Oracle headroom ($\Delta_{\rm oracle} < 10^{-4}$), not Online exceeding the theoretical infinite-horizon Oracle optimum.
+5. **E10 Robustness Mechanism Decomposition**:
+   The $+20.07$ percentage point robustness gain of Online over FGLA is decomposed across 6 paired variants on identical initializations:
+   - **One-Edge Oracle Advantage**: Transitioning from two-sided minimax to conservative one-edge $\Theta(0, \lambda_+)$ stabilizes large transverse perturbations.
+   - **Online Ritz Tracking**: Replaces unknown oracle parameter with trajectory-active geometry without performance collapse.
+   - **Running-Max Envelope**: Mitigates early transient underestimation during estimator maturation.
+   - **Safe GLA Rollback**: Prevents divergence when adverse initial conditions trigger checkpoint rejection.
 
 ---
 
