@@ -45,6 +45,7 @@ GeoAGLA/
 │   ├── run_phase2b_smoke.py   # Phase 2B: Fast smoke test (no external audio needed)
 │   ├── run_phase2b_checkpointed.py # Phase 2B: Checkpointed/resumable batch runner
 │   ├── run_e10_ablation.py    # E10: Online robustness mechanism ablation runner
+│   ├── run_e10r_locked.py     # E10-R: Locked 395-geometry closure runner
 │   └── README.md              # Documentation for reproduce/ package
 │
 ├── experiments/               # Modular standalone experiment runners (01 to 08)
@@ -62,7 +63,10 @@ GeoAGLA/
 │   ├── 07_computational_cost_microbench/    # Unisolated vs isolated Ritz microbenchmarking
 │   ├── 08_e10_robustness_mechanism_ablation/# E10 6-variant mechanism ablation & clustered bootstrap
 │   │   ├── 01_run_e10_ablation.py           # 6-way paired runner across real audio population
-│   │   └── 02_analyze_e10_ablation.py       # Clustered bootstrap (B=5000) & contrast analysis
+│   │   ├── 02_analyze_e10_ablation.py       # Clustered bootstrap (B=5000) & contrast analysis
+│   │   ├── 03_run_e10r_locked.py            # E10-R locked 395-geometry closure runner
+│   │   ├── 04_audit_and_analyze_e10r.py     # E10-R unified integrity audit & bootstrap
+│   │   └── frozen/                          # Locked 395 cases & reference summaries
 │   └── README.md                            # Comprehensive experiment catalog
 │
 ├── scripts/                   # Utility scripts & automated execution pipelines
@@ -86,7 +90,8 @@ GeoAGLA/
 │       ├── 25-subset-musan.ipynb
 │       ├── musan_even_pipeline.ipynb        # Even-10% MUSAN pipeline
 │       ├── musan_odd_pipeline.ipynb         # Odd-10% MUSAN pipeline
-│       └── e10_robustness_ablation_pipeline.ipynb # Standalone E10 pipeline & bundle packager
+│       ├── e10_robustness_ablation_pipeline.ipynb # Standalone E10 pipeline & bundle packager
+│       └── e10r_final_closure_pipeline.ipynb      # Standalone E10-R final closure & packaging
 │
 ├── results/                   # Complete empirical result ledgers (202+ verified result files)
 │   ├── 01_phase1_reproduction/              # Phases 1B, 1C, 1D, 1E, 1E-R outputs & figures
@@ -99,7 +104,7 @@ GeoAGLA/
 │   ├── 08_e10_robustness_mechanism_ablation_smoke/ # Verified E10 smoke test outputs & contrast summaries
 │   └── figures/                             # Certified publication Figures B1 through B5
 │
-├── tests/                     # 10 unit test suites (19 tests, passing in ~0.8s)
+├── tests/                     # 10 unit test suites (21 tests, passing in ~0.8s)
 │   ├── test_e10_ablation.py   # E10 full switches equivalence and executability
 │   ├── test_geometry.py       # Jacobian principal angle spectrum
 │   ├── test_minimax.py        # Chebyshev equioscillation minimax polynomial
@@ -120,7 +125,7 @@ GeoAGLA/
 │   ├── 04_real_audio_basin_transfer/
 │   ├── 05_online_adaptation_audits/
 │   ├── 06_final_scientific_freeze/
-│   ├── 08_e10_robustness_mechanism_ablation/# E10 execution guide & analysis documentation
+│   ├── 08_e10_robustness_mechanism_ablation/# E10 & E10-R execution guides & analysis documentation
 │   └── README.md                            # Documentation index
 │
 ├── run_tests.py               # One-line unit test runner (compatible with unittest & pytest)
@@ -239,6 +244,23 @@ python experiments/05_real_audio_basin_transfer/05_run_phase2b_checkpointed.py \
 To execute the complete 28,080-row E10 Mechanism Ablation across the full 202-file population without local compute overhead:
 Upload and run `notebooks/kaggle_execution/e10_robustness_ablation_pipeline.ipynb` on Kaggle with the attached 202-WAV dataset. It automatically executes all 6 paired variants, runs clustered bootstrap analysis ($B=5,000$), and packages `e10_robustness_ablation_bundle.zip` for direct submission.
 
+### Path F: Standalone Cloud & Local Execution for E10-R Final Closure
+To execute the publication-frozen E10-R closure run (locked 395 geometry cases, 4,740 paired instances, 28,440 method rows with `historical_batch2` seed mode):
+- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r_final_closure_pipeline.ipynb`. It executes all 6 variants, audits cardinality, computes clustered bootstrap ($B=5,000$), and packages `E10R_FINAL_RETURN.zip`.
+- **Local / Server:**
+  ```bash
+  python experiments/08_e10_robustness_mechanism_ablation/03_run_e10r_locked.py \
+      --audio-dir /path/to/audio_benchmark \
+      --out results/08_e10r_locked \
+      --seed-mode historical_batch2
+
+  python experiments/08_e10_robustness_mechanism_ablation/04_audit_and_analyze_e10r.py \
+      results/08_e10r_locked/e10r_run_ledger.csv \
+      --out results/08_e10r_locked \
+      --B 5000 --seed 20270920
+  ```
+- **Quick Runner:** `python reproduce/run_e10r_locked.py --audio-dir /path/to/audio_benchmark --out results/08_e10r_locked`
+
 ---
 
 ## 4. Detailed Modular Experiment Catalog
@@ -288,12 +310,16 @@ Every script in `experiments/` can be executed directly as a standalone program:
 - `python experiments/07_computational_cost_microbench/02_runtime_provenance_and_profiling.py`
 - `python experiments/07_computational_cost_microbench/03_isolated_ritz_microbench.py`
 
-### Experiment 08: E10 Online Robustness Mechanism Ablation
+### Experiment 08: E10 & E10-R Online Robustness Mechanism Ablation
 - `python experiments/08_e10_robustness_mechanism_ablation/01_run_e10_ablation.py`
-  Evaluates 6 paired algorithm variants (`fgla_oracle`, `fixed_1e_oracle`, `online_raw`, `online_env`, `online_fallback`, `online_full`) across 390 valid geometry cases (4,680 problem instances $\times$ 6 variants = 28,080 method rows).
+  Evaluates 6 paired algorithm variants (`fgla_oracle`, `fixed_1e_oracle`, `online_raw`, `online_env`, `online_fallback`, `online_full`) across real audio geometry cases.
 - `python experiments/08_e10_robustness_mechanism_ablation/02_analyze_e10_ablation.py`
-  Executes clustered bootstrap analysis ($B=5,000$ replicates clustered by source WAV file) to estimate paired contrasts, delta success, rescue/loss rates, and 95% confidence intervals.
-- Quick runner: `python reproduce/run_e10_ablation.py`
+  Executes clustered bootstrap analysis ($B=5,000$ replicates clustered by source WAV file) to estimate paired contrasts and confidence intervals.
+- `python experiments/08_e10_robustness_mechanism_ablation/03_run_e10r_locked.py`
+  Final closure runner across locked 395-case STFT geometry population (exactly 28,440 method rows with `historical_batch2` seed mode).
+- `python experiments/08_e10_robustness_mechanism_ablation/04_audit_and_analyze_e10r.py`
+  Unified independent integrity audit, clustered bootstrap ($B=5,000$), and deliverable documentation generation.
+- Quick runners: `python reproduce/run_e10_ablation.py` and `python reproduce/run_e10r_locked.py`
 
 ---
 
@@ -313,7 +339,8 @@ All notebooks in `notebooks/` can be executed locally or in cloud environments:
 | **`kaggle_execution/25-subset-musan.ipynb`** | Kaggle audio subset extraction and manifest generation. |
 | **`kaggle_execution/musan_even_pipeline.ipynb`** | Full pipeline execution on even-10% MUSAN subset. |
 | **`kaggle_execution/musan_odd_pipeline.ipynb`** | Full pipeline execution on odd-10% MUSAN subset. |
-| **`kaggle_execution/e10_robustness_ablation_pipeline.ipynb`** | Complete standalone E10 mechanism ablation pipeline and deliverable packaging. |
+| **`kaggle_execution/e10_robustness_ablation_pipeline.ipynb`** | Standalone E10 mechanism ablation pipeline and deliverable packaging. |
+| **`kaggle_execution/e10r_final_closure_pipeline.ipynb`** | Complete standalone E10-R final closure pipeline, independent audit, and submission packaging. |
 
 ---
 
