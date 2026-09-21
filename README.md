@@ -272,6 +272,11 @@ Every script in `experiments/` can be executed directly as a standalone program:
 - `python experiments/07_computational_cost_microbench/02_runtime_provenance_and_profiling.py`
 - `python experiments/07_computational_cost_microbench/03_isolated_ritz_microbench.py`
 
+### Experiment 08: E10 Online Robustness Mechanism Ablation
+- `python experiments/08_e10_robustness_mechanism_ablation/01_run_e10_ablation.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/02_analyze_e10_ablation.py`
+- Quick runner: `python reproduce/run_e10_ablation.py`
+
 ---
 
 ## 5. Standalone Jupyter & Kaggle Notebooks
@@ -290,6 +295,7 @@ All notebooks in `notebooks/` can be executed locally or in cloud environments:
 | **`kaggle_execution/25-subset-musan.ipynb`** | Kaggle audio subset extraction and manifest generation. |
 | **`kaggle_execution/musan_even_pipeline.ipynb`** | Full pipeline execution on even-10% MUSAN subset. |
 | **`kaggle_execution/musan_odd_pipeline.ipynb`** | Full pipeline execution on odd-10% MUSAN subset. |
+| **`kaggle_execution/e10_robustness_ablation_pipeline.ipynb`** | Complete standalone E10 mechanism ablation pipeline and deliverable packaging. |
 
 ---
 
