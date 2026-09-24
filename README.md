@@ -61,11 +61,16 @@ GeoAGLA/
 │   │   └── 05_run_phase2b_checkpointed.py   # Checkpointed batch runner with deadline control
 │   ├── 06_multi_horizon_online_adaptation/  # Maturation sweeps, failure taxonomy, Tasks C1-C4
 │   ├── 07_computational_cost_microbench/    # Unisolated vs isolated Ritz microbenchmarking
-│   ├── 08_e10_robustness_mechanism_ablation/# E10 6-variant mechanism ablation & clustered bootstrap
+│   ├── 08_e10_robustness_mechanism_ablation/# E10, E10-R, E10-R2, and E10-R2F forensic closure
 │   │   ├── 01_run_e10_ablation.py           # 6-way paired runner across real audio population
 │   │   ├── 02_analyze_e10_ablation.py       # Clustered bootstrap (B=5000) & contrast analysis
 │   │   ├── 03_run_e10r_locked.py            # E10-R locked 395-geometry closure runner
 │   │   ├── 04_audit_and_analyze_e10r.py     # E10-R unified integrity audit & bootstrap
+│   │   ├── 04_run_e10r2_canonical.py        # E10-R2 direct canonical import runner (1e-5 threshold)
+│   │   ├── 05_analyze_e10r2.py              # E10-R2 clustered bootstrap & paired contrasts
+│   │   ├── 06_e10r2f_equivalence.py         # E10-R2F Gate F1 six-variant canonical equivalence & leakage
+│   │   ├── 07_e10r2f_event_repair.py        # E10-R2F Gate F2 online event reconstruction (834,240 rows)
+│   │   ├── 08_audit_e10r2f.py               # E10-R2F independent mechanical audit and report generator
 │   │   └── frozen/                          # Locked 395 cases & reference summaries
 │   └── README.md                            # Comprehensive experiment catalog
 │
@@ -106,6 +111,8 @@ GeoAGLA/
 │
 ├── tests/                     # 10 unit test suites (21 tests, passing in ~0.8s)
 │   ├── test_e10_ablation.py   # E10 full switches equivalence and executability
+│   ├── test_e10r2_equivalence.py # E10-R2 canonical equivalence and threshold checks
+│   ├── test_e10r2f_forensic.py   # E10-R2F forensic gates (F1 equivalence, leakage, event cardinality)
 │   ├── test_geometry.py       # Jacobian principal angle spectrum
 │   ├── test_minimax.py        # Chebyshev equioscillation minimax polynomial
 │   ├── test_phase1c_grid.py   # STFT window definitions and grid parameter bounds
@@ -247,6 +254,45 @@ Upload and run `notebooks/kaggle_execution/e10_robustness_ablation_pipeline.ipyn
 ### Path F: Standalone Cloud & Local Execution for E10-R Final Closure
 To execute the publication-frozen E10-R closure run (locked 395 geometry cases, 4,740 paired instances, 28,440 method rows with `historical_batch2` seed mode):
 - **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r_final_closure_pipeline.ipynb`. It executes all 6 variants, audits cardinality, computes clustered bootstrap ($B=5,000$), and packages `E10R_FINAL_RETURN.zip`.
+
+### Path G: E10-R2 Canonical Equivalence & Final Freeze
+To execute the canonical-equivalence repaired sweep enforcing the strict $1\times 10^{-5}$ magnitude threshold and direct canonical package imports:
+- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r2_resume_pipeline.ipynb`. It features automatic multi-session checkpoint resumption, verifies hard cardinality (28,440 rows), runs clustered bootstrap ($B=5,000$, seed `20270920`), and packages `E10R2_FINAL_CANONICAL_RETURN.zip`.
+- **Local Runner:**
+  ```bash
+  python experiments/08_e10_robustness_mechanism_ablation/04_run_e10r2_canonical.py \
+      --audio-dir /path/to/musan_odd_202 \
+      --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
+      --out results/08_e10r2_canonical
+  python experiments/08_e10_robustness_mechanism_ablation/05_analyze_e10r2.py \
+      results/08_e10r2_canonical/results/e10r2_run_ledger.csv \
+      --out results/08_e10r2_canonical
+  ```
+
+### Path H: E10-R2F Forensic Closure Repair
+To close Gate F1 (six-variant trajectory equivalence within $\le 10^{-12}$ and no-oracle leakage) and Gate F2 (complete 834,240-row event ledger reconstruction):
+- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r2f_forensic_pipeline.ipynb`. It executes Gate F1 across 3 deterministic real-audio fixtures, reconstructs all 834,240 block events across 18,960 online runs with lossless per-file checkpointing, verifies bit-for-bit equivalence against the untouched primary ledger, performs independent mechanical auditing, and packages `E10R2F_FORENSIC_CLOSURE.zip`.
+- **Local Execution:**
+  ```bash
+  # Step 1: Gate F1 equivalence
+  python experiments/08_e10_robustness_mechanism_ablation/06_e10r2f_equivalence.py \
+      --audio-dir /path/to/musan_odd_202 \
+      --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
+      --out results/08_e10r2f_forensic/tests
+
+  # Step 2: Gate F2 event repair
+  python experiments/08_e10_robustness_mechanism_ablation/07_e10r2f_event_repair.py \
+      --audio-dir /path/to/musan_odd_202 \
+      --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
+      --primary-ledger results/08_e10r2f_forensic/primary/e10r2_run_ledger.csv \
+      --out results/08_e10r2f_forensic
+
+  # Step 3: Mechanical audit
+  python experiments/08_e10_robustness_mechanism_ablation/08_audit_e10r2f.py \
+      --closure-dir results/08_e10r2f_forensic
+  ```
+To execute the publication-frozen E10-R closure run (locked 395 geometry cases, 4,740 paired instances, 28,440 method rows with `historical_batch2` seed mode):
+- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r_final_closure_pipeline.ipynb`. It executes all 6 variants, audits cardinality, computes clustered bootstrap ($B=5,000$), and packages `E10R_FINAL_RETURN.zip`.
 - **Local / Server:**
   ```bash
   python experiments/08_e10_robustness_mechanism_ablation/03_run_e10r_locked.py \
@@ -341,6 +387,8 @@ All notebooks in `notebooks/` can be executed locally or in cloud environments:
 | **`kaggle_execution/musan_odd_pipeline.ipynb`** | Full pipeline execution on odd-10% MUSAN subset. |
 | **`kaggle_execution/e10_robustness_ablation_pipeline.ipynb`** | Standalone E10 mechanism ablation pipeline and deliverable packaging. |
 | **`kaggle_execution/e10r_final_closure_pipeline.ipynb`** | Complete standalone E10-R final closure pipeline, independent audit, and submission packaging. |
+| **`kaggle_execution/e10r2_resume_pipeline.ipynb`** | Complete standalone E10-R2 pipeline with lossless checkpointing, direct canonical imports, and 1e-5 threshold. |
+| **`kaggle_execution/e10r2f_forensic_pipeline.ipynb`** | Complete standalone E10-R2F forensic pipeline closing Gate F1 (<=1e-12 tolerance) and Gate F2 (834,240 events). |
 
 ---
 
