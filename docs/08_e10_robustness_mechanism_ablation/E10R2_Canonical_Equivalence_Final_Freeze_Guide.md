@@ -1,5 +1,5 @@
 # E10-R2: Canonical-Equivalence Repair & Final Freeze Protocol
-## Mandatory Execution & Verification Guide for Khoa & Bao
+## Mandatory Execution & Verification Guide for Author / Investigator
 
 **Project:** GeoAGLA — ICLR 2027  
 **Objective:** Finalize Experiment E10 definitively, guaranteeing **canonical implementation fidelity + frozen scientific protocol compliance + exact numerical reproducibility**.  
@@ -238,13 +238,13 @@ E10R2_FINAL_CANONICAL_RETURN/
 
 ---
 
-# 9. Division of Responsibilities
+# 9. Protocol Execution & Audit Stages
 
-- **Khoa (Execution Lead):**
+- **Stage 1 (Experimental Execution):**
   - Executes canonical runner without modifying scientific hyperparameters.
   - Captures full logs, environment states, and SHA-256 source manifests.
   - Ensures all 28,440 rows are completed losslessly.
-- **Bao (Independent Audit Lead):**
+- **Stage 2 (Independent Integrity & Statistical Audit):**
   - Independently audits data integrity, cardinality, and success metrics.
   - Verifies canonical imports and ensures zero implementation drift.
   - Validates clustered bootstrap statistics and contrast intervals.

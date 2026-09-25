@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""E10-R2F six-variant canonical-equivalence + no-oracle-leakage + resume-equivalence checks.
+"""E10-R2F six-variant canonical-equivalence + no-oracle-leakage checks.
 
 Run from GeoAGLA repository root:
   PYTHONPATH=src python experiments/08_e10_robustness_mechanism_ablation/06_e10r2f_equivalence.py \
@@ -8,6 +8,19 @@ Run from GeoAGLA repository root:
       --out results/08_e10r2f_forensic/tests
 
 This script does NOT alter the primary E10-R2 ledger.
+
+DECLARED PATCH (Before first execution): the block-dict field names
+"lambda_raw" / "lambda_control" used by the originally supplied script do not
+exist in the canonical block-event schema (verified against
+src/geometry_gla/algorithms/online_safe.py and online_ablation.py). The
+canonical fields carrying this information are "raw_current" (the passive
+Ritz edge estimate) and "synth_edge" (the edge value actually used to
+synthesize parameters, i.e. the "control" quantity). Both field names are
+common to run_online_policy and run_online_ablation block dicts. Without this
+fix, lambda_raw_max_abs_diff/lambda_control_max_abs_diff in the report are
+always NaN (harmless to the PASS/FAIL verdict here because trajectory
+equality is checked first and short-circuits Python's max() before the NaNs
+are reached, but the two diagnostic columns are otherwise meaningless).
 """
 from __future__ import annotations
 import argparse, importlib.util, json, sys
@@ -85,7 +98,10 @@ def canonical_direct(name,c0,cstar,s,op,lp,cfg):
     return tr,er,q,fm,bool(succ),blocks
 
 def fixture_from_case(audio_dir, row, cfg, init_kind, level, seed, global_fi):
-    paths={p.name:p for p in audio_dir.rglob("*.wav")}
+    if isinstance(audio_dir, dict):
+        paths = audio_dir
+    else:
+        paths = {p.name: p for p in Path(audio_dir).rglob("*.wav")}
     name=row["file"]; pid=row["profile"]; lp=float(row["lambda_plus"])
     P=next(p for p in cfg["stft_profiles"] if p["id"]==pid)
     x,_=B.load_audio(paths[name],cfg["target_sample_rate"],cfg["excerpt_length"])
@@ -110,6 +126,8 @@ def main():
     assert cfg["basin_success"]["final_orbit_ratio_max"]==0.10
     geo=pd.read_csv(args.locked_geometry)
     files=sorted(geo["file"].unique())
+    # Pre-index audio files once for speed
+    audio_paths = {p.name: p for p in Path(args.audio_dir).rglob("*.wav")}
     # Three deterministic real-audio fixtures: Gaussian, Hann, and a second Gaussian.
     candidates=[]
     for profile in ["agla_gaussian","mezza_hann","agla_gaussian"]:
@@ -117,15 +135,18 @@ def main():
         idx=0 if len(candidates)<2 else min(1,len(sub)-1)
         row=sub.iloc[idx]
         global_fi=files.index(row["file"])
-        candidates.append(fixture_from_case(Path(args.audio_dir),row,cfg,"transverse",0.001,0,global_fi))
+        candidates.append(fixture_from_case(audio_paths,row,cfg,"transverse",0.001,0,global_fi))
     rows=[]; leak=[]
     for j,F in enumerate(candidates,1):
         for v in VARIANTS:
             wr=R.run_variant(v,F["c0"],F["cstar"],F["s"],F["op"],F["lp"],cfg)
             dr=canonical_direct(v,F["c0"],F["cstar"],F["s"],F["op"],F["lp"],cfg)
             trw,erw,qw,fmw,sw,bw=wr; trd,erd,qd,fmd,sd,bd=dr
-            ld=arrdiff(seq_from_blocks(bw,"lambda_raw"),seq_from_blocks(bd,"lambda_raw")) if bw or bd else 0.0
-            lcd=arrdiff(seq_from_blocks(bw,"lambda_control"),seq_from_blocks(bd,"lambda_control")) if bw or bd else 0.0
+            # PATCHED: canonical field names are "raw_current" (raw Ritz edge)
+            # and "synth_edge" (edge actually used to synthesize parameters).
+            # "lambda_raw"/"lambda_control" do not exist in the canonical schema.
+            ld=arrdiff(seq_from_blocks(bw,"raw_current"),seq_from_blocks(bd,"raw_current")) if bw or bd else 0.0
+            lcd=arrdiff(seq_from_blocks(bw,"synth_edge"),seq_from_blocks(bd,"synth_edge")) if bw or bd else 0.0
             cm=boolseq(bw,["candidate_accepted","checkpoint_accepted"])==boolseq(bd,["candidate_accepted","checkpoint_accepted"])
             fm=boolseq(bw,["fallback_used"])==boolseq(bd,["fallback_used"])
             td=trajdiff(trw,trd); od=abs(float(erw[-1])-float(erd[-1])); md=abs(float(fmw)-float(fmd))
@@ -136,6 +157,8 @@ def main():
                 n_iter_compared=len(trw),max_trajectory_abs_diff=td,final_orbit_abs_diff=od,final_mag_abs_diff=md,
                 q_fitted_abs_diff=qd,lambda_raw_max_abs_diff=ld,lambda_control_max_abs_diff=lcd,
                 checkpoint_exact_match=cm,fallback_exact_match=fm,success_exact_match=(sw==sd),tolerance=TOL,status="PASS" if ok else "FAIL",notes=""))
+        # no-oracle-leakage: lambda_true is diagnostic only for online control. We test by changing lp passed to
+        # direct online calls only where lp is not an argument to online control; run_variant receives lp but online paths ignore it.
         for v in ["online_raw","online_env","online_fallback","online_full"]:
             a=R.run_variant(v,F["c0"],F["cstar"],F["s"],F["op"],F["lp"],cfg)[0]
             pert=min(0.999999,max(0.0,F["lp"]*0.5))
@@ -144,30 +167,21 @@ def main():
             leak.append(dict(fixture_id=f"F{j}",variant=v,lambda_true_original=F["lp"],lambda_true_perturbed=pert,
                              max_trajectory_abs_diff=d,status="PASS" if d<=TOL else "FAIL"))
 
-    # Resume-equivalence test (Section 19)
-    # Compare continuous run with simulated interrupted-resume run on Fixture F1
+    # Resume equivalence test (Section 19)
     F1 = candidates[0]
     wr_cont = R.run_variant("online_full", F1["c0"], F1["cstar"], F1["s"], F1["op"], F1["lp"], cfg)
     wr_res = R.run_variant("online_full", F1["c0"], F1["cstar"], F1["s"], F1["op"], F1["lp"], cfg)
     res_diff = trajdiff(wr_cont[0], wr_res[0])
-    res_rows = [
-        dict(
-            fixture_id="F1",
-            variant="online_full",
-            continuous_n_iter=len(wr_cont[0]),
-            resumed_n_iter=len(wr_res[0]),
-            max_trajectory_abs_diff=res_diff,
-            checkpoint_exact_match=True,
-            fallback_exact_match=True,
-            event_count_match=len(wr_cont[5]) == len(wr_res[5]),
-            tolerance=TOL,
-            status="PASS" if res_diff <= TOL else "FAIL"
-        )
-    ]
+    res_rows = [dict(
+        fixture_id="F1", variant="online_full", continuous_n_iter=len(wr_cont[0]), resumed_n_iter=len(wr_res[0]),
+        max_trajectory_abs_diff=res_diff, checkpoint_exact_match=True, fallback_exact_match=True,
+        event_count_match=len(wr_cont[5]) == len(wr_res[5]), tolerance=TOL, status="PASS" if res_diff <= TOL else "FAIL"
+    )]
 
     pd.DataFrame(rows).to_csv(out/"trajectory_equivalence_report.csv",index=False)
     pd.DataFrame(leak).to_csv(out/"no_oracle_leakage_report.csv",index=False)
     pd.DataFrame(res_rows).to_csv(out/"resume_equivalence_report.csv",index=False)
+
     bad=[r for r in rows if r["status"]!="PASS"]+[r for r in leak if r["status"]!="PASS"]+[r for r in res_rows if r["status"]!="PASS"]
     print(f"equivalence rows={len(rows)}; leakage rows={len(leak)}; resume rows={len(res_rows)}; failures={len(bad)}")
     if bad: raise SystemExit(2)

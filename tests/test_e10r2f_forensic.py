@@ -3,7 +3,7 @@
 test_e10r2f_forensic.py
 =======================
 Forensic closure unit tests complying with:
-E10R2F_Khoa_Bao_Forensic_Closure_Guide.md (Section 10, 16, 19, 20, 33).
+E10R2F_Forensic_Closure_Guide.md (Section 10, 16, 19, 20, 33).
 1. Gate F1: Six-variant canonical trajectory equivalence (tolerance <= 1e-12).
 2. Gate F1: No-oracle leakage test for online variants.
 3. Gate F2: Event cardinality rule verification (18,960 runs * 44 = 834,240 events).
@@ -35,16 +35,14 @@ CFG_PATH = ROOT / "configs" / "phase2b_grid.json"
 FROZEN_GEO = ROOT / "experiments" / "08_e10_robustness_mechanism_ablation" / "frozen" / "e10r_locked_geometry_395.csv"
 
 
-@fixture_decorator
-def shared_cfg():
+def get_shared_cfg():
     cfg = json.loads(CFG_PATH.read_text(encoding="utf-8"))
     assert cfg["basin_success"]["final_magnitude_residual_max"] == 1e-5
     assert cfg["basin_success"]["final_orbit_ratio_max"] == 0.10
     return cfg
 
 
-@fixture_decorator
-def synthetic_fixture():
+def get_synthetic_fixture():
     """Deterministic small synthetic fixture for fast unit testing."""
     N = 256
     rng = np.random.default_rng(20270924)
@@ -60,8 +58,22 @@ def synthetic_fixture():
     return dict(c0=c0, cstar=cstar, s=s, op=op, lp=lp)
 
 
-def test_gate_f1_six_variant_synthetic_equivalence(shared_cfg, synthetic_fixture):
+@fixture_decorator
+def shared_cfg():
+    return get_shared_cfg()
+
+
+@fixture_decorator
+def synthetic_fixture():
+    return get_synthetic_fixture()
+
+
+def test_gate_f1_six_variant_synthetic_equivalence(shared_cfg=None, synthetic_fixture=None):
     """Verifies that wrapper paths match canonical direct implementations <= 1e-12."""
+    if shared_cfg is None:
+        shared_cfg = get_shared_cfg()
+    if synthetic_fixture is None:
+        synthetic_fixture = get_synthetic_fixture()
     F = synthetic_fixture
     cfg = shared_cfg.copy()
     cfg["n_iter"] = 40  # fast test
@@ -85,8 +97,12 @@ def test_gate_f1_six_variant_synthetic_equivalence(shared_cfg, synthetic_fixture
             assert diff <= 1e-12, f"Gate F1 online_full failed diff: {diff}"
 
 
-def test_gate_f1_no_oracle_leakage(shared_cfg, synthetic_fixture):
+def test_gate_f1_no_oracle_leakage(shared_cfg=None, synthetic_fixture=None):
     """Verifies online variants do not use or leak lambda_plus."""
+    if shared_cfg is None:
+        shared_cfg = get_shared_cfg()
+    if synthetic_fixture is None:
+        synthetic_fixture = get_synthetic_fixture()
     F = synthetic_fixture
     cfg = shared_cfg.copy()
     cfg["n_iter"] = 30
@@ -115,8 +131,12 @@ def test_gate_f1_no_oracle_leakage(shared_cfg, synthetic_fixture):
         assert diff <= 1e-12, f"No-oracle leakage violated on {v}"
 
 
-def test_gate_f2_event_cardinality_formula(shared_cfg, synthetic_fixture):
+def test_gate_f2_event_cardinality_formula(shared_cfg=None, synthetic_fixture=None):
     """Checks the mathematical cardinality of the complete event ledger (Section 20)."""
+    if shared_cfg is None:
+        shared_cfg = get_shared_cfg()
+    if synthetic_fixture is None:
+        synthetic_fixture = get_synthetic_fixture()
     n_cases = 395
     n_inits = 12  # 3 kinds * levels * seeds = 12
     paired_instances = n_cases * n_inits  # 4,740

@@ -79,24 +79,9 @@ GeoAGLA/
 │   │   ├── sample_musan_subset.py # Stratified random sampling of MUSAN audio
 │   │   └── README.md
 │   ├── runners/               # End-to-end automation pipelines
-│   │   ├── run_full_pipeline.py # Full the pipeline execution pipeline (E3 to E5b)
+│   │   ├── run_full_pipeline.py # Full pipeline execution pipeline (E3 to E5b)
 │   │   └── README.md
 │   └── figures/               # Publication figure generation scripts
-│
-├── notebooks/                 # Standalone Jupyter & Kaggle notebooks
-│   ├── 01_Linear_Modal_and_Spectrum_Reproduction.ipynb
-│   ├── 02_Online_Estimator_Maturation_Reproduction.ipynb
-│   ├── 03_Gate_A_Heldout_Geometry_Opportunity.ipynb
-│   ├── 04_Safeguard_and_RealAudio_Basin_Exploration.ipynb
-│   ├── 05_RealAudio_Basin_Transfer_and_Horizon_Audit.ipynb
-│   ├── 06_Online_MultiHorizon_and_Claim_Correction_Audit.ipynb
-│   ├── 07_Final_Scientific_Freeze_Reconciliation_Standalone.ipynb
-│   └── kaggle_execution/      # Dedicated Kaggle execution notebooks
-│       ├── 25-subset-musan.ipynb
-│       ├── musan_even_pipeline.ipynb        # Even-10% MUSAN pipeline
-│       ├── musan_odd_pipeline.ipynb         # Odd-10% MUSAN pipeline
-│       ├── e10_robustness_ablation_pipeline.ipynb # Standalone E10 pipeline & bundle packager
-│       └── e10r_final_closure_pipeline.ipynb      # Standalone E10-R final closure & packaging
 │
 ├── results/                   # Complete empirical result ledgers (202+ verified result files)
 │   ├── 01_phase1_reproduction/              # Phases 1B, 1C, 1D, 1E, 1E-R outputs & figures
@@ -247,65 +232,87 @@ python experiments/05_real_audio_basin_transfer/05_run_phase2b_checkpointed.py \
 ```
 *If interrupted, simply re-run the exact same command. Completed batches are automatically detected and skipped.*
 
-### Path E: Standalone Cloud Execution for E10 (Kaggle)
-To execute the complete 28,080-row E10 Mechanism Ablation across the full 202-file population without local compute overhead:
-Upload and run `notebooks/kaggle_execution/e10_robustness_ablation_pipeline.ipynb` on Kaggle with the attached 202-WAV dataset. It automatically executes all 6 paired variants, runs clustered bootstrap analysis ($B=5,000$), and packages `e10_robustness_ablation_bundle.zip` for direct submission.
+### Path E: Experiment 10 Mechanism Ablation (Full Population Sweep)
+To execute the complete 28,080-row E10 Mechanism Ablation across the 202-file population:
+```bash
+# Via reproduce launcher:
+python reproduce/run_e10_ablation.py --audio-dir data/audio_samples --out results/08_e10_ablation
 
-### Path F: Standalone Cloud & Local Execution for E10-R Final Closure
+# Analyze paired contrasts & clustered bootstrap (B=5000):
+python experiments/08_e10_robustness_mechanism_ablation/02_analyze_e10_ablation.py \
+    results/08_e10_ablation/e10_run_ledger.csv \
+    --out results/08_e10_ablation
+```
+
+### Path F: Experiment 10-R Locked Population Closure Sweep
 To execute the publication-frozen E10-R closure run (locked 395 geometry cases, 4,740 paired instances, 28,440 method rows with `historical_batch2` seed mode):
-- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r_final_closure_pipeline.ipynb`. It executes all 6 variants, audits cardinality, computes clustered bootstrap ($B=5,000$), and packages `E10R_FINAL_RETURN.zip`.
+```bash
+# Via reproduce launcher:
+python reproduce/run_e10r_locked.py --audio-dir /path/to/musan_odd_202 --out results/08_e10r_locked
 
-### Path G: E10-R2 Canonical Equivalence & Final Freeze
+# Or directly via experiment script:
+python experiments/08_e10_robustness_mechanism_ablation/03_run_e10r_locked.py \
+    --audio-dir /path/to/musan_odd_202 \
+    --out results/08_e10r_locked \
+    --seed-mode historical_batch2
+
+# Clustered bootstrap analysis (B=5000, seed 20270920):
+python experiments/08_e10_robustness_mechanism_ablation/04_audit_and_analyze_e10r.py \
+    results/08_e10r_locked/e10r_run_ledger.csv \
+    --out results/08_e10r_locked \
+    --B 5000 --seed 20270920
+```
+
+### Path G: Experiment 10-R2 Canonical Equivalence & Final Freeze
 To execute the canonical-equivalence repaired sweep enforcing the strict $1\times 10^{-5}$ magnitude threshold and direct canonical package imports:
-- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r2_resume_pipeline.ipynb`. It features automatic multi-session checkpoint resumption, verifies hard cardinality (28,440 rows), runs clustered bootstrap ($B=5,000$, seed `20270920`), and packages `E10R2_FINAL_CANONICAL_RETURN.zip`.
-- **Local Runner:**
-  ```bash
-  python experiments/08_e10_robustness_mechanism_ablation/04_run_e10r2_canonical.py \
-      --audio-dir /path/to/musan_odd_202 \
-      --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
-      --out results/08_e10r2_canonical
-  python experiments/08_e10_robustness_mechanism_ablation/05_analyze_e10r2.py \
-      results/08_e10r2_canonical/results/e10r2_run_ledger.csv \
-      --out results/08_e10r2_canonical
-  ```
+```bash
+python experiments/08_e10_robustness_mechanism_ablation/04_run_e10r2_canonical.py \
+    --audio-dir /path/to/musan_odd_202 \
+    --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
+    --out results/08_e10r2_canonical
 
-### Path H: E10-R2F Forensic Closure Repair
+python experiments/08_e10_robustness_mechanism_ablation/05_analyze_e10r2.py \
+    results/08_e10r2_canonical/results/e10r2_run_ledger.csv \
+    --out results/08_e10r2_canonical
+```
+
+### Path H: Experiment 10-R2F Forensic Closure Repair
 To close Gate F1 (six-variant trajectory equivalence within $\le 10^{-12}$ and no-oracle leakage) and Gate F2 (complete 834,240-row event ledger reconstruction):
-- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r2f_forensic_pipeline.ipynb`. It executes Gate F1 across 3 deterministic real-audio fixtures, reconstructs all 834,240 block events across 18,960 online runs with lossless per-file checkpointing, verifies bit-for-bit equivalence against the untouched primary ledger, performs independent mechanical auditing, and packages `E10R2F_FORENSIC_CLOSURE.zip`.
-- **Local Execution:**
-  ```bash
-  # Step 1: Gate F1 equivalence
-  python experiments/08_e10_robustness_mechanism_ablation/06_e10r2f_equivalence.py \
-      --audio-dir /path/to/musan_odd_202 \
-      --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
-      --out results/08_e10r2f_forensic/tests
+```bash
+# Step 1: Gate F1 six-variant equivalence & no-oracle leakage
+python experiments/08_e10_robustness_mechanism_ablation/06_e10r2f_equivalence.py \
+    --audio-dir /path/to/musan_odd_202 \
+    --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
+    --out results/08_e10r2f_forensic/tests
 
-  # Step 2: Gate F2 event repair
-  python experiments/08_e10_robustness_mechanism_ablation/07_e10r2f_event_repair.py \
-      --audio-dir /path/to/musan_odd_202 \
-      --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
-      --primary-ledger results/08_e10r2f_forensic/primary/e10r2_run_ledger.csv \
-      --out results/08_e10r2f_forensic
+# Step 2: Gate F2 event ledger reconstruction (parallel worker pool)
+python experiments/08_e10_robustness_mechanism_ablation/09_e10r2f_event_repair_parallel.py \
+    --audio-dir /path/to/musan_odd_202 \
+    --locked-geometry experiments/08_e10_robustness_mechanism_ablation/frozen/e10r_locked_geometry_395.csv \
+    --primary-ledger results/08_e10r2f_forensic/primary/e10r2_run_ledger.csv \
+    --out results/08_e10r2f_forensic \
+    --workers 4
 
-  # Step 3: Mechanical audit
-  python experiments/08_e10_robustness_mechanism_ablation/08_audit_e10r2f.py \
-      --closure-dir results/08_e10r2f_forensic
-  ```
-To execute the publication-frozen E10-R closure run (locked 395 geometry cases, 4,740 paired instances, 28,440 method rows with `historical_batch2` seed mode):
-- **Cloud / Kaggle:** Upload and run `notebooks/kaggle_execution/e10r_final_closure_pipeline.ipynb`. It executes all 6 variants, audits cardinality, computes clustered bootstrap ($B=5,000$), and packages `E10R_FINAL_RETURN.zip`.
-- **Local / Server:**
-  ```bash
-  python experiments/08_e10_robustness_mechanism_ablation/03_run_e10r_locked.py \
-      --audio-dir /path/to/audio_benchmark \
-      --out results/08_e10r_locked \
-      --seed-mode historical_batch2
+# Step 3: Gate F1-C deterministic resume equivalence verification
+python experiments/08_e10_robustness_mechanism_ablation/resume_equivalence_test.py \
+    --output-dir results/08_e10r2f_forensic/tests
 
-  python experiments/08_e10_robustness_mechanism_ablation/04_audit_and_analyze_e10r.py \
-      results/08_e10r_locked/e10r_run_ledger.csv \
-      --out results/08_e10r_locked \
-      --B 5000 --seed 20270920
-  ```
-- **Quick Runner:** `python reproduce/run_e10r_locked.py --audio-dir /path/to/audio_benchmark --out results/08_e10r_locked`
+# Step 4: Mechanical forensic audit & verification
+python experiments/08_e10_robustness_mechanism_ablation/10_e10r2f_forensic_audit.py \
+    --closure-dir results/08_e10r2f_forensic \
+    --primary-ledger results/08_e10r2f_forensic/primary/e10r2_run_ledger.csv \
+    --out-zip results/08_e10r2f_forensic/E10R2F_FORENSIC_CLOSURE.zip
+```
+
+### Path I: Final Archive Packaging & Provenance Closure (E10R2F_FINAL_ARCHIVE)
+To execute the packaging and cryptographic provenance closure producing `E10R2F_FINAL_ARCHIVE.zip`:
+```bash
+# Via reproduce launcher:
+python reproduce/run_e10r2f_archive.py --search-dir . --output-dir E10R2F_FINAL_ARCHIVE --zip-path E10R2F_FINAL_ARCHIVE.zip
+
+# Or directly:
+python experiments/08_e10_robustness_mechanism_ablation/11_e10r2f_final_archive.py
+```
 
 ---
 
@@ -356,39 +363,43 @@ Every script in `experiments/` can be executed directly as a standalone program:
 - `python experiments/07_computational_cost_microbench/02_runtime_provenance_and_profiling.py`
 - `python experiments/07_computational_cost_microbench/03_isolated_ritz_microbench.py`
 
-### Experiment 08: E10 & E10-R Online Robustness Mechanism Ablation
+### Experiment 08: E10 Robustness Mechanism Ablation Suite
 - `python experiments/08_e10_robustness_mechanism_ablation/01_run_e10_ablation.py`
-  Evaluates 6 paired algorithm variants (`fgla_oracle`, `fixed_1e_oracle`, `online_raw`, `online_env`, `online_fallback`, `online_full`) across real audio geometry cases.
 - `python experiments/08_e10_robustness_mechanism_ablation/02_analyze_e10_ablation.py`
-  Executes clustered bootstrap analysis ($B=5,000$ replicates clustered by source WAV file) to estimate paired contrasts and confidence intervals.
 - `python experiments/08_e10_robustness_mechanism_ablation/03_run_e10r_locked.py`
-  Final closure runner across locked 395-case STFT geometry population (exactly 28,440 method rows with `historical_batch2` seed mode).
 - `python experiments/08_e10_robustness_mechanism_ablation/04_audit_and_analyze_e10r.py`
-  Unified independent integrity audit, clustered bootstrap ($B=5,000$), and deliverable documentation generation.
-- Quick runners: `python reproduce/run_e10_ablation.py` and `python reproduce/run_e10r_locked.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/04_run_e10r2_canonical.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/05_analyze_e10r2.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/06_e10r2f_equivalence.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/07_e10r2f_event_repair.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/08_audit_e10r2f.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/09_e10r2f_event_repair_parallel.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/10_e10r2f_forensic_audit.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/11_e10r2f_final_archive.py`
+- `python experiments/08_e10_robustness_mechanism_ablation/resume_equivalence_test.py`
 
 ---
 
-## 5. Standalone Jupyter & Kaggle Notebooks
+## 5. Reproduce Pipeline CLI Reference
 
-All notebooks in `notebooks/` can be executed locally or in cloud environments:
+All primary experiments have dedicated top-level execution launchers in `reproduce/`:
 
-| Notebook | Topic & Primary Research Content |
-| :--- | :--- |
-| **`01_Linear_Modal_and_Spectrum_Reproduction.ipynb`** | S0 linear dynamics, H1/H2 spectral correspondence, leading mode identification. |
-| **`02_Online_Estimator_Maturation_Reproduction.ipynb`** | Online Ritz estimator tracking, memory depth $m$, and maturation curves. |
-| **`03_Gate_A_Heldout_Geometry_Opportunity.ipynb`** | Gate A heldout grid validation, E6 case ledger, and $\Delta_{\rm oracle}$ correlation. |
-| **`04_Safeguard_and_RealAudio_Basin_Exploration.ipynb`** | Merit safeguard logic, fallback triggers, and initial basin exploration. |
-| **`05_RealAudio_Basin_Transfer_and_Horizon_Audit.ipynb`** | Real audio basin transfer across speech, music, noise, and horizon audits. |
-| **`06_Online_MultiHorizon_and_Claim_Correction_Audit.ipynb`** | Multi-horizon runs ($H \in \{30, 60, 120, 200, 360\}$), Tasks C1–C4 claim audits. |
-| **`07_Final_Scientific_Freeze_Reconciliation_Standalone.ipynb`** | Complete standalone reconciliation, canonical 60-eval C1 audit, and freeze sign-off. |
-| **`kaggle_execution/25-subset-musan.ipynb`** | Kaggle audio subset extraction and manifest generation. |
-| **`kaggle_execution/musan_even_pipeline.ipynb`** | Full pipeline execution on even-10% MUSAN subset. |
-| **`kaggle_execution/musan_odd_pipeline.ipynb`** | Full pipeline execution on odd-10% MUSAN subset. |
-| **`kaggle_execution/e10_robustness_ablation_pipeline.ipynb`** | Standalone E10 mechanism ablation pipeline and deliverable packaging. |
-| **`kaggle_execution/e10r_final_closure_pipeline.ipynb`** | Complete standalone E10-R final closure pipeline, independent audit, and submission packaging. |
-| **`kaggle_execution/e10r2_resume_pipeline.ipynb`** | Complete standalone E10-R2 pipeline with lossless checkpointing, direct canonical imports, and 1e-5 threshold. |
-| **`kaggle_execution/e10r2f_forensic_pipeline.ipynb`** | Complete standalone E10-R2F forensic pipeline closing Gate F1 (<=1e-12 tolerance) and Gate F2 (834,240 events). |
+| Launcher Script | Phase / Topic | Execution Command |
+| :--- | :--- | :--- |
+| `run_phase1b.py` | Phase 1B: S0 + H1 + H2 Linear & Spectral | `python reproduce/run_phase1b.py` |
+| `run_phase1c.py` | Phase 1C: Multi-STFT Grid Sweeps | `python reproduce/run_phase1c.py` |
+| `run_phase1d.py` | Phase 1D: Ritz Dynamic Eigensolver | `python reproduce/run_phase1d.py` |
+| `run_phase1e.py` | Phase 1E: Safeguarded Acceleration | `python reproduce/run_phase1e.py` |
+| `run_phase1er.py` | Phase 1E-R: Horizon Policy & Repair | `python reproduce/run_phase1er.py` |
+| `run_phase2a.py` | Phase 2A: Synthetic Scale Transfer | `python reproduce/run_phase2a.py` |
+| `run_phase2a_real_audio.py` | Phase 2A: Real-Audio Waveform Transfer | `python reproduce/run_phase2a_real_audio.py` |
+| `run_phase2b.py` | Phase 2B: Full Real-Audio Basin Sweep | `python reproduce/run_phase2b.py` |
+| `run_phase2b_smoke.py` | Phase 2B: Fast ~15s Synthetic Smoke Test | `python reproduce/run_phase2b_smoke.py` |
+| `run_phase2b_checkpointed.py` | Phase 2B: Resumable Checkpointed Runner | `python reproduce/run_phase2b_checkpointed.py` |
+| `run_e10_ablation.py` | E10: 6-Variant Mechanism Ablation | `python reproduce/run_e10_ablation.py` |
+| `run_e10r_locked.py` | E10-R: Locked 395-Geometry Closure | `python reproduce/run_e10r_locked.py` |
+| `run_e10r2f_archive.py` | E10-R2F: Final Provenance Archive Closure | `python reproduce/run_e10r2f_archive.py` |
+| `run_e10r2f_resume_test.py` | E10-R2F: Gate F1-C Resume Test Engine | `python reproduce/run_e10r2f_resume_test.py` |
 
 ---
 

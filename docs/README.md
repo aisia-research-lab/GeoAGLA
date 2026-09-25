@@ -45,6 +45,6 @@ The `docs/` directory maintains all research documentation, experimental specifi
 ### [08. Robustness Mechanism Ablation (E10, E10-R, E10-R2, E10-R2F)](08_e10_robustness_mechanism_ablation)
 - E10_Robustness_Mechanism_Ablation_Guide.md: Initial design and execution protocol for finite-horizon mechanism ablation.
 - E10R_Final_Closure_Guide.md: Closure guide for locked 395-geometry population under historical_batch2 seeds.
-- E10R2_Khoa_Bao_Canonical_Equivalence_Final_Freeze_Guide.md: Mandatory guide enforcing direct canonical imports and the 1e-5 convergence threshold.
-- E10R2F_Khoa_Bao_Forensic_Closure_Guide.md: Forensic closure protocol closing Gate F1 (trajectory equivalence <= 1e-12) and Gate F2 (834,240-row event ledger).
+- E10R2_Canonical_Equivalence_Final_Freeze_Guide.md: Mandatory guide enforcing direct canonical imports and the 1e-5 convergence threshold.
+- E10R2F_Forensic_Closure_Guide.md: Forensic closure protocol closing Gate F1 (trajectory equivalence <= 1e-12) and Gate F2 (834,240-row event ledger).
 - README_E10R2F.md: Step-by-step execution and audit instructions for forensic closure.

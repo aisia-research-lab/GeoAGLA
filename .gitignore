@@ -48,6 +48,8 @@ cover/
 # Jupyter Notebook
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
+notebooks/
+*.ipynb
 
 # Environments
 .env

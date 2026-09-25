@@ -131,9 +131,9 @@ python --version > logs/python_version.txt
 pip freeze > logs/pip_freeze.txt
 ```
 
-## Step 6 — Bao's independent audit
+## Step 6 — Independent forensic audit
 
-Bao should independently inspect:
+The independent forensic audit inspects:
 
 - 18 equivalence rows, all PASS;
 - 12 no-oracle-leakage rows, all PASS;
@@ -145,7 +145,7 @@ Bao should independently inspect:
 - raw/env variants never use fallback;
 - hashes and logs.
 
-Bao should then write:
+The audit produces:
 
 ```text
 audit/E10R2F_FORENSIC_AUDIT.md

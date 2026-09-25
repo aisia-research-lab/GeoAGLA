@@ -1,5 +1,5 @@
 # E10-R2F: Forensic Closure Repair & Final Freeze Protocol
-## Mandatory Execution & Verification Guide for Khoa & Bao
+## Mandatory Execution & Verification Guide for Author / Investigator
 
 **Project:** GeoAGLA — ICLR 2027  
 **Phase:** E10-R2F — Forensic Closure Repair  
@@ -84,7 +84,7 @@ Under no circumstances may `1e-3` be substituted for `1e-5`.
 
 The primary E10-R2 run ledger (`e10r2_run_ledger.csv`, 28,440 rows) is **read-only historical evidence**.
 
-Khoa and Bao must not:
+the investigator must not:
 - modify any row;
 - recompute and overwrite the primary ledger;
 - drop convergence failures;
@@ -291,6 +291,6 @@ The overall audit status is **GREEN** if and only if every single check passes:
 - [ ] Rerun-to-primary equivalence passes with 0 failures.
 - [ ] Pytest suite completes with 0 failures.
 - [ ] SHA-256 manifest records all executed scripts.
-- [ ] Formal sign-offs from Khoa and Bao included.
+- [ ] Formal sign-offs from the investigator included.
 
 If even a single check fails, the verdict is strictly **NO-GO**.
