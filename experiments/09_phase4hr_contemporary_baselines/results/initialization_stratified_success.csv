@@ -1,0 +1,7 @@
+regime,n_runs,GLA_success_pct,FGLA_success_pct,AGLA_success_pct,NAGLA_success_pct,Online_success_pct
+phase_jitter 0.05,792,100.0,26.14,88.13,92.05,73.74
+phase_jitter 0.15,792,34.47,16.67,13.51,21.34,45.08
+phase_jitter 0.3,792,12.37,12.37,10.98,19.19,29.92
+transverse 0.001,792,100.0,98.74,88.64,91.16,100.0
+transverse 0.01,792,100.0,94.7,87.5,91.04,99.62
+transverse 0.05,792,80.81,80.81,65.28,74.62,91.41

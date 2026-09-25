@@ -34,8 +34,10 @@ EXPERIMENTS = [
     ("Experiment E6", "run_e6_gate_a_heldout.py", "Geometry-opportunity Gate A ledger & analysis", ["--step", "1"]),
     ("Experiment E7", "run_e7_microbench.py", "Computational cost microbenchmarking"),
     ("Experiment E10", "run_e10_mechanism_ablation.py", "Robustness mechanism ablation & forensic archive", ["--archive"]),
+    ("Phase 4H-R", "run_phase4hr_baselines.py", "Contemporary baseline closure (NAGLA & Standard AGLA)"),
     ("Publication & Audit", "run_verification_and_figures.py", "Publication Figures Panels A-D & 20/20 numerical audit"),
 ]
+
 
 def main():
     parser = argparse.ArgumentParser(description="Run all GeoAGLA experiments end-to-end")

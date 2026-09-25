@@ -18,6 +18,7 @@ This directory organizes all experimental modules for **GeoAGLA** according to t
 | **E6** | **Geometry-Opportunity Gate A Suite** | Quantify geometry opportunity gap across STFT configurations, evaluate 36 held-out cases, and audit neutral mode exactness. | `03_geometry_opportunity_gate_a/01_build_e6_ledger.py` .. `08_run_neutral_mode_audit.py`<br>`04_neutral_mode_exactness_audit/` | `python reproduce/run_e6_gate_a_heldout.py` |
 | **E7** | **Computational Cost Microbenchmarking** | Benchmark per-iteration FLOPs and wall-clock times comparing isolated Rayleigh–Ritz step vs FFT projections and standard GLA. | `07_computational_cost_microbench/01_computational_cost_and_crosscheck.py`<br>`02_runtime_provenance_and_profiling.py`<br>`03_isolated_ritz_microbench.py` | `python reproduce/run_e7_microbench.py` |
 | **E10** | **Robustness Mechanism Ablation Suite** | Rigorous ablation suite decomposing the 6 architectural mechanisms of GeoAGLA, locked test, canonical test, and forensic bitwise archive. | `08_e10_robustness_mechanism_ablation/01_run_e10_ablation.py`<br>`03_run_e10r_locked.py`<br>`04_run_e10r2_canonical.py`<br>`11_e10r2f_final_archive.py` | `python reproduce/run_e10_mechanism_ablation.py` |
+| **Phase 4H-R** | **Contemporary Baseline Closure** | Benchmark GeoAGLA against published NAGLA and standard AGLA under frozen protocol (4,752 instances, 23,760 method-runs, cluster bootstrap B=5,000). | `09_phase4hr_contemporary_baselines/01_freeze_baseline_parameters.py` .. `04_analyze_and_report.py` | `python reproduce/run_phase4hr_baselines.py` |
 
 ---
 
@@ -62,6 +63,12 @@ This directory organizes all experimental modules for **GeoAGLA** according to t
 - **`04_run_e10r2_canonical.py`**: Canonical 202-file baseline test with $10^{-5}$ threshold.
 - **`11_e10r2f_final_archive.py`**: Bitwise cryptographic packaging and forensic closure verification (SHA-256 verified, 0 failures).
 
+### [`09_phase4hr_contemporary_baselines/`](09_phase4hr_contemporary_baselines) — Phase 4H-R Contemporary Baselines
+- **`01_freeze_baseline_parameters.py`**: Gate B0 pre-registration and cryptographic manifest.
+- **`02_validate_baseline_gates.py`**: Gates B1-B4 determinism, recurrence equivalence, and common init audit.
+- **`03_run_phase4hr_baselines.py`**: Complete 5-method paired ledger generation (GLA, FGLA_opt, Published AGLA, Published NAGLA, Online Full).
+- **`04_analyze_and_report.py`**: Gate B5 success recomputation, paired rescue, cluster bootstrap (B=5,000), audit report, and claim firewall.
+
 ---
 
 ## 3. End-to-End Master Execution
@@ -71,7 +78,13 @@ To run all experiments sequentially in an automated pipeline:
 python reproduce/run_all_experiments.py
 ```
 
+To run Phase 4H-R contemporary baseline closure specifically:
+```bash
+python reproduce/run_phase4hr_baselines.py
+```
+
 To re-generate all publication figures (Panels A–D) and verify the 20/20 numerical manuscript claims:
 ```bash
 python reproduce/run_verification_and_figures.py
 ```
+

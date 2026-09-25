@@ -1,0 +1,6 @@
+Platform: Windows-11-10.0.26200-SP0
+Python: 3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+NumPy: 2.3.3
+Pandas: 2.3.2
+Timestamp UTC: 2026-09-25 10:15:11 UTC
+Protocol: Phase4H-R_Contemporary_Baselines_v1.0

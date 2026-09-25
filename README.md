@@ -59,7 +59,8 @@ GeoAGLA/
 │   ├── 05_real_audio_basin_transfer/        # Experiment E5 (basin sweep & checkpoint runner)
 │   ├── 06_multi_horizon_online_adaptation/  # Experiments E3, E4 (maturation, C1-C4, long-horizon)
 │   ├── 07_computational_cost_microbench/    # Experiment E7 (isolated Ritz microbench)
-│   └── 08_e10_robustness_mechanism_ablation/# Experiment E10 (E10, E10-R, E10-R2, E10-R2F archive)
+│   ├── 08_e10_robustness_mechanism_ablation/# Experiment E10 (E10, E10-R, E10-R2, E10-R2F archive)
+│   └── 09_phase4hr_contemporary_baselines/  # Phase 4H-R (Contemporary baselines: NAGLA & Standard AGLA)
 │
 ├── scripts/                   # Utility scripts & figure generators
 │   ├── data/                  # Dataset preparation and stratified sampling
@@ -74,7 +75,9 @@ GeoAGLA/
 │   ├── 05_real_audio_basin_transfer/
 │   ├── 06_multi_horizon_online_adaptation/
 │   ├── 07_computational_cost_microbench/
-│   └── 08_e10_robustness_mechanism_ablation/
+│   ├── 08_e10_robustness_mechanism_ablation/
+│   └── 09_phase4hr_contemporary_baselines/
+
 │
 ├── tests/                     # Automated unit and forensic test suites (30 tests, 100% PASS)
 ├── run_tests.py               # Test runner (compatible with unittest & pytest)
@@ -297,6 +300,35 @@ python reproduce/run_verification_and_figures.py
   - `E10R2F_FINAL_ARCHIVE.zip` (29.13 MB, SHA-256: `3f94f44e...`)
   - `results/08_e10_robustness_mechanism_ablation/`
 - **Expected Results**: All 6 variants confirm that passive Ritz tracking, dynamic envelope damping, and monotonic safeguard fallback are all necessary and mutually reinforcing; zero oracle leakage ($12/12$ PASS); bitwise event cardinality verified ($834{,}240$ rows).
+
+---
+
+### Phase 4H-R: Contemporary Baseline Closure (NAGLA & Standard AGLA)
+- **Scientific Goal**: Benchmark GeoAGLA (Online Full) against published contemporary momentum baselines from the signal processing literature under the frozen real-audio robustness protocol (4,752 instances, 23,760 method-runs):
+  1. **Published NAGLA** ($H=2$, Nesterov recurrence $\alpha_i = \frac{i}{i+3}$ from Perraudin et al., WASPAA 2013).
+  2. **Published Standard AGLA** ($\alpha=0.99, \beta=0.0, \gamma=1.0$ from Perraudin et al., 2013 Section 3.1).
+  3. **Oracle-optimal FGLA** ($\alpha^\star$ from spectral minimax theory).
+  4. **GLA** (unaccelerated alternating projections).
+  5. **Online Full (GeoAGLA)** (Rayleigh–Ritz $p=3, K=8$, dynamic envelope, energy safeguard rollback).
+- **Technical Gates (B0–B5)**: Parameters pre-registered prior to evaluation, determinism diff $= 0.00$, literature recurrence equivalence diff $= 0.00$, 0 common initialization drift, 0 recomputed success flag mismatches.
+- **Data Required**: Frozen canonical replication ledger `data/reproducibility/basin_musan_odd/basin_results.csv`.
+- **Execution Commands**:
+  ```bash
+  # Run entire Phase 4H-R pipeline (Gates B0-B5, 5-method pairing, cluster bootstrap):
+  python reproduce/run_phase4hr_baselines.py
+
+  # Or run step-by-step:
+  python experiments/09_phase4hr_contemporary_baselines/01_freeze_baseline_parameters.py
+  python experiments/09_phase4hr_contemporary_baselines/02_validate_baseline_gates.py
+  python experiments/09_phase4hr_contemporary_baselines/03_run_phase4hr_baselines.py
+  python experiments/09_phase4hr_contemporary_baselines/04_analyze_and_report.py
+  ```
+- **Primary Outputs**:
+  - `experiments/09_phase4hr_contemporary_baselines/results/phase4hr_baseline_ledger.csv` (23,760 paired rows)
+  - `experiments/09_phase4hr_contemporary_baselines/audit/PHASE4HR_BASELINE_AUDIT.md` (Audit report, ALL GATES PASSED)
+  - `experiments/09_phase4hr_contemporary_baselines/audit/CLAIM_FIREWALL.md` (Strict manuscript claim phrasing rules)
+  - `experiments/09_phase4hr_contemporary_baselines/provenance/SHA256SUMS.txt`
+- **Expected Results**: Online Full achieves **73.30%** empirical convergence success, significantly outperforming Published NAGLA (**64.90%**, $\Delta = +8.40\text{ pp}$ [95% CI: $+6.67, +10.12]\text{ pp}$), Published Standard AGLA (**59.01%**, $\Delta = +14.29\text{ pp}$ [95% CI: $+12.65, +15.99]\text{ pp}$), and FGLA (**54.90%**, $\Delta = +18.39\text{ pp}$ [95% CI: $+17.03, +19.76]\text{ pp}$) due to passive geometric adaptation and safeguard fallback.
 
 ---
 

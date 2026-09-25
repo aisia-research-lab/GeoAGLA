@@ -1,0 +1,6 @@
+method_A,method_B,n_pairs,fail_fail,fail_success,success_fail,success_success,net_rescue_fraction,net_rescue_pp
+FGLA_opt,Published_NAGLA,4752,1432,711,236,2373,0.1,10.0
+FGLA_opt,Published_AGLA,4752,1579,564,369,2240,0.041,4.1
+FGLA_opt,Online_Full,4752,1254,889,15,2594,0.1839,18.39
+Published_NAGLA,Online_Full,4752,969,699,300,2784,0.084,8.4
+Published_AGLA,Online_Full,4752,1071,877,198,2606,0.1429,14.29

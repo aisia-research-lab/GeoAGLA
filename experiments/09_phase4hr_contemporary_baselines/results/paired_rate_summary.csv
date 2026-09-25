@@ -1,0 +1,6 @@
+method_A,method_B,n_eligible,B_beats_A_fraction,median_qB_over_qA,p10_ratio,p90_ratio
+FGLA_opt,Published_NAGLA,3084,0.5256,0.9999,0.997,1.0029
+FGLA_opt,Published_AGLA,2804,0.3987,1.0005,0.9977,1.0036
+FGLA_opt,Online_Full,4752,0.3979,1.0006,0.9964,1.0033
+Published_NAGLA,Online_Full,3084,0.323,1.0011,0.9963,1.0035
+Published_AGLA,Online_Full,2804,0.4237,1.0004,0.9955,1.0032
