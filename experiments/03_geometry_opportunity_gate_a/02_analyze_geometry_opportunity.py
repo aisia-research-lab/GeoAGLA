@@ -28,7 +28,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2] if Path(__file__).resolve().parents[1].name == "experiments" else Path(__file__).resolve().parents[1]
 
 def analyze_opportunity(ledger_path: str | Path, out_dir: str | Path, denom_tol: float = 1e-8):
     out = Path(out_dir)

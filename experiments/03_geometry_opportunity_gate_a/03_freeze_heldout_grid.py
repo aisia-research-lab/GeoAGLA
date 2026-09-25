@@ -21,7 +21,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from common import load_json, dump_json, sha256_file
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2] if Path(__file__).resolve().parents[1].name == "experiments" else Path(__file__).resolve().parents[1]
 
 
 def freeze_heldout_grid(spec_path: str | Path, out_path: str | Path, sha_path: str | Path | None = None):

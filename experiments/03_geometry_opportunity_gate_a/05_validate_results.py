@@ -21,7 +21,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from common import read_csv, dump_json, fnum
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2] if Path(__file__).resolve().parents[1].name == "experiments" else Path(__file__).resolve().parents[1]
 
 
 def audit_ledger(ledger_rows: list[dict], name: str = "canonical") -> list[dict]:

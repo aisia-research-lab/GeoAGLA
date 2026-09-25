@@ -20,7 +20,7 @@ from typing import Any
 import numpy as np
 
 # Ensure src is in sys.path
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2] if Path(__file__).resolve().parents[1].name == "experiments" else Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "src"
 SCRIPTS_DIR = ROOT / "scripts"
 for p in (SRC_DIR, SCRIPTS_DIR):

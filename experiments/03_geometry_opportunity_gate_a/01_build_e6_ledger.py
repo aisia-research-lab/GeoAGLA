@@ -21,7 +21,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from common import load_json, dump_json, write_csv, fnum
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2] if Path(__file__).resolve().parents[1].name == "experiments" else Path(__file__).resolve().parents[1]
 
 DEFAULT_H2_PATHS = [
     ROOT / "data" / "frozen" / "h2_multi.json",

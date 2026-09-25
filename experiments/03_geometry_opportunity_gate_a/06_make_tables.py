@@ -20,7 +20,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from common import load_json, write_csv
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2] if Path(__file__).resolve().parents[1].name == "experiments" else Path(__file__).resolve().parents[1]
 
 
 def format_val(v, prec=4):

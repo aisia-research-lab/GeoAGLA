@@ -1,0 +1,68 @@
+{
+  "theory_validation": {
+    "geometry_n": 202,
+    "geometry_median_relative_error": 0.0014384616912527502,
+    "geometry_max_relative_error": 0.0028971462244748,
+    "rate_n": 202,
+    "observed_hierarchy_pass_n": 173,
+    "observed_hierarchy_pass_fraction": 0.8564356435643564,
+    "median_final_error_reduction_fgla_vs_gla": 5.086226680399593,
+    "median_final_error_reduction_oracle_vs_gla": 8.966892066470692
+  },
+  "canonical_rate_horizons": {
+    "60": {
+      "n": 15,
+      "online_beat_fraction": 0.8666666666666667,
+      "median_q_ratio_online_fgla": 0.9867346179300411,
+      "poor_rate_fit_fraction": 0.26666666666666666
+    },
+    "120": {
+      "n": 15,
+      "online_beat_fraction": 0.4666666666666667,
+      "median_q_ratio_online_fgla": 1.0036876471609344,
+      "poor_rate_fit_fraction": 0.5333333333333333
+    },
+    "180": {
+      "n": 15,
+      "online_beat_fraction": 0.4,
+      "median_q_ratio_online_fgla": 1.0126131574050852,
+      "poor_rate_fit_fraction": 0.3333333333333333
+    },
+    "360": {
+      "n": 15,
+      "online_beat_fraction": 0.4,
+      "median_q_ratio_online_fgla": 1.0130989292969406,
+      "poor_rate_fit_fraction": 0.5333333333333333
+    }
+  },
+  "basin_original": {
+    "n_files": 199,
+    "n_runs": 4680,
+    "online_success_pct": 74.93589743589743,
+    "fgla_success_pct": 54.871794871794876,
+    "difference_pp": 20.06410256410256,
+    "paired_success_n": 2541,
+    "paired_online_beat_pct": 34.47461629279811,
+    "paired_median_q_ratio": 1.0009250181473124,
+    "safeguard_failures": 0,
+    "file_cluster_95ci_difference_pp": [
+      18.61111111111111,
+      21.50814053127678
+    ]
+  },
+  "basin_musan_odd": {
+    "n_files": 202,
+    "n_runs": 4752,
+    "online_success_pct": 73.29545454545455,
+    "fgla_success_pct": 54.90319865319865,
+    "difference_pp": 18.392255892255893,
+    "paired_success_n": 2594,
+    "paired_online_beat_pct": 35.73631457208944,
+    "paired_median_q_ratio": 1.000905346503529,
+    "safeguard_failures": 0,
+    "file_cluster_95ci_difference_pp": [
+      16.962025316455694,
+      19.799498746867165
+    ]
+  }
+}

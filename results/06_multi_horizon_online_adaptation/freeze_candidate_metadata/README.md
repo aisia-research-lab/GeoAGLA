@@ -1,7 +1,7 @@
-# Lead Researcher — Final Freeze Candidate (v1.0)
+# Student B — Final Freeze Candidate (v1.0)
 ## ICLR 2027: *Geometry Determines Acceleration in Phase Retrieval*
 
-This directory (`Lead Researcher_Final_Freeze_Candidate_v1`) represents the definitive, fully reconciled scientific release candidate from Lead Researcher, prepared strictly in accordance with `Lead Researcher_Final_Reconciliation_Assignment_Before_Freeze.md`.
+This directory (`StudentB_Final_Freeze_Candidate_v1`) represents the definitive, fully reconciled scientific release candidate from Student B, prepared strictly in accordance with `StudentB_Final_Reconciliation_Assignment_Before_Freeze.md`.
 
 ### Core Deliverables
 - `corrected_final_report.md`: Fully reconciled narrative report incorporating Tasks F1–F6.
