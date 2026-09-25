@@ -372,9 +372,6 @@ When `reproduce/run_verification_and_figures.py` completes, high-resolution vect
 
 ---
 
-## 7. Citation & Academic Reference
-
-```bibtex
 @inproceedings{geoagla2027iclr,
   title     = {Geometry Determines Local Acceleration in Griffin--Lim Phase Retrieval},
   booktitle = {International Conference on Learning Representations (ICLR)},
