@@ -370,11 +370,3 @@ When `reproduce/run_verification_and_figures.py` completes, high-resolution vect
 4. `panel_D_replicated_robustness.png` / `.pdf`: Basin convergence success rates comparing Online vs FGLA across $9{,}432$ total runs.
 5. `Figure_Main_ABCD.png` / `.pdf`: Full two-column $2 \times 2$ composite evidence figure matching the manuscript layout.
 
----
-
-@inproceedings{geoagla2027iclr,
-  title     = {Geometry Determines Local Acceleration in Griffin--Lim Phase Retrieval},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  year      = {2027}
-}
-```
