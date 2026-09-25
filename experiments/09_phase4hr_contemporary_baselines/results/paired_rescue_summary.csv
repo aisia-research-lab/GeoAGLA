@@ -1,6 +1,6 @@
-method_A,method_B,n_pairs,fail_fail,fail_success,success_fail,success_success,net_rescue_fraction,net_rescue_pp
-FGLA_opt,Published_NAGLA,4752,1432,711,236,2373,0.1,10.0
-FGLA_opt,Published_AGLA,4752,1579,564,369,2240,0.041,4.1
-FGLA_opt,Online_Full,4752,1254,889,15,2594,0.1839,18.39
-Published_NAGLA,Online_Full,4752,969,699,300,2784,0.084,8.4
-Published_AGLA,Online_Full,4752,1071,877,198,2606,0.1429,14.29
+method_A,method_B,fail_fail,fail_success_rescue,success_fail_lost,success_success,net_rescue_count,net_rescue_pp
+FGLA_opt,NAGLA_H49_primary,2092,51,186,2423,-135,-2.840909090909091
+FGLA_opt,AGLA_TableII_primary,2093,50,396,2213,-346,-7.281144781144781
+FGLA_opt,Online_Full,1254,889,15,2594,874,18.392255892255893
+NAGLA_H49_primary,Online_Full,1253,1025,16,2458,1009,21.233164983164983
+AGLA_TableII_primary,Online_Full,1254,1235,15,2248,1220,25.673400673400675

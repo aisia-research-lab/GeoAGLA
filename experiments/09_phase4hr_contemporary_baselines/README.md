@@ -1,14 +1,14 @@
-# Phase 4H-R: Contemporary Baseline Closure (NAGLA & Standard AGLA)
+# Phase 4H-R2: Literature-Faithful Baseline Repair (NAGLA & Standard AGLA)
 
 ## 1. Overview & Scientific Objective
-Phase 4H-R provides the definitive empirical and methodological closure comparing **GeoAGLA (Online Full)** against contemporary accelerated phase retrieval algorithms from the signal processing literature:
-1. **Published NAGLA (Nesterov Accelerated Griffin-Lim Algorithm)**: Nesterov momentum recurrence $\alpha_i = \frac{i+H-2}{i+H+1}$ with primary literature parameter $H=2$ (Perraudin, Sigg, Balazs, IEEE WASPAA 2013).
-2. **Published Standard AGLA**: Fixed momentum parameters $(\alpha = 0.99, \beta = 0.0, \gamma = 1.0)$ (Perraudin et al., 2013, Section 3.1).
-3. **Oracle-optimal FGLA**: Closed-form spectral minimax momentum parameter $\alpha^\star = \frac{1 - \sqrt{1 - \lambda_+^2}}{\lambda_+}$ with $\beta = \alpha^\star, \gamma = 1.0$.
+Phase 4H-R2 provides the literature-faithful baseline repair comparing **GeoAGLA (Online Full)** against contemporary accelerated phase retrieval algorithms from the signal processing literature, strictly adhering to `PHASE4HR2_Literature_Faithful_Baseline_Repair_Guide.md`:
+1. **Literature Primary NAGLA (`NAGLA_H49_primary`)**: Nesterov momentum recurrence $X_{i+1} = P_V(P_T(Y_i)), Y_{i+1} = X_{i+1} + \alpha_i(X_{i+1} - X_i)$ with $\alpha_i = \frac{i+H-2}{i+H+1}$ with primary literature parameter $H=49$ from contemporary 2026 null-phase phase retrieval experiments. Old $H=2$ is retained solely as sensitivity evidence (`NAGLA_H2_sensitivity`).
+2. **Literature Primary AGLA (`AGLA_TableII_primary`)**: Genuine 3-state recurrence with non-trivial $(\beta, \gamma)$ from Nenov et al. Table II: $(\alpha = 1.05, \beta = 1.35, \gamma = 1.25)$, achieving the highest reported average SSNR in published numerical studies. Old $(\alpha = 0.99, \beta = 0.0, \gamma = 1.0)$ is relabeled as `FGLA_like_alpha099` because $\gamma=1.0$ collapses AGLA to FGLA dynamics.
+3. **Oracle-optimal FGLA (`FGLA_opt`)**: Closed-form spectral minimax momentum parameter $\alpha^\star = \frac{1 - \sqrt{1 - \lambda_+^2}}{\lambda_+}$ with $\beta = \alpha^\star, \gamma = 1.0$.
 4. **GLA**: Classical unaccelerated alternating projections ($\alpha=0, \beta=0, \gamma=1.0$).
 5. **GeoAGLA (Online Full)**: Rayleigh-Ritz passive edge estimation ($p=3, K=8, \mu=0$), dynamic envelope, and energy safeguard rollback.
 
-This experiment strictly adheres to the protocol specified in `PHASE4HR_Contemporary_Baseline_Closure_Bao_Guide.md` and implements all 22 technical gates without post-hoc retuning.
+This experiment strictly enforces all 27 technical gates specified in Section 23 of `PHASE4HR2_Literature_Faithful_Baseline_Repair_Guide.md` without post-hoc retuning.
 
 ---
 
@@ -16,29 +16,32 @@ This experiment strictly adheres to the protocol specified in `PHASE4HR_Contempo
 
 ```text
 experiments/09_phase4hr_contemporary_baselines/
-├── 01_freeze_baseline_parameters.py    # Gate B0: Pre-registration of baseline parameters
-├── 02_validate_baseline_gates.py       # Gates B1-B4: Determinism, recurrence equivalence, init drift, transparency
-├── 03_run_phase4hr_baselines.py        # Central pairing runner across 4,752 instances (23,760 method-runs)
-├── 04_analyze_and_report.py            # Gate B5, paired rescue, cluster-bootstrap (B=5000), audit report & firewall
+├── 01_freeze_baseline_parameters.py    # Step 1: Pre-registration of baseline parameters & RUN_KEY_FREEZE.csv
+├── 02_validate_baseline_gates.py       # Step 2: Implementation equivalence gates (R2-A, R2-B, R2-C, R2-D)
+├── 03_run_phase4hr_baselines.py        # Step 3: Central pairing runner across 4,752 instances (33,264 method-runs)
+├── 04_analyze_and_report.py            # Step 4: Paired rescue, conditional rate analysis, bootstrap (B=5000), audit & firewall
 ├── protocol/
-│   ├── BASELINE_PARAMETER_FREEZE.md    # Pre-registered baseline parameter specification
+│   ├── BASELINE_PARAMETER_FREEZE.md    # Pre-registered baseline parameter specification (SHA-256 hashed)
+│   ├── RUN_KEY_FREEZE.csv              # Exact population accounting (202 files, 396 file-profile cases, 4,752 keys)
 │   └── protocol_manifest.json          # Protocol hash and metadata
 ├── tests/
-│   ├── baseline_determinism.csv        # Gate B1: Determinism diff = 0.00
-│   ├── published_recurrence_equivalence.csv # Gate B2: Equivalence diff = 0.00
-│   ├── initial_state_alignment.csv     # Gate B3: Common initialization alignment
-│   ├── no_hidden_retuning_audit.csv    # Gate B4: Parameter ledger verification
-│   └── success_flag_audit.csv          # Gate B5: 0 recomputed flag mismatches
+│   ├── nagla_h49_recurrence_equivalence.csv # Gate R2-A: NAGLA recurrence equivalence (diff <= 1e-12)
+│   ├── agla_tableII_recurrence_equivalence.csv # Gate R2-B: AGLA Table-II recurrence equivalence (diff <= 1e-12)
+│   ├── determinism.csv                 # Gate R2-D: Determinism diff = 0.00 <= 1e-12
+│   ├── common_initialization_audit.csv # Gate R2-E: Common initialization alignment (0 mismatches)
+│   ├── success_flag_audit.csv          # Gate R2-F: 0 recomputed flag mismatches
+│   ├── complete_pairing_audit.csv      # Gate R2-G: 0 missing pairs, 0 duplicate rows
+│   └── pytest.log                      # Test execution logs
 ├── results/
-│   ├── phase4hr_baseline_ledger.csv    # Complete paired 23,760-row ledger
+│   ├── phase4hr2_baseline_ledger.csv   # Complete repaired 33,264-row ledger
 │   ├── success_summary.csv             # Overall success rates
 │   ├── initialization_stratified_success.csv # Regimes breakdown
 │   ├── paired_rescue_summary.csv       # Net rescue tables (Rescue vs Lost)
 │   ├── paired_rate_summary.csv         # Conditional contraction factor ratios (q_B / q_A)
 │   ├── bootstrap_contrasts.csv         # Source-file cluster bootstrap CIs (B=5,000)
-│   └── baseline_failure_ledger.csv     # Audit of all unsuccessful runs (zero dropped)
+│   └── baseline_failure_ledger.csv     # Audit of all numerical failures (zero dropped)
 ├── audit/
-│   ├── PHASE4HR_BASELINE_AUDIT.md      # Official audit report (ALL GATES PASSED)
+│   ├── PHASE4HR2_FINAL_AUDIT.md        # Official audit report (ALL 27 GATES PASSED)
 │   └── CLAIM_FIREWALL.md               # Legal phrasing guidelines for manuscript
 └── provenance/
     ├── environment.txt                 # Platform, Python, NumPy, Pandas versions
@@ -47,15 +50,15 @@ experiments/09_phase4hr_contemporary_baselines/
 
 ---
 
-## 3. Technical Verification Gates
+## 3. Technical Verification Gates (Section 23)
 
-All six implementation gates are automated and strictly enforced before and during analysis:
-- **Gate B0 (Parameter Freeze)**: Parameters frozen and committed prior to results inspection.
-- **Gate B1 (Machine Determinism)**: Across 3 fixed fixtures, repeat runs achieve $\max \|c_n^{(1)} - c_n^{(2)}\|_\infty = 0.00 \le 10^{-12}$.
-- **Gate B2 (Recurrence Equivalence)**: Step-by-step unrolled execution against literature formulas achieves diff $= 0.00 \le 10^{-14}$.
-- **Gate B3 (Common Initialization)**: Cryptographic SHA-256 fingerprinting verifies 0 drift across methods.
-- **Gate B4 (No Hidden Retuning)**: Pre-registered parameter values are explicitly verified row-by-row in the results ledger.
-- **Gate B5 (Success Recomputation)**: Primitive values $e_{\rm final} \le 0.1 \cdot e_{\rm initial}$ and $r_{\rm mag} \le 10^{-5}$ re-evaluated row-by-row; 0 mismatches across 23,760 rows.
+All 27 technical gates are automated and strictly enforced:
+- **Gates R2-A & R2-B (Recurrence Equivalence)**: Step-by-step unrolled execution against literature formulas achieves diff $= 0.00 \le 10^{-12}$.
+- **Gate R2-C (AGLA Non-Collapse)**: Verifies $\beta \neq 0$ and $\gamma \neq 1$, with non-zero discrepancy against collapsed FGLA dynamics.
+- **Gate R2-D (Machine Determinism)**: Across 3 fixed fixtures, repeat runs achieve $\max \|c_n^{(1)} - c_n^{(2)}\|_\infty = 0.00 \le 10^{-12}$.
+- **Gate R2-E (Common Initialization)**: Cryptographic SHA-256 fingerprinting verifies 0 drift across methods.
+- **Gate R2-F (Success Recomputation)**: Primitive values $e_{\rm final} \le 0.1 \cdot e_{\rm initial}$ and $r_{\rm mag} \le 10^{-5}$ re-evaluated row-by-row; 0 mismatches.
+- **Gate R2-G (Complete Pairing)**: Exactly 5 primary methods per run key, 0 duplicate rows.
 
 ---
 

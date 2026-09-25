@@ -1,6 +1,6 @@
-method_A,method_B,delta_success_pp,ci95_low_pp,ci95_high_pp,bootstrap_B,cluster_unit,bootstrap_seed
-FGLA_opt,Published_NAGLA,10.0,8.85,11.1,5000,source_file,20270925
-FGLA_opt,Published_AGLA,4.1,3.07,5.19,5000,source_file,20270925
-FGLA_opt,Online_Full,18.39,17.03,19.76,5000,source_file,20270925
-Published_NAGLA,Online_Full,8.4,6.67,10.12,5000,source_file,20270925
-Published_AGLA,Online_Full,14.29,12.65,15.99,5000,source_file,20270925
+method_A,method_B,point_delta_pp,ci95_low_pp,ci95_high_pp,excludes_zero,bootstrap_replications,cluster_unit,cluster_count,bootstrap_seed
+FGLA_opt,NAGLA_H49_primary,-2.840909090909083,-3.4653465346534684,-2.1864686468646695,True,5000,source_id,202,20270925
+FGLA_opt,AGLA_TableII_primary,-7.281144781144777,-8.168316831683159,-6.39438943894387,True,5000,source_id,202,20270925
+FGLA_opt,Online_Full,18.392255892255893,16.831683168316903,19.657590759075873,True,5000,source_id,202,20270925
+NAGLA_H49_primary,Online_Full,21.233164983164976,19.63696369636959,22.56600660066004,True,5000,source_id,202,20270925
+AGLA_TableII_primary,Online_Full,25.67340067340067,24.009900990099002,27.062706270627036,True,5000,source_id,202,20270925

@@ -1,0 +1,4 @@
+fixture,comparator,iterations,max_abs_diff,tolerance,status
+fixture_101,NAGLA_H49,15,0.0,1e-12,PASS
+fixture_202,NAGLA_H49,15,0.0,1e-12,PASS
+fixture_303,NAGLA_H49,15,0.0,1e-12,PASS
