@@ -1,0 +1,7 @@
+python experiments/pipeline_final_correction_audit/01_c1_capture_ratio_audit.py
+python experiments/pipeline_final_correction_audit/02_c2_signal_scale_censoring.py
+python experiments/pipeline_final_correction_audit/03_c3_runtime_provenance.py
+python experiments/pipeline_final_correction_audit/04_c4_claim_discipline.py
+python experiments/pipeline_final_correction_audit/05_package_and_report.py
+# Or one-line reproducer:
+python reproduce/run_pipeline_final_correction_audit.py

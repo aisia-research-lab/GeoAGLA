@@ -1,0 +1,8 @@
+=== Lead Researcher Next Experiment Pipeline Commands ===
+python scripts/01_build_e6_ledger.py
+python scripts/02_analyze_geometry_opportunity.py
+python scripts/03_freeze_heldout_grid.py
+python scripts/04_run_heldout_experiments.py
+python scripts/05_validate_results.py
+python scripts/06_make_tables.py
+python scripts/07_generate_pipeline_report.py

@@ -1,0 +1,18 @@
+{
+  "status": "PASSED",
+  "verified_case_count": 90,
+  "valid_paired_count": 24,
+  "independent_recomputed_metrics": {
+    "median_delta_oracle_obs": 0.006972081646018757,
+    "median_delta_online_obs": 0.0029902550563402075,
+    "pearson_correlation": 0.785868626456412,
+    "spearman_correlation": 0.7026086956521739,
+    "fgla_beat_fraction": 0.17777777777777778,
+    "fraction_capture_gt_0": 0.6666666666666666,
+    "fraction_capture_ge_50": 0.5,
+    "fraction_capture_ge_80": 0.3333333333333333,
+    "median_raw_capture": 0.369735897623632
+  },
+  "crosscheck_discrepancies": 0,
+  "notes": "Lead Researcher verified that Lead Researcher's E6 ledger is internally consistent and reproducible."
+}

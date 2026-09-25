@@ -1,0 +1,7 @@
+variant,total_runs,success_count,success_rate
+fgla_oracle,48,28,0.5833333333333334
+fixed_1e_oracle,48,16,0.3333333333333333
+online_raw,48,39,0.8125
+online_env,48,38,0.7916666666666666
+online_fallback,48,39,0.8125
+online_full,48,40,0.8333333333333334

@@ -1,0 +1,35 @@
+{
+  "H360": {
+    "horizon": 360,
+    "failure_set_pass_count": 0,
+    "failure_set_total": 29,
+    "F_H_failure_ordering_fraction": 0.0,
+    "combined_202_pass_count": 173,
+    "combined_202_ordering_fraction": 0.8564356435643564,
+    "pairwise_P_fgla_lt_gla": 0.8620689655172413,
+    "pairwise_P_oracle_lt_gla": 0.8275862068965517,
+    "pairwise_P_oracle_lt_fgla": 0.10344827586206896
+  },
+  "H720": {
+    "horizon": 720,
+    "failure_set_pass_count": 15,
+    "failure_set_total": 29,
+    "F_H_failure_ordering_fraction": 0.5172413793103449,
+    "combined_202_pass_count": 188,
+    "combined_202_ordering_fraction": 0.9306930693069307,
+    "pairwise_P_fgla_lt_gla": 0.8620689655172413,
+    "pairwise_P_oracle_lt_gla": 0.896551724137931,
+    "pairwise_P_oracle_lt_fgla": 0.6206896551724138
+  },
+  "H1440": {
+    "horizon": 1440,
+    "failure_set_pass_count": 13,
+    "failure_set_total": 29,
+    "F_H_failure_ordering_fraction": 0.4482758620689655,
+    "combined_202_pass_count": 186,
+    "combined_202_ordering_fraction": 0.9207920792079208,
+    "pairwise_P_fgla_lt_gla": 0.9310344827586207,
+    "pairwise_P_oracle_lt_gla": 0.8620689655172413,
+    "pairwise_P_oracle_lt_fgla": 0.5172413793103449
+  }
+}

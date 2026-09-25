@@ -1,0 +1,24 @@
+[
+  {
+    "file": "chirp.wav",
+    "source_sample_rate": 16000,
+    "target_sample_rate": 16000,
+    "source_num_samples": 8192,
+    "resampled_num_samples": 8192,
+    "excerpt_start_resampled": 0,
+    "excerpt_length": 4096,
+    "excerpt_rms_before_norm": 0.5840720876661043,
+    "excerpt_peak_before_norm": 1.0006391778588295
+  },
+  {
+    "file": "harmonic.wav",
+    "source_sample_rate": 16000,
+    "target_sample_rate": 16000,
+    "source_num_samples": 8192,
+    "resampled_num_samples": 8192,
+    "excerpt_start_resampled": 0,
+    "excerpt_length": 4096,
+    "excerpt_rms_before_norm": 0.6785321181874632,
+    "excerpt_peak_before_norm": 1.002382680773735
+  }
+]

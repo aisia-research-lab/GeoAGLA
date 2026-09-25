@@ -1,0 +1,30 @@
+{
+  "total_valid_cases": 202,
+  "geometry": {
+    "median_relative_error": 0.0014439131485964477,
+    "max_relative_error": 0.002897146224474864,
+    "fraction_near_degenerate": 1.0
+  },
+  "rate_prediction": {
+    "gla_median_rel_error": 0.0014105109041592525,
+    "fgla_median_rel_error": 0.0008992878845636915,
+    "oracle_median_rel_error": 0.0009217068269106494
+  },
+  "observed_hierarchy": {
+    "overall_pass_count": 173,
+    "overall_total": 202,
+    "overall_pass_fraction": 0.8564356435643564
+  },
+  "paired_finite_horizon_gain": {
+    "fgla_median_ratio": 5.086226680399593,
+    "fgla_ci_95": [
+      3.997994540330082,
+      6.148885538954749
+    ],
+    "oracle_median_ratio": 8.966892066470693,
+    "oracle_ci_95": [
+      6.557691712697245,
+      12.015133720605698
+    ]
+  }
+}

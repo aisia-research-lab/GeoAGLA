@@ -1,0 +1,6 @@
+Operating System: Windows 11 (10.0.26200)
+Platform Machine: AMD64
+Python Version: 3.13.5
+NumPy Version: 2.3.3
+Pandas Version: 2.3.2
+Execution Timestamp: 2026-09-25 14:26:16 UTC

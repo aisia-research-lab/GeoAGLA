@@ -1,0 +1,28 @@
+{
+  "per_memory": {
+    "1": {
+      "n": 36,
+      "median_rel_error": 0.005653619220904673,
+      "p90_rel_error": 0.00823999695650663,
+      "median_under_fraction": 1.0,
+      "median_valid_updates": 219.0
+    },
+    "3": {
+      "n": 36,
+      "median_rel_error": 0.002278576909434459,
+      "p90_rel_error": 0.005065769592597904,
+      "median_under_fraction": 1.0,
+      "median_valid_updates": 219.0
+    },
+    "5": {
+      "n": 36,
+      "median_rel_error": 0.004749367280245202,
+      "p90_rel_error": 0.010911047855729791,
+      "median_under_fraction": 0.08181818181818182,
+      "median_valid_updates": 219.0
+    }
+  },
+  "selected_memory": 3,
+  "selection_rule": "minimum p90 tail relative error; ties favor more valid updates",
+  "raw_estimate_is_certified_upper_bound": false
+}
