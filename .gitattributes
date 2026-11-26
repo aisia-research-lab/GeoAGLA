@@ -1,0 +1,2 @@
+# Hash-verified inputs: never convert line endings, or their SHA256 checks fail on checkout.
+inputs/** -text
