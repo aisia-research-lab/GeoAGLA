@@ -18,7 +18,8 @@ GeoAGLA/
 │   └── solver_parameters.json       # STFT profiles, solver settings, and evaluation budgets
 ├── inputs/
 │   ├── manifest.json                # 12 MUSAN source IDs, excerpt offsets, lengths and RMS values
-│   └── prior_audit.json             # Source-file and decoded-PCM SHA256 for every manifest entry
+│   ├── prior_audit.json             # Source-file and decoded-PCM SHA256 for every manifest entry
+│   └── prior_spectrum.jsonl         # Frozen numerical spectral edge L for the 24 geometries (oracle/diagnostics only)
 ├── src/geometry_gla/                # Core Python package
 │   ├── algorithms/                  # AGLA, NAGLA, exact minimax/mismatch theory, online policies
 │   ├── estimators/                  # Passive Rayleigh-Ritz dominant-edge estimator
@@ -127,6 +128,14 @@ python -m experiments.audit_ledger --raw outputs/calls_audio.jsonl --mode calls 
 python -m experiments.audit_ledger --raw outputs/wall_audio.jsonl --mode wall --expected-keys 192 --out outputs/wall_audit.json
 ```
 
+**Reproducing the manuscript tables (Tables I, II and V).** Raw ledgers and result tables are not distributed with this repository; they are regenerated with the commands above using these settings:
+- `--spectra inputs/prior_spectrum.jsonl` (the frozen numerical spectrum used in the manuscript, 24 geometries) instead of a freshly computed spectrum file. It is used only by `OneEdgeOracle` and the tolerance diagnostics, never by `Online`.
+- `--seeds 1` (192 start keys: 144 historical, 24 signal-noise, 24 random-phase), complex128, all 10 methods.
+- Budgets and horizons are fixed in code: calls mode runs 2,884 committed steps for caps 90–2,880; wall mode stops at 1.0 s of synchronized solver time (safety limit 100,000 steps). Primary caps are 360 calls and 200 ms.
+- Hardware: one NVIDIA H200 MIG 2g.35gb partition. Run wall mode with no other job on the same partition; timing on other hardware will differ, while calls-mode success labels should not depend on timing.
+- Run `experiments.parity_check --device cuda:0 --audio-root ...` first; all 16 cases must pass.
+- Record `nvidia-smi` and `pip freeze` alongside your outputs.
+
 ### 6. Rayleigh–Ritz Runtime Microbenchmark
 ```bash
 python -m experiments.ritz_microbench --out outputs/ritz_microbench.json
@@ -150,4 +159,4 @@ spectral-identity (K1) and mismatch-replay (K2) experiments on the 12 manifest f
 The raw JSONL ledgers are not stored in this repository; `raw_ledger_sha256.txt` lists their SHA256 checksums,
 The corresponding experiments in this repository are `experiments.spectral_geometry` (K1) and
 `experiments.local_acceleration` (K2); their outputs are not guaranteed to be byte-identical to the archived ledgers.
-Aggregate tables for the GPU matched-budget benchmark are not yet included.
+Results of the GPU matched-budget benchmark are not distributed; see "Reproducing the manuscript tables" in Section 5.
