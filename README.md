@@ -136,6 +136,20 @@ python -m experiments.audit_ledger --raw outputs/wall_audio.jsonl --mode wall --
 - Run `experiments.parity_check --device cuda:0 --audio-root ...` first; all 16 cases must pass.
 - Record `nvidia-smi` and `pip freeze` alongside your outputs.
 
+Environment of the manuscript run (from the run's own configuration record):
+
+| Item | Value |
+|---|---|
+| GPU | NVIDIA H200, one MIG `2g.35gb` slice (32 SMs, 33,280 MiB); other MIG slices on the same physical node were in use by unrelated jobs, none on this slice |
+| Driver / CUDA | NVIDIA driver 580.126.20 (recorded on the same node after the run), CUDA 13.0, cuDNN 9.24 |
+| OS | Ubuntu 24.04.4 LTS, Linux 6.8.0-106-generic |
+| Python / packages | Python 3.12.13, PyTorch 2.14.0+cu130, NumPy 2.5.3, SciPy 1.18.1, soundfile 0.14.0 |
+| Threads | `OMP_NUM_THREADS=1`, `OPENBLAS_NUM_THREADS=1`, `MKL_NUM_THREADS=1`, `torch.set_num_threads(1)` |
+| Run layout | one job, no sharding, a single timing repeat; calls mode, then wall mode, on the same slice |
+| Checks | GPU parity 16/16 (max state discrepancy 5.45e-11); audit PASS in both modes, 0 failed records, 11,520 calls-mode and 9,600 wall-mode budget rows |
+
+That run used the frozen experiment package from which this repository was derived (same manifest, spectrum, seeds and methods; `OnlineGram0C` there is `OnlineGram` here), not the scripts in this repository verbatim.
+
 ### 6. Rayleigh–Ritz Runtime Microbenchmark
 ```bash
 python -m experiments.ritz_microbench --out outputs/ritz_microbench.json
