@@ -1,6 +1,0 @@
-environment,device,signal_length,STFT_configuration,method,mean_ms_per_iteration,relative_to_FGLA,source_file
-Interactive Notebook (Jupyter),"Intel/AMD CPU (warm cache, high turbo frequency)",2048,"W=256, hop=32 (Regime 8x)",FGLA,4.256,1.0,Notebook Cell Interactive Execution
-Interactive Notebook (Jupyter),"Intel/AMD CPU (warm cache, high turbo frequency)",2048,"W=256, hop=32 (Regime 8x)",Online,3.866,0.908,Notebook Cell Interactive Execution
-Standalone Terminal Process,"Intel/AMD CPU (background system load, CLI overhead)",2048,"W=256, hop=32 (Regime 8x)",FGLA,6.247,1.0,13_b5_cost_and_crosscheck.py
-Standalone Terminal Process,"Intel/AMD CPU (background system load, CLI overhead)",2048,"W=256, hop=32 (Regime 8x)",Online,7.01,1.122,13_b5_cost_and_crosscheck.py
-Current Live Microbenchmark,"Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",2048,"W=256, hop=32 (Regime 8x)",Online (Amortized p=3 Ritz),0.782,1.0026,Live Notebook Execution

@@ -1,3 +1,0 @@
-method,reference_equation,test_steps,max_discrepancy,status
-Published_NAGLA_H2,"alpha_i=(i+H-2)/(i+H+1), y_i=t_i+alpha_i(t_i-t_{i-1}), t_{i+1}=P_S P_M(y_i)",5,0.00e+00,PASS
-Published_Standard_AGLA,"t_{n+1}=(1-gamma)d_n+gamma G(c_n), c_n=t_n+alpha(t_n-t_{n-1}), d_n=t_n+beta(t_n-t_{n-1})",5,0.00e+00,PASS

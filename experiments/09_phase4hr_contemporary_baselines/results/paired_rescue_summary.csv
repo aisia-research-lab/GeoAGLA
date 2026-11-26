@@ -1,6 +1,0 @@
-method_A,method_B,fail_fail,fail_success_rescue,success_fail_lost,success_success,net_rescue_count,net_rescue_pp
-FGLA_opt,NAGLA_H49_primary,2092,51,186,2423,-135,-2.840909090909091
-FGLA_opt,AGLA_TableII_primary,2093,50,396,2213,-346,-7.281144781144781
-FGLA_opt,Online_Full,1254,889,15,2594,874,18.392255892255893
-NAGLA_H49_primary,Online_Full,1253,1025,16,2458,1009,21.233164983164983
-AGLA_TableII_primary,Online_Full,1254,1235,15,2248,1220,25.673400673400675

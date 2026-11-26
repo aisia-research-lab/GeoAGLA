@@ -1,8 +1,7 @@
-"""Small explicit periodic STFT analysis operator for theorem diagnostics.
+"""Small explicit periodic STFT analysis operator for exact matrix diagnostics.
 
-This module intentionally uses an explicit analysis matrix. It is not intended
-for large audio experiments; it makes projector/Jacobian identities transparent
-and deterministic for Phase-1B verification.
+Uses an explicit analysis matrix to make projector and Jacobian identities
+transparent and deterministic on moderate problem dimensions.
 """
 from __future__ import annotations
 import numpy as np

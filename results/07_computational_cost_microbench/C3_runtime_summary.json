@@ -1,9 +1,0 @@
-{
-  "base_iteration_cost_ms": 0.78,
-  "ritz_update_cost_ms": 0.0159,
-  "ritz_update_frequency_k": 8,
-  "amortized_estimator_cost_ms": 0.002,
-  "total_online_iteration_cost_ms": 0.782,
-  "amortized_overhead_fraction": 0.0026,
-  "preferred_claim": "The computational overhead of the online Ritz estimator is small relative to the cost of the underlying Griffin\u2013Lim iteration."
-}

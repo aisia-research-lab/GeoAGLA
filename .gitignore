@@ -3,91 +3,34 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
-
 # Distribution / packaging
-.Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
 *.egg
-MANIFEST
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
+# Testing & coverage
 .pytest_cache/
-cover/
+.coverage
+htmlcov/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-*/.ipynb_checkpoints/*
-notebooks/
-*.ipynb
-
-# Environments
+# Virtual environments
 .env
 .venv
 env/
 venv/
-ENV/
-env.bak/
-venv.bak/
 
 # IDE & OS files
 .idea/
 .vscode/
 *.swp
-*.swo
-*~
 .DS_Store
 Thumbs.db
 Desktop.ini
 
-# Checksums and cryptographic artifacts
-*.sha256
-*.md5
-*.hash
-
-# Archive files
-*.zip
-*.tar
-*.tar.gz
-*.tgz
-*.rar
-*.7z
-
-# Execution logs and temporary outputs
+# Generated outputs and local datasets
+outputs/
+*.jsonl
 *.log
-tmp/
-temp/
-scratch/
-local_data/
-local_paths.py
-E10R2F_FINAL_ARCHIVE/
+*.zip
+*.tar.gz

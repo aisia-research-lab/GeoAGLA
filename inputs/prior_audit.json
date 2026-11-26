@@ -1,0 +1,127 @@
+{
+  "manifest_sha256": "9f68c2722368ddff2bbbd8b0ac22f5a5f51daeb9ed6823d64cf0c20242dc8cec",
+  "status": "PASS",
+  "sources": {
+    "MUSAN/music-fma-0091.wav": {
+      "source_sha256": "7fd346b2fa06d133b1973db25c513182b9875d744524892356385567e4ad893a",
+      "pcm_sha256": "1788ffbc937aeeaf9d87c64b375436f0ded28873035a749e11f704d8d2770b93",
+      "sample_rate": 16000,
+      "shape": [
+        3852330,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/music-jamendo-0113.wav": {
+      "source_sha256": "a6b0b681a1f411e64cffd6d1af8a8686f4d7d57dbab23e411d70ba5e12f202f3",
+      "pcm_sha256": "6bb9ebf3cdc19cdb89283c9407c8b7eb442fa9f61d0104c4ecc552a48ae7c386",
+      "sample_rate": 16000,
+      "shape": [
+        4035392,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/music-fma-wa-0055.wav": {
+      "source_sha256": "d0e8c718f20b85c7bf4863047d5e25d2bd2b3bf8a335ddb7881e86594abf7f0c",
+      "pcm_sha256": "6450a7d809c7ac3d27898e39f729faba6d5254457a7ef6a1a2bead094e7e381b",
+      "sample_rate": 16000,
+      "shape": [
+        344398,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/music-rfm-0145.wav": {
+      "source_sha256": "a00b90974829d1a1e93622d4874dc694e1524d2a6157bf6f2b24732a17aa171c",
+      "pcm_sha256": "0d766ebf1cbea81bdb83df0281b1d1d2a29829a6be38875d0c038a2cf68e34a2",
+      "sample_rate": 16000,
+      "shape": [
+        2272444,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/noise-free-sound-0293.wav": {
+      "source_sha256": "2229887e9b29874901acbddf5eccb0bbec602d21756713ac99b4ce9e380a0443",
+      "pcm_sha256": "63f032ba21a5192a1b5af01c29941891730ed50fa1ea7cec35f439ee740f63ed",
+      "sample_rate": 16000,
+      "shape": [
+        688611,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/noise-free-sound-0401.wav": {
+      "source_sha256": "bdfcae58c303dd684649f296ac32543c20af6616999c95963d2014ef4e4f439d",
+      "pcm_sha256": "e8670fff31e9331ddb2184e0d84c5bb489bea43f525dfbb6cf1f8aef8c004ab2",
+      "sample_rate": 16000,
+      "shape": [
+        165625,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/noise-free-sound-0775.wav": {
+      "source_sha256": "241e9f70cf2ebe8b4b10b9a858bbf61da38d91e1bbd0aea16c11ad90f8631db4",
+      "pcm_sha256": "a93bf1850d2adbf34a82cad4e5d577ccaff518492ec719eeb8d1c0c2fe7954f9",
+      "sample_rate": 16000,
+      "shape": [
+        472163,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/noise-free-sound-0717.wav": {
+      "source_sha256": "e0586a48822e9e0bc07a2efa4f5f19673e386ff85727bacfdfe8747d1cc9fe1c",
+      "pcm_sha256": "38a4417ded553f45ec3d55bb469d9fe104f72d0a3f3bf747863ceb9e5dc73951",
+      "sample_rate": 16000,
+      "shape": [
+        95713,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/speech-us-gov-0183.wav": {
+      "source_sha256": "8dd905f4429a3b38f3ca90e7e145b3f2234cc2ffa599820f4bd1c137194bd621",
+      "pcm_sha256": "3d331cb2d38579dc09c34037e7ef07abd4e5d075ae1fcc5336adb6d27ec6cf27",
+      "sample_rate": 16000,
+      "shape": [
+        9598850,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/speech-us-gov-0185.wav": {
+      "source_sha256": "a3c12eff6da4014b54cc2e71599b9a58edd8f4a65fed136348d3a62246101b4d",
+      "pcm_sha256": "99d0a83a288868af575093b54c98d299d8ae493f00b08d7d706efd156dac82b2",
+      "sample_rate": 16000,
+      "shape": [
+        9598850,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/speech-us-gov-0159.wav": {
+      "source_sha256": "86c3095b47c4696fae943f5975be9bda8b35594832625c0ad63b24a3824620f8",
+      "pcm_sha256": "15202845db2c28751194a4d41e12e3b6157f1fd7211e2a4fb4304f99cea0bc9c",
+      "sample_rate": 16000,
+      "shape": [
+        2782354,
+        1
+      ],
+      "split": "replay"
+    },
+    "MUSAN/speech-librivox-0137.wav": {
+      "source_sha256": "8f799e87f873e3ed6aeb82cfc42cd7af65b409d9a3cb02feff1486574f8bd638",
+      "pcm_sha256": "b59beab9c0a9344c6108a9f85f8912ccdc9b794484586fac6fa27e5b3b36e1bf",
+      "sample_rate": 16000,
+      "shape": [
+        10530064,
+        1
+      ],
+      "split": "replay"
+    }
+  },
+  "errors": []
+}

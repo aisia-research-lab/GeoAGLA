@@ -1,4 +1,4 @@
-"""Safeguarded online-lambda+ accelerator for Phase-1E diagnostics."""
+"""Safeguarded online geometry-adaptive Griffin-Lim accelerator (NumPy reference)."""
 from __future__ import annotations
 import numpy as np
 from geometry_gla.algorithms.minimax import oracle_minimax
@@ -114,19 +114,19 @@ def run_online_policy(
     policy='dynamic_envelope', update_rel_tol=0.0, ema_eta=0.25,
     oracle_edge=None, estimator_bias=0.0,
 ):
-    """Phase-1E-R policy runner.
+    """Safeguarded online edge-synthesis policy runner.
 
-    Policies are diagnostic interventions that isolate rate-realization effects:
-      dynamic_raw       : current Ritz edge every block;
-      dynamic_envelope  : running max of Ritz edge (Phase-1E behavior);
+    Supported edge-update policies:
+      dynamic_raw       : current Ritz edge at every block;
+      dynamic_envelope  : running maximum of accepted Ritz estimates;
       freeze_first      : freeze first accepted Ritz edge after warmup;
-      freeze_calibrated : extend safe calibration until 2*warmup, then freeze;
+      freeze_calibrated : extend warmup calibration to 2*warmup, then freeze;
       thresholded       : update only if relative edge change exceeds update_rel_tol;
-      ema               : damp edge updates by ema_eta;
-      oracle_frozen     : frozen supplied oracle_edge (diagnostic upper control).
+      ema               : exponential moving average damping by ema_eta;
+      oracle_frozen     : frozen supplied oracle_edge (oracle diagnostic control).
 
-    All non-oracle policies remain passive and projection-neutral. Safety is always
-    enforced by the same fixed checkpoint merit and rollback mechanism.
+    All non-oracle policies are passive. Local convergence safeguarding is
+    enforced via the fixed checkpoint merit and GLA rollback mechanism.
     """
     t=np.asarray(t0,dtype=np.complex128).copy(); tp=np.asarray(t_minus1,dtype=np.complex128).copy()
     committed=[t.copy()]; qhist=[]; ghist=[]; logs=[]; n_done=0; prev_D=0.0

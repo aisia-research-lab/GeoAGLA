@@ -1,14 +1,11 @@
-"""Fixed-merit checkpoint safeguard used in Phase-1E diagnostics.
+"""Fixed-merit checkpoint safeguard for adaptive Griffin-Lim acceleration.
 
-The merit is deliberately parameter-independent with respect to the *candidate*
-accelerator.  A fixed safe reference alpha_s and K_s define
+The checkpoint merit is independent of the candidate acceleration parameters:
 
-    Phi_s(t,t-) = 1/2 d_C2^2(t + alpha_s (t-t-)) + K_s/2 ||t-t-||^2.
+    Phi(t, t-) = 1/2 * dist(t + alpha_s (t - t-), M_s)^2 + (K_s / 2) * ||t - t-||^2.
 
-For Phase-1E v1 we freeze alpha_s=0, so c_s=t.  Because every committed t is
-in range(T), the restricted gradient of 1/2 d_C2^2(t) on range(T) is t-G(t).
-This module is a proof-compatible diagnostic implementation; it does not by
-itself establish the full switched-algorithm KL theorem.
+With alpha_s = 0, every committed iterate t lies in range(T), so the restricted
+gradient of 1/2 * dist(t, M_s)^2 on range(T) is t - G(t).
 """
 from __future__ import annotations
 import numpy as np
@@ -74,14 +71,13 @@ def restricted_merit_gradient_norm(
     alpha_safe: float=0.0,
     K_safe: float=0.25,
 ) -> float:
-    """Norm of a restricted smooth gradient for the frozen Phase-1E merit.
+    """Norm of the restricted smooth gradient for the fixed checkpoint merit.
 
-    The current implementation is exact for alpha_safe=0, the frozen v1 choice.
-    It is used to audit a relative-error inequality of the form
-    ||grad Phi_s(X_{k+1})|| <= b (D_k + D_{k-1}).
+    Exact for alpha_safe = 0, used to monitor the relative-error inequality
+    ||grad Phi(X_{k+1})|| <= b * (D_k + D_{k-1}).
     """
     if abs(alpha_safe)>1e-15:
-        raise NotImplementedError('Phase-1E v1 freezes alpha_safe=0')
+        raise NotImplementedError('restricted_merit_gradient_norm requires alpha_safe=0')
     t=np.asarray(t,dtype=np.complex128); tp=np.asarray(t_prev,dtype=np.complex128)
     delta=t-tp
     g=griffin_lim_map(t,s,op)

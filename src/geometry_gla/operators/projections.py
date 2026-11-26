@@ -21,9 +21,8 @@ def griffin_lim_map(c: np.ndarray, s: np.ndarray, op: AnalysisOperator) -> np.nd
 def tangent_project_magnitude(c_star: np.ndarray, h: np.ndarray, tol: float = 1e-14) -> np.ndarray:
     """Real derivative of magnitude projection at a feasible regular point.
 
-    For c_i*=s_i u_i with s_i>0: P_T h_i = h_i-u_i Re(conj(u_i)h_i).
-    Coordinates with |c_i*|<=tol are rejected in Phase-1B because the smooth
-    tangent-circle formula is not valid there.
+    For c_i* = s_i u_i with s_i > 0: P_V h_i = h_i - u_i Re(conj(u_i) h_i).
+    Coordinates with |c_i*| <= tol are rejected because smoothness fails there.
     """
     c_star = np.asarray(c_star, dtype=np.complex128)
     h = np.asarray(h, dtype=np.complex128)

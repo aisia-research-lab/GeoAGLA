@@ -1,0 +1,122 @@
+[
+  {
+    "source_id": "MUSAN/music-fma-0091.wav",
+    "group_id": "music-fma-0091.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "music-fma-0091.wav",
+    "historical_excerpt_start": 3115008,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.3699436995543096
+  },
+  {
+    "source_id": "MUSAN/music-jamendo-0113.wav",
+    "group_id": "music-jamendo-0113.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "music-jamendo-0113.wav",
+    "historical_excerpt_start": 3009536,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.3869255872389773
+  },
+  {
+    "source_id": "MUSAN/music-fma-wa-0055.wav",
+    "group_id": "music-fma-wa-0055.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "music-fma-wa-0055.wav",
+    "historical_excerpt_start": 111616,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.3151667723961879
+  },
+  {
+    "source_id": "MUSAN/music-rfm-0145.wav",
+    "group_id": "music-rfm-0145.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "music-rfm-0145.wav",
+    "historical_excerpt_start": 1899520,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.5056999227141644
+  },
+  {
+    "source_id": "MUSAN/noise-free-sound-0293.wav",
+    "group_id": "noise-free-sound-0293.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "noise-free-sound-0293.wav",
+    "historical_excerpt_start": 519168,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.08810964384392377
+  },
+  {
+    "source_id": "MUSAN/noise-free-sound-0401.wav",
+    "group_id": "noise-free-sound-0401.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "noise-free-sound-0401.wav",
+    "historical_excerpt_start": 81920,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.09803003300540822
+  },
+  {
+    "source_id": "MUSAN/noise-free-sound-0775.wav",
+    "group_id": "noise-free-sound-0775.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "noise-free-sound-0775.wav",
+    "historical_excerpt_start": 454656,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.2836278214634706
+  },
+  {
+    "source_id": "MUSAN/noise-free-sound-0717.wav",
+    "group_id": "noise-free-sound-0717.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "noise-free-sound-0717.wav",
+    "historical_excerpt_start": 78848,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.07626456779460304
+  },
+  {
+    "source_id": "MUSAN/speech-us-gov-0183.wav",
+    "group_id": "speech-us-gov-0183.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "speech-us-gov-0183.wav",
+    "historical_excerpt_start": 2607104,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.15951374869544854
+  },
+  {
+    "source_id": "MUSAN/speech-us-gov-0185.wav",
+    "group_id": "speech-us-gov-0185.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "speech-us-gov-0185.wav",
+    "historical_excerpt_start": 2310144,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.20038584251619698
+  },
+  {
+    "source_id": "MUSAN/speech-us-gov-0159.wav",
+    "group_id": "speech-us-gov-0159.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "speech-us-gov-0159.wav",
+    "historical_excerpt_start": 1769472,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.15867817018608502
+  },
+  {
+    "source_id": "MUSAN/speech-librivox-0137.wav",
+    "group_id": "speech-librivox-0137.wav",
+    "corpus": "MUSAN",
+    "split": "replay",
+    "path": "speech-librivox-0137.wav",
+    "historical_excerpt_start": 8560640,
+    "historical_excerpt_length": 4096,
+    "historical_rms": 0.24551102064286617
+  }
+]
