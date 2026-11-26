@@ -1,4 +1,0 @@
-OS: Linux 6.12.90+ (#1 SMP Sat May 30 15:40:53 UTC 2026)
-Python: 3.12.13
-NumPy: 2.0.2
-SciPy: 1.16.3

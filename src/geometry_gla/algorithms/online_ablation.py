@@ -1,9 +1,7 @@
-"""E10 mechanism-ablation runners built on the frozen GeoAGLA engine.
+"""Configurable mechanism-ablation runner built on the safeguarded online engine.
 
-Scientific switches isolate (i) passive Ritz estimation, (ii) running-max edge
-memory, and (iii) the frozen checkpoint rollback to GLA. The canonical
-``run_online_policy(..., policy='dynamic_envelope')`` remains the reference
-for ``online_full``.
+Switches isolate (i) passive Rayleigh-Ritz estimation, (ii) running-max edge
+envelope memory, and (iii) checkpoint rollback to standard GLA.
 """
 from __future__ import annotations
 import numpy as np
@@ -34,11 +32,11 @@ def run_online_ablation(
     use_envelope=False,
     use_fallback=False,
 ):
-    """Run an E10 online variant with explicit mechanism switches.
+    """Run an online policy variant with explicit mechanism switches.
 
-    Warmup and estimator history are identical to the frozen Online runner.
-    If ``use_fallback=False``, the candidate block is committed regardless of
-    the checkpoint diagnostic; the checkpoint is still evaluated and logged.
+    Warmup and estimator history match the standard safeguarded online runner.
+    When ``use_fallback=False``, the candidate block is committed regardless of
+    the checkpoint diagnostic, while the diagnostic is still evaluated and logged.
     """
     t = np.asarray(t0, np.complex128).copy()
     tp = np.asarray(t_minus1, np.complex128).copy()

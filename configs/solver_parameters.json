@@ -1,0 +1,71 @@
+{
+  "stft_profiles": {
+    "gaussian": {
+      "window_length": 256,
+      "hop": 32,
+      "n_fft": 256
+    },
+    "hann": {
+      "window_length": 512,
+      "hop": 128,
+      "n_fft": 512
+    }
+  },
+  "online": {
+    "warmup_steps": 12,
+    "block_size": 8,
+    "secant_memory": 3,
+    "svd_rtol": 1e-09,
+    "cond_max": 10000000000.0,
+    "lambda_floor": 1e-08,
+    "lambda_ceiling": 0.99999999,
+    "merit_kappa": 0.25,
+    "descent_a": 0.0001,
+    "accept_atol": 1e-14
+  },
+  "baselines": {
+    "FGLA_095": {
+      "alpha": 0.95,
+      "beta": 0.0,
+      "gamma": 1.0
+    },
+    "NAGLA_H2": {
+      "H": 2
+    },
+    "RestartNAG": {
+      "H": 2,
+      "gradient_restart": true
+    },
+    "AGLA_tuned": {
+      "alpha": 0.8,
+      "beta": 1.0,
+      "gamma": 1.1
+    },
+    "GLA": {
+      "alpha": 0.0,
+      "beta": 0.0,
+      "gamma": 1.0
+    }
+  },
+  "budgets": {
+    "calls": [
+      90,
+      180,
+      360,
+      720,
+      1440,
+      2880
+    ],
+    "wall_seconds": [
+      0.05,
+      0.1,
+      0.2,
+      0.5,
+      1.0
+    ]
+  },
+  "success_criteria": {
+    "orbit_contraction_factor": 0.1,
+    "magnitude_residual_tol": 1e-05
+  }
+}

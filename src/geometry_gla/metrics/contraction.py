@@ -5,9 +5,8 @@ import numpy as np
 def root_rate_from_errors(errors, floor: float = 1e-13, min_points: int = 8):
     """Estimate geometric root rate from a robust log-linear fit.
 
-    Chooses the longest useful prefix after the initial point while errors are
-    above floating-point floor. The n*q^n critical-damping prefactor causes a
-    mild finite-window bias; Phase-1B smoke tests therefore use moderate tolerances.
+    Selects the longest usable prefix after the initial transient while errors
+    remain above the floating-point floor.
     """
     e = np.asarray(errors, dtype=float)
     idx = np.where(np.isfinite(e) & (e > floor))[0]
