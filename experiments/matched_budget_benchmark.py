@@ -62,7 +62,8 @@ def _load_spectra_map(path: str | Path) -> dict[tuple[str, str], float]:
     with Path(path).open("r", encoding="utf-8") as f:
         for line in f:
             r = json.loads(line)
-            if r.get("status") == "RESOLVED" and "L" in r:
+            # RESOLVED: spectral_geometry.py output; NUMERICALLY_RESOLVED: frozen inputs/prior_spectrum.jsonl
+            if r.get("status") in ("RESOLVED", "NUMERICALLY_RESOLVED") and "L" in r:
                 out[(r["source_id"], r["profile"])] = float(r["L"])
     return out
 
@@ -72,7 +73,7 @@ def main() -> None:
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--synthetic", action="store_true", help="Run fast synthetic smoke benchmark.")
     group.add_argument("--audio-root", type=str, help="Path to local MUSAN audio directory.")
-    parser.add_argument("--spectra", type=str, default=None, help="JSONL file from spectral_geometry.py (for OneEdgeOracle).")
+    parser.add_argument("--spectra", type=str, default=None, help="Spectrum JSONL for OneEdgeOracle and tolerance diagnostics: spectral_geometry.py output, or inputs/prior_spectrum.jsonl to reproduce the manuscript tables.")
     parser.add_argument("--mode", choices=["calls", "wall"], required=True, help="Budget accounting mode.")
     parser.add_argument("--device", type=str, default="cpu", help="PyTorch device (e.g., cpu or cuda:0).")
     parser.add_argument("--seeds", type=int, default=1, help="Number of random seeds per initialization.")

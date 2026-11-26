@@ -34,3 +34,4 @@ outputs/
 *.log
 *.zip
 *.tar.gz
+!inputs/*.jsonl
