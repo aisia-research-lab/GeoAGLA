@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "spectra": 24,
+  "resolved": 24,
+  "mismatch_records": 5184,
+  "expected_if_all_resolved": 5184,
+  "unresolved": [],
+  "warning": "Solver residuals and independent agreement are numerical diagnostics, not rigorous upper certificates. Finite-horizon mode predictions are not fitted asymptotic worst-case rates."
+}

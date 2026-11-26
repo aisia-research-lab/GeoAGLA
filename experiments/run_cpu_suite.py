@@ -56,7 +56,9 @@ def main() -> None:
         _run("4/6 Controlled local acceleration & mismatch sweep (synthetic)", ["experiments.local_acceleration", "--synthetic", "--out", str(out_dir / "local.jsonl")], env)
         _run("5/6 Matched-budget calls & wall benchmark + analysis (synthetic)", ["experiments.matched_budget_benchmark", "--synthetic", "--mode", "calls", "--device", "cpu", "--out", str(out_dir / "calls.jsonl")], env)
         _run("5b/6 Matched-budget analysis", ["experiments.benchmark_analysis", "--raw", str(out_dir / "calls.jsonl"), "--mode", "calls", "--out", str(out_dir / "calls_summary")], env)
+        _run("5c/6 Independent raw-ledger audit", ["experiments.audit_ledger", "--raw", str(out_dir / "calls.jsonl"), "--mode", "calls", "--out", str(out_dir / "calls_audit.json")], env)
         _run("6/6 Rayleigh-Ritz SVD microbenchmark", ["experiments.ritz_microbench", "--repeats", "20", "--out", str(out_dir / "microbench.json")], env)
+        _run("7/7 Exact-rational switching certificate (Proposition 7)", ["experiments.verify_switching_certificate", "--out", str(out_dir / "switching_certificate.json")], env)
     finally:
         if ctx is not None:
             ctx.cleanup()

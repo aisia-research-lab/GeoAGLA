@@ -50,3 +50,11 @@ def test_mismatch_tolerance_interval_and_near_degenerate_limit():
     lo, hi = mismatch_acceleration_interval(L_deg)
     assert abs((1.0 - hi) / (1.0 - L_deg) - 0.5) < 1e-2
     assert abs((1.0 - lo) / (1.0 - L_deg) - 1.125) < 1e-2
+
+
+def test_switching_counterexample_exact_certificate():
+    from experiments.verify_switching_certificate import certificate
+
+    out = certificate()
+    assert out["status"] == "PASS"
+    assert out["numerical_switched_rate"] > out["q_F"] > max(out["numerical_frozen_rates"])
