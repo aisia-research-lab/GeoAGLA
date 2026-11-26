@@ -34,9 +34,13 @@ GeoAGLA/
 │   ├── non_stft_transfer.py         # Two-edge minimax verification on non-STFT subspace pairs
 │   ├── matched_budget_benchmark.py  # Equal-calls & wall-clock benchmarks and component ablation
 │   ├── benchmark_analysis.py        # Paired cluster-bootstrap statistics & mechanism diagnostics
+│   ├── audit_ledger.py              # Independent raw-ledger audit (pairing, success, calls, budget selection)
 │   ├── parity_check.py              # NumPy reference vs. PyTorch backend parity verification
 │   ├── ritz_microbench.py           # Isolated Rayleigh-Ritz SVD vs. STFT timing microbenchmark
+│   ├── verify_switching_certificate.py  # Exact-rational certificate for Proposition 7 (switching)
 │   └── run_cpu_suite.py             # One-command self-contained CPU verification suite
+├── results/
+│   └── k1k2_cpu_replication/        # K1/K2 aggregate data (spectra, audit, gap figure) + raw-ledger SHA256
 ├── tests/                           # Unit tests covering operators, geometry, minimax, and solvers
 ├── pyproject.toml
 ├── requirements.txt
@@ -69,7 +73,7 @@ pip install -e .
    python run_tests.py
    ```
 
-2. **Run all self-contained CPU experiments end-to-end** (parity check, non-STFT two-edge transfer, synthetic spectral geometry & gap plot, local mismatch sweep, matched-budget smoke benchmark, and Ritz microbenchmark):
+2. **Run all self-contained CPU experiments end-to-end** (parity check, non-STFT two-edge transfer, synthetic spectral geometry & gap plot, local mismatch sweep, matched-budget smoke benchmark with raw-ledger audit, Ritz microbenchmark, and the exact-rational switching certificate):
    ```bash
    python -m experiments.run_cpu_suite --out outputs/cpu_suite
    ```
@@ -117,9 +121,33 @@ python -m experiments.benchmark_analysis --raw outputs/calls_audio.jsonl --mode 
 # Synchronized wall-clock budgets (50 ms to 1.0 s)
 python -m experiments.matched_budget_benchmark --audio-root /path/to/musan --spectra outputs/spectral_audio.jsonl --mode wall --device cuda:0 --out outputs/wall_audio.jsonl
 python -m experiments.benchmark_analysis --raw outputs/wall_audio.jsonl --mode wall --out outputs/wall_summary
+
+# Independent raw-ledger audit (192 start keys per seed in the manuscript)
+python -m experiments.audit_ledger --raw outputs/calls_audio.jsonl --mode calls --expected-keys 192 --out outputs/calls_audit.json
+python -m experiments.audit_ledger --raw outputs/wall_audio.jsonl --mode wall --expected-keys 192 --out outputs/wall_audit.json
 ```
 
 ### 6. Rayleigh–Ritz Runtime Microbenchmark
 ```bash
 python -m experiments.ritz_microbench --out outputs/ritz_microbench.json
 ```
+
+### 7. Exact-Rational Switching Certificate (Proposition 7)
+Checks every inequality in the proof of the switching counterexample with `fractions.Fraction`
+(Jury slacks, the bounds on tr P and det P, and the sign at x = -(0.685)^16):
+```bash
+python -m experiments.verify_switching_certificate --out outputs/switching_certificate.json
+```
+
+---
+
+## Aggregate Data
+
+`results/k1k2_cpu_replication/` contains the aggregate output of the independent CPU replication of the
+spectral-identity (K1) and mismatch-replay (K2) experiments on the 12 manifest files:
+`spectrum_summary.csv` (24 geometries: L, principal-sine vs. Jacobian and prior-spectrum discrepancies),
+`audit.json` (24/24 resolved, 5,184/5,184 mismatch records), and `gap_identity.svg`.
+The raw JSONL ledgers are not stored in this repository; `raw_ledger_sha256.txt` lists their SHA256 checksums,
+The corresponding experiments in this repository are `experiments.spectral_geometry` (K1) and
+`experiments.local_acceleration` (K2); their outputs are not guaranteed to be byte-identical to the archived ledgers.
+Aggregate tables for the GPU matched-budget benchmark are not yet included.
